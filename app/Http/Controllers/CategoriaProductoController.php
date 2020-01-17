@@ -15,24 +15,45 @@ class CategoriaProductoController extends Controller
 
     }
 
-    public function index(){
-
+    public function index(Request $request){
+        if ($request){
+            $query=trim ($request ->get('searchText'));
+            $categorias=DB::table('Categoria_Producto')->where('Nombre_Categoria','LIKE','%'.$query.'%')
+            ->orderBy('ID_Categoria','desc')
+            ->paginate(7);
+            return view('inventario.categorias.index',["categorias"=>$categorias,"searchText" => $query]);
+        }
     }
 
     public function create(){
-
+        return view ('inventario.categorias.create');
     }
 
-    public function store(){
-
+    public function store(CategoriaProductoFormRequest $request){
+        $categorias = new CategoriaProducto;
+        $categorias->Nombre_Categoria=$request->get('Nombre_Categoria');
+        $categorias->Descripcion_Categoria=$request->get('Descripcion_Categoria');
+        $categorias->save();
+        return Redirect::to('inventario/categorias');
     }
-    public function edit(){
 
+    public function show($id){
+        return view("inventario.categorias.show",["categoria"=>CategoriaProducto::findOrFail($id)]);
     }
-    public function update(){
 
+    public function edit($id){
+        return view("inventario.categorias.edit",["categoria"=>CategoriaProducto::findOrFail($id)]);
     }
-    public function destroy(){
-
+    public function update(CategoriaProductoFormRequest $request, $id){
+        $categorias = CategoriaProducto::findOrFail($id);
+        $categorias->Nombre_Categoria=$request->get('Nombre_Categoria');
+        $categorias->Descripcion_Categoria=$request->get('Descripcion_Categoria');
+        $categorias->update();
+        return Redirect::to('inventario/categorias');
+    }
+    public function destroy($id){
+        $categorias= CategoriaProducto::findOrFail($id);
+        $categorias->where('ID_Categoria'.$id)->delete();
+        return Redirect::to('inventario/categorias');
     }
 }

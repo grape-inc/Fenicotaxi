@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 
 @section('content')
    <div class="content-wrapper">
@@ -269,5 +269,5 @@
                 </div>
               </div>
             </div>
-          </div>            
+          </div>
 @stop
