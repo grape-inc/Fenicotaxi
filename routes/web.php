@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('dashboard.dashboard');
 });
+
+Route::resource('inventario/categoria_producto','CategoriaProductoController');
