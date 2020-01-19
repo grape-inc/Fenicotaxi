@@ -12,17 +12,11 @@ class CategoriaProductoController extends Controller
 {
     public function __construct()
     {
-
+            
     }
 
-    public function index(Request $request){
-        if ($request){
-            $query=trim ($request ->get('searchText'));
-            $categorias=DB::table('Categoria_Producto')->where('Nombre_Categoria','LIKE','%'.$query.'%')
-            ->orderBy('ID_Categoria','desc')
-            ->paginate(7);
-            return view('inventario.categorias.index',["categorias"=>$categorias,"searchText" => $query]);
-        }
+    public function index(Request $request){                        
+        return view('inventario.categorias.index') ->with('Categorias', CategoriaProducto::all());               
     }
 
     public function create(){

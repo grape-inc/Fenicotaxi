@@ -12,7 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('dashboard.dashboard');
+    return view('Dashboard.dashboard');
 });
 
-Route::resource('inventario/categorias','CategoriaProductoController');
+Route::resource('Inventario/Categorias', 'CategoriaProductoController')->only([
+    'index', 'create', 'edit', 'destroy'
+]);

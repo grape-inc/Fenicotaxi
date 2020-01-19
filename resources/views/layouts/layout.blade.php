@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
+<html lang="es">
+  <head>    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Fenicootaxi</title>
-    <!-- plugins:css -->
+    <title>Fenicotaxi</title>    
     <link rel="stylesheet" href="{{{asset('vendors/mdi/css/materialdesignicons.min.css')}}}">
     <link rel="stylesheet" href="{{{asset('vendors/css/vendor.bundle.base.css')}}}">
-    <link rel="stylesheet" href="{{{asset('css/style.css')}}}">
-    <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{{asset('images/favicon.png')}}}" />
+    <link rel="stylesheet" href="{{{asset('css/style.css')}}}">    
+    <link rel="icon" href="{{{asset('images/favicon.png')}}}" />
   </head>
   <body>
-    <div class="container-scroller">
-      <!-- partial:partials/_navbar.html -->
+    <div class="container-scroller">      
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
           <a class="navbar-brand brand-logo" href="#"><img src="{{{asset('images/logo.svg')}}}" alt="logo" /></a>
@@ -23,17 +19,7 @@
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
-          </button>
-          <div class="search-field d-none d-md-block">
-            <form class="d-flex align-items-center h-100" action="#">
-              <div class="input-group">
-                <div class="input-group-prepend bg-transparent">
-                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
-              </div>
-            </form>
-          </div>
+          </button>          
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item d-none d-lg-block full-screen-link">
                 <a class="nav-link">
@@ -52,10 +38,10 @@
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log </a>
+                  <i class="mdi mdi-cached mr-2 text-success"></i> Mi Perfil </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
+                  <i class="mdi mdi-logout mr-2 text-primary"></i> Cerrar Sesión </a>
               </div>
             </li>
           </ul>
@@ -63,28 +49,12 @@
             <span class="mdi mdi-menu"></span>
           </button>
         </div>
-      </nav>
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_sidebar.html -->
+      </nav>      
+      <div class="container-fluid page-body-wrapper">        
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">
-            <li class="nav-item nav-profile">
-              <a href="#" class="nav-link">
-                <div class="nav-profile-image">
-                  <img src="{{{asset('images/faces/face1.jpg')}}}" alt="profile">
-                  <span class="login-status online"></span>
-                  <!--change to offline or busy as needed-->
-                </div>
-                <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">David Grey. H</span>
-                  <span class="text-secondary text-small">Project Manager</span>
-                </div>
-                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
-              </a>
-            </li>
+          <ul class="nav">            
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{ URL::route('Categorias.index')}}">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -93,12 +63,14 @@
               <a class="nav-link" data-toggle="collapse" href="#inventario" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Inventario</span>
                 <i class="menu-arrow"></i>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                <i class="mdi mdi-wunderlist menu-icon"></i>
               </a>
               <div class="collapse" id="inventario">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Categorias</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Productos</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Productos</a></li>                  
+                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Proveedores</a></li>                  
+                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Categorias.index')}}">Categorias</a></li>                  
+                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Unidades de medida</a></li>                                    
                 </ul>
               </div>
             </li>
@@ -117,70 +89,30 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="pages/forms/basic_elements.html">
-                <span class="menu-title">Forms</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/charts/chartjs.html">
-                <span class="menu-title">Charts</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/tables/basic-table.html">
-                <span class="menu-title">Tables</span>
-                <i class="mdi mdi-table-large menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
-                <span class="menu-title">Sample Pages</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-medical-bag menu-icon"></i>
-              </a>
-              <div class="collapse" id="general-pages">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-                </ul>
-              </div>
+                <span class="menu-title">Nomina</span>
+                <i class="mdi mdi mdi-bank menu-icon"></i>
+              </a>                        
             </li>
           </ul>
         </nav>
-        <!-- Content -->
+        <!-- Contenido -->
        <div class="main-panel">
-       @yield('content')
-       <!--Footer-->
+        @yield('content')       
        <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
               <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Hecho por Oscar Rivera y Renner Poveda.</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2019. All rights reserved.</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2020. Todos los derechos reservados.</span>
             </div>
           </footer>
-       </div>
-        <!-- Content -->
-      </div>
-      <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="{{{asset('vendors/js/vendor.bundle.base.js')}}}"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="{{{asset('vendors/chart.js/Chart.min.js')}}}"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
+       </div>        
+      </div>  
+    </div>    
+    <script src="{{{asset('vendors/js/vendor.bundle.base.js')}}}"></script>    
+    <script src="{{{asset('vendors/chart.js/Chart.min.js')}}}"></script>   
     <script src="{{{asset('js/off-canvas.js')}}}"></script>
     <script src="{{{asset('js/hoverable-collapse.js')}}}"></script>
-    <script src="{{{asset('js/misc.js')}}}"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
+    <script src="{{{asset('js/misc.js')}}}"></script>    
     <script src="{{{asset('js/dashboard.js')}}}"></script>
-    <script src="{{{asset('js/todolist.js')}}}"></script>
-    <!-- End custom js for this page -->
+    <script src="{{{asset('js/todolist.js')}}}"></script>    
   </body>
 </html>
