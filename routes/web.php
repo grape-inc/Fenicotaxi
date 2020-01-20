@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('Inventario/Categorias', 'CategoriaProductoController');
+Route::resource('Clientes', 'ClientesController');

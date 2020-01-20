@@ -18,7 +18,7 @@ class CategoriaProductoController extends Controller
         return view ('Inventario.Categorias.create');
     }
 
-    public function store(CategoriaProductoFormRequest $Request){        
+    public function store(CategoriaProductoFormRequest $Request){
         $Validacion = $Request->validated();
         $Categoria = new CategoriaProducto;
         $Categoria->Nombre_Categoria=$Request->get('Nombre_Categoria');
@@ -27,9 +27,10 @@ class CategoriaProductoController extends Controller
         return Redirect::to('/Inventario/Categorias/');
     }
 
-    public function edit($ID){        
+    public function edit($ID){
         return view("Inventario.Categorias.edit ",["Categoria"=>CategoriaProducto::findOrFail($ID)]);
     }
+
     public function update(CategoriaProductoFormRequest $request, $id){
         $categorias = CategoriaProducto::findOrFail($id);
         $categorias->Nombre_Categoria=$request->get('Nombre_Categoria');

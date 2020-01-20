@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>    
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Fenicotaxi</title>    
+    <title>Fenicotaxi</title>
     <link rel="stylesheet" href="{{{asset('vendors/mdi/css/materialdesignicons.min.css')}}}">
     <link rel="stylesheet" href="{{{asset('vendors/css/vendor.bundle.base.css')}}}">
-    <link rel="stylesheet" href="{{{asset('css/style.css')}}}">    
-    <link rel="stylesheet" href="{{{asset('css/dataTables.bootstrap4.min.css')}}}">    
+    <link rel="stylesheet" href="{{{asset('css/style.css')}}}">
+    <link rel="stylesheet" href="{{{asset('css/dataTables.bootstrap4.min.css')}}}">
     <link rel="icon" href="{{{asset('images/favicon.png')}}}" />
   </head>
   <body>
-    <div class="container-scroller">      
+    <div class="container-scroller">
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
           <a class="navbar-brand brand-logo" href="#"><img src="{{{asset('images/logo.svg')}}}" alt="logo" /></a>
@@ -21,7 +21,7 @@
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
-          </button>          
+          </button>
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item d-none d-lg-block full-screen-link">
                 <a class="nav-link">
@@ -51,10 +51,10 @@
             <span class="mdi mdi-menu"></span>
           </button>
         </div>
-      </nav>      
-      <div class="container-fluid page-body-wrapper">        
+      </nav>
+      <div class="container-fluid page-body-wrapper">
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">            
+          <ul class="nav">
             <li class="nav-item">
               <a class="nav-link" href="{{ URL::route('Categorias.index')}}">
                 <span class="menu-title">Dashboard</span>
@@ -69,12 +69,18 @@
               </a>
               <div class="collapse" id="inventario">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Productos</a></li>                  
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Proveedores</a></li>                  
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Categorias.index')}}">Categorias</a></li>                  
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Unidades de medida</a></li>                                    
+                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Productos</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Proveedores</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Categorias.index')}}">Categorias</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Unidades de medida</a></li>
                 </ul>
               </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ URL::route('Clientes.index')}}">
+                <span class="menu-title">Clientes</span>
+                <i class="mdi mdi mdi-bank menu-icon"></i>
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#usuarios" aria-expanded="false" aria-controls="usuarios">
@@ -93,31 +99,31 @@
               <a class="nav-link" href="pages/forms/basic_elements.html">
                 <span class="menu-title">Nomina</span>
                 <i class="mdi mdi mdi-bank menu-icon"></i>
-              </a>                        
+              </a>
             </li>
           </ul>
         </nav>
         <!-- Contenido -->
        <div class="main-panel">
-        @yield('content')       
+        @yield('content')
        <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
               <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Hecho por Oscar Rivera y Renner Poveda.</span>
               <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2020. Todos los derechos reservados.</span>
             </div>
           </footer>
-       </div>        
-      </div>  
-    </div>    
-    <script src="{{{asset('vendors/js/vendor.bundle.base.js')}}}"></script>    
-    <script src="{{{asset('vendors/chart.js/Chart.min.js')}}}"></script>   
+       </div>
+      </div>
+    </div>
+    <script src="{{{asset('vendors/js/vendor.bundle.base.js')}}}"></script>
+    <script src="{{{asset('vendors/chart.js/Chart.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/off-canvas.js')}}}"></script>
     <script src="{{{asset('js/Plugins/hoverable-collapse.js')}}}"></script>
-    <script src="{{{asset('js/Plugins/misc.js')}}}"></script>        
-    <script src="{{{asset('js/Plugins/todolist.js')}}}"></script>    
+    <script src="{{{asset('js/Plugins/misc.js')}}}"></script>
+    <script src="{{{asset('js/Plugins/todolist.js')}}}"></script>
     <script src="{{{asset('js/Plugins/jquery.dataTables.min.js')}}}"></script>
-    <script src="{{{asset('js/Plugins/dataTables.bootstrap4.min.js')}}}"></script> 
-    <script src="{{{asset('js/Plugins/sweetalert.js')}}}"></script> 
+    <script src="{{{asset('js/Plugins/dataTables.bootstrap4.min.js')}}}"></script>
+    <script src="{{{asset('js/Plugins/sweetalert.js')}}}"></script>
     @stack('scripts-vista')
   </body>
 </html>

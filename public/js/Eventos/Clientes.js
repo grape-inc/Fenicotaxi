@@ -3,7 +3,7 @@ $(document).ready(function () {
 });
 
 function ConfigurarTablas() {
-    $('#TablaCategorias').DataTable({
+    $('#TablaClientes').DataTable({
         "language": {
             "lengthMenu": "Mostrar _MENU_ registros por pagina",
             "zeroRecords": "No se encontraron datos",
@@ -25,10 +25,10 @@ function ConfigurarTablas() {
 }
 
 
-function EliminarCategoria(ID, URL) {
+function EliminarCliente(ID, URL) {
     Swal.fire({
         title: '¿Seguro?',
-        text: "Se eliminara la categoria.",
+        text: "Se eliminara El Cliente.",
         icon: 'question',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
