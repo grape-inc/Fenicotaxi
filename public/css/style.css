@@ -13376,3 +13376,23 @@ dl {
   flex-grow: 1; }
 
 /*# sourceMappingURL=style.css.map */
+
+div.dataTables_wrapper div.dataTables_length select {  
+  margin-top: 5px;
+}
+
+div.dataTables_wrapper div.dataTables_length select {
+  width:55px !important;
+}
+
+
+a > i{
+  color: white;
+}
+
+.text-danger{
+  margin-top: 10px !important;
+}
+.normalizarboton{
+  padding: 12px;
+}

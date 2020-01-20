@@ -10,44 +10,36 @@ use DB;
 
 class CategoriaProductoController extends Controller
 {
-    public function __construct()
-    {
-            
-    }
-
-    public function index(Request $request){                        
-        return view('inventario.categorias.index') ->with('Categorias', CategoriaProducto::all());               
+    public function index(Request $request){
+        return view('inventario.categorias.index') ->with('Categorias', CategoriaProducto::all());
     }
 
     public function create(){
-        return view ('inventario.categorias.create');
+        return view ('Inventario.Categorias.create');
     }
 
-    public function store(CategoriaProductoFormRequest $request){
-        $categorias = new CategoriaProducto;
-        $categorias->Nombre_Categoria=$request->get('Nombre_Categoria');
-        $categorias->Descripcion_Categoria=$request->get('Descripcion_Categoria');
-        $categorias->save();
-        return Redirect::to('inventario/categorias');
+    public function store(CategoriaProductoFormRequest $Request){        
+        $Validacion = $Request->validated();
+        $Categoria = new CategoriaProducto;
+        $Categoria->Nombre_Categoria=$Request->get('Nombre_Categoria');
+        $Categoria->Descripcion_Categoria=$Request->get('Descripcion_Categoria');
+        $Categoria->save();
+        return Redirect::to('/Inventario/Categorias/');
     }
 
-    public function show($id){
-        return view("inventario.categorias.show",["categoria"=>CategoriaProducto::findOrFail($id)]);
-    }
-
-    public function edit($id){
-        return view("inventario.categorias.edit",["categoria"=>CategoriaProducto::findOrFail($id)]);
+    public function edit($ID){        
+        return view("Inventario.Categorias.edit ",["Categoria"=>CategoriaProducto::findOrFail($ID)]);
     }
     public function update(CategoriaProductoFormRequest $request, $id){
         $categorias = CategoriaProducto::findOrFail($id);
         $categorias->Nombre_Categoria=$request->get('Nombre_Categoria');
         $categorias->Descripcion_Categoria=$request->get('Descripcion_Categoria');
         $categorias->update();
-        return Redirect::to('inventario/categorias');
+        return Redirect::to('Inventario/categorias');
     }
-    public function destroy($id){
-        $categorias= CategoriaProducto::findOrFail($id);
-        $categorias->where('ID_Categoria'.$id)->delete();
-        return Redirect::to('inventario/categorias');
+    public function destroy($ID){
+        $Categorias=CategoriaProducto::findOrFail($ID);
+        $Categorias->where('ID_Categoria',$ID)->delete();
+        return route('Categorias.index', ['Eliminado' => true]);
     }
 }

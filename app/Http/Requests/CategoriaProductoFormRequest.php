@@ -25,7 +25,8 @@ class CategoriaProductoFormRequest extends FormRequest
     {
         return [
             'Nombre_Categoria' => 'required | max:50',
-            'Descripcion_Categoria' => 'max:150'
+            'Descripcion_Categoria' => 'required | max:150'
         ];
+
     }
 }

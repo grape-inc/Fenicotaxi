@@ -14,7 +14,7 @@
                   <div class="card-body">
                     <h4 class="card-title">Formulario de creación de categorias para productos</h4>
                     <p class="card-description">Completa los campos para crear la categoria</p>
-                    <form action="{{ URL::route('Categorias.store')}}" method="post">
+                    <form action="{{ URL::route('Categorias.update')}}" method="put">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <div class="input-group">
@@ -23,7 +23,7 @@
                                         <i class="mdi mdi-sim-alert"></i>
                                     </button>
                                 </div>
-                                    <input type="text" class="form-control" placeholder="Identificador Autogenerado" readonly>
+                                {{ Form::text('username','clivern',array('id'=>'','class'=>'')) }}
                             </div>
                         </div>
                         <div class="form-group">
