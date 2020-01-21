@@ -24,7 +24,7 @@ class CategoriaProductoController extends Controller
         $Categoria->Nombre_Categoria=$Request->get('Nombre_Categoria');
         $Categoria->Descripcion_Categoria=$Request->get('Descripcion_Categoria');
         $Categoria->save();
-        return Redirect::to('/Inventario/Categorias/');
+        return redirect()->action('CategoriaProductoController@index');
     }
 
     public function edit($ID){
@@ -36,8 +36,7 @@ class CategoriaProductoController extends Controller
         $Categoria = CategoriaProducto::findOrFail($ID);
         $Categoria->Nombre_Categoria=$Request->get('Nombre_Categoria');
         $Categoria->Descripcion_Categoria=$Request->get('Descripcion_Categoria');
-        $Categoria->update();
-        return Redirect::to('Inventario/Categorias');
+        $Categoria->update();    
         return redirect()->action('CategoriaProductoController@index');
     }
     public function destroy($ID){
