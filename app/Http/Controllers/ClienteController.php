@@ -39,9 +39,9 @@ class ClienteController extends Controller
         $clientes->update();
         return redirect()->action('ClienteController@index');
     }
-    public function destroy($id){
-        $clientes = Cliente::find($id);
+    public function destroy($id){        
+        $clientes=Cliente::findOrFail($id);
         $clientes->delete();
-        return route('persona.cliente.index', ['Eliminado' => true]);
+        return route('cliente.index', ['Eliminado' => true]);
     }
 }
