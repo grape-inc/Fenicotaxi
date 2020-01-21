@@ -17,10 +17,11 @@
                 {{ Form::open(array('url' => URL::route('cliente.update', $cliente->ID_Cliente), 'method' => 'put'))}}
                     @csrf
                     <div class="form-group">
+                        {{Form::label('ID_Cliente', 'ID del Cliente')}}
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
-                                    <i class="mdi mdi-sim-alert"></i>
+                                    <i class="mdi mdi-account-outline"></i>
                                 </button>
                             </div>
                                 <input type="text" class="form-control" placeholder="Identificador Autogenerado" readonly value = "{{$cliente->ID_Cliente}}">
@@ -31,7 +32,7 @@
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
-                                    <i class="mdi mdi-ticket"></i>
+                                    <i class="mdi mdi-account-box"></i>
                                 </button>
                             </div>
                                 <input type="text" class="form-control" placeholder="Ingrese el nombre del cliente" name="Nombre_Cliente" value = "{{$cliente->Nombre_Cliente}}">
@@ -45,7 +46,7 @@
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
-                                    <i class="mdi mdi-sort-variant"></i>
+                                    <i class="mdi mdi-account-box-multiple"></i>
                                 </button>
                             </div>
                                 <input type="text" class="form-control" placeholder="Ingresa apellido del cliente" name="Apellido_Cliente" value = "{{$cliente->Apellido_Cliente}}">
@@ -56,7 +57,7 @@
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
-                                    <i class="mdi mdi-sort-variant"></i>
+                                    <i class="mdi mdi-account-badge-horizontal"></i>
                                 </button>
                             </div>
                                 <input type="text" class="form-control" placeholder="Ingresa cedula del cliente" name="Cedula" value = "{{$cliente->Cedula}}">
@@ -70,7 +71,7 @@
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
-                                    <i class="mdi mdi-sort-variant"></i>
+                                    <i class="mdi mdi-at"></i>
                                 </button>
                             </div>
                                 <input type="email" class="form-control" placeholder="Ingresa el correo del cliente" name="Correo" value = "{{$cliente->Correo}}">
@@ -80,7 +81,7 @@
                         @enderror
                     </div>
                     <div class="row justify-content-center">
-                        <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Crear Cliente<i class="mdi mdi-file-check btn-icon-append"></i></button>
+                        <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Actualizar Cliente<i class="mdi mdi-file-check btn-icon-append"></i></button>
                     </div>
                 {{ Form::close() }}
             </div>
