@@ -6,7 +6,7 @@
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-format-list-bulleted"></i>
             </span> Categorias de producto </h3>
-            <button type="button" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </button>
+            <a href="{{ URL::route('Categorias.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
         </div>
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
@@ -14,26 +14,28 @@
                   <div class="card-body">
                     <h4 class="card-title">Formulario de creación de categorias para productos</h4>
                     <p class="card-description">Completa los campos para crear la categoria</p>
-                    <form action="{{ URL::route('Categorias.store')}}" method="post">
+                    {{ Form::open(array('url' => URL::route('Categorias.store'), 'method' => 'post'))}}
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <div class="input-group">
+                            {{Form::label('ID_Categoria', 'Identificador')}}
+                            <div class="input-group">                            
                                 <div class="input-group-prepend">
                                     <button class="btn btn-sm btn-primary" type="button">
                                         <i class="mdi mdi-sim-alert"></i>
                                     </button>
                                 </div>
-                                    <input type="text" class="form-control" placeholder="Identificador Autogenerado" readonly>
+                                {{ Form::text('ID_Categoria','',array('id'=>'ID_Categoria','class'=>'form-control','readonly','placeholder'=>'Autogenerado'))}}
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="input-group">
+                            {{Form::label('Nombre_Categoria', 'Nombre de la categoria')}}
+                            <div class="input-group">                                
                                 <div class="input-group-prepend">
                                     <button class="btn btn-sm btn-primary" type="button">
                                         <i class="mdi mdi-ticket"></i>
                                     </button>
                                 </div>
-                                    <input type="text" class="form-control" placeholder="Ingrese el nombre de la categoria" name="Nombre_Categoria">
+                                {{ Form::text('Nombre_Categoria','',array('id'=>'Nombre_Categoria','class'=>'form-control','placeholder'=>'Ingresa el nombre de la categoria'))}}
                             </div>
 
                             @error('Nombre_Categoria')
@@ -41,13 +43,14 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            {{Form::label('Descripcion_Categoria', 'Descripción de la categoria')}}
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <button class="btn btn-sm btn-primary" type="button">
                                         <i class="mdi mdi-sort-variant"></i>
                                     </button>
                                 </div>
-                                    <input type="text" class="form-control" placeholder="Ingresa la descripción de la categoria" name="Descripcion_Categoria">
+                                {{ Form::text('Descripcion_Categoria','',array('id'=>'Descripcion_Categoria','class'=>'form-control','placeholder'=>'Ingresa la descripción de la categoria'))}}
                             </div>
                             @error('Descripcion_Categoria')
                                 <p class="text-danger">{{ $message }}</p>
@@ -56,7 +59,7 @@
                         <div class="row justify-content-center">
                             <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Crear Categoria<i class="mdi mdi-file-check btn-icon-append"></i></button>
                         </div>
-                    </form>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
