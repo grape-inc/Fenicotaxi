@@ -21,7 +21,7 @@ class ClienteController extends Controller
         $clientes->Fecha_Realizacion = date('Y-m-d H:i:s');
         $clientes->Fecha_Ingreso = date('Y-m-d H:i:s');
         $clientes->save();
-        return redirect()->route('cliente.index')->with('info','Cliente Añadido Exitosamente');
+        return redirect()->action('ClienteController@index');
     }
     public function edit($id){
         $clientes = Cliente::find($id);
