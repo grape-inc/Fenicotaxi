@@ -77,7 +77,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ URL::route('Clientes.index')}}">
+              <a class="nav-link" href="{{ URL::route('cliente.index')}}">
                 <span class="menu-title">Clientes</span>
                 <i class="mdi mdi mdi-bank menu-icon"></i>
               </a>
