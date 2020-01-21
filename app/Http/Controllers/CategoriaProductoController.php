@@ -31,12 +31,14 @@ class CategoriaProductoController extends Controller
         return view("Inventario.Categorias.edit ",["Categoria"=>CategoriaProducto::findOrFail($ID)]);
     }
 
-    public function update(CategoriaProductoFormRequest $request, $id){
-        $categorias = CategoriaProducto::findOrFail($id);
-        $categorias->Nombre_Categoria=$request->get('Nombre_Categoria');
-        $categorias->Descripcion_Categoria=$request->get('Descripcion_Categoria');
-        $categorias->update();
-        return Redirect::to('Inventario/categorias');
+    public function update(CategoriaProductoFormRequest $Request, $ID){
+        $Validacion = $Request->validated();
+        $Categoria = CategoriaProducto::findOrFail($ID);
+        $Categoria->Nombre_Categoria=$Request->get('Nombre_Categoria');
+        $Categoria->Descripcion_Categoria=$Request->get('Descripcion_Categoria');
+        $Categoria->update();
+        return Redirect::to('Inventario/Categorias');
+        return redirect()->action('CategoriaProductoController@index');
     }
     public function destroy($ID){
         $Categorias=CategoriaProducto::findOrFail($ID);

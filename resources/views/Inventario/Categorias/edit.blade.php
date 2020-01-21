@@ -12,28 +12,30 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Formulario de creación de categorias para productos</h4>
-                    <p class="card-description">Completa los campos para crear la categoria</p>
-                    <form action="{{ URL::route('Categorias.update')}}" method="patch">
+                    <h4 class="card-title">Formulario de edición de categorias para productos</h4>
+                    <p class="card-description">Completa los campos para actualizar la categoria</p>
+                    {{ Form::open(array('url' => URL::route('Categorias.update', $Categoria->ID_Categoria), 'method' => 'put'))}}
                         {{ csrf_field() }}
                         <div class="form-group">
+                            {{Form::label('ID_Categoria', 'Identificador')}}
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <button class="btn btn-sm btn-primary" type="button">
                                         <i class="mdi mdi-sim-alert"></i>
                                     </button>
                                 </div>
-                                {{ Form::text('username','clivern',array('id'=>'','class'=>'')) }}
+                                {{ Form::text('ID_Categoria',$Categoria->ID_Categoria,array('id'=>'ID_Categoria','class'=>'form-control','readonly'))}}
                             </div>
                         </div>
                         <div class="form-group">
+                            {{Form::label('Nombre_Categoria', 'Nombre de la categoria')}}
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <button class="btn btn-sm btn-primary" type="button">
                                         <i class="mdi mdi-ticket"></i>
                                     </button>
                                 </div>
-                                    <input type="text" class="form-control" placeholder="Ingrese el nombre de la categoria" name="Nombre_Categoria">
+                                {{ Form::text('Nombre_Categoria',$Categoria->Nombre_Categoria,array('id'=>'Nombre_Categoria','class'=>'form-control','placeholder'=>'Ingresa el nombre de la categoria'))}}
                             </div>
 
                             @error('Nombre_Categoria')
@@ -41,22 +43,23 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            {{Form::label('Descripcion_Categoria', 'Descripción de la categoria')}}
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <button class="btn btn-sm btn-primary" type="button">
                                         <i class="mdi mdi-sort-variant"></i>
                                     </button>
                                 </div>
-                                    <input type="text" class="form-control" placeholder="Ingresa la descripción de la categoria" name="Descripcion_Categoria">
+                                {{ Form::text('Descripcion_Categoria',$Categoria->Descripcion_Categoria,array('id'=>'Descripcion_Categoria','class'=>'form-control'))}}
                             </div>
                             @error('Descripcion_Categoria')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div class="row justify-content-center">
-                            <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Crear Categoria<i class="mdi mdi-file-check btn-icon-append"></i></button>
+                        <div class="row justify-content-center">                            
+                            <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Actualizar Categoria<i class="mdi mdi-file-check btn-icon-append"></i></button>
                         </div>
-                    </form>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
