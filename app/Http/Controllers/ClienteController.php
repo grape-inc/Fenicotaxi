@@ -41,8 +41,7 @@ class ClienteController extends Controller
     }
     public function destroy($id){
         $clientes = Cliente::find($id);
-        //delete
         $clientes->delete();
-        return redirect()->action('CategoriaProductoController@index');
+        return route('persona.cliente.index', ['Eliminado' => true]);
     }
 }
