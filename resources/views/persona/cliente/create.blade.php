@@ -14,9 +14,10 @@
               <div class="card-body">
                 <h4 class="card-title">Formulario de creación de clientes</h4>
                 <p class="card-description">Completa los campos para crear el cliente</p>
-                <form action="{{route('cliente.store')}}" method="post">
+                {{ Form::open(array('url' => URL::route('cliente.store'), 'method' => 'post'))}}
                     @csrf
                     <div class="form-group">
+                        {{Form::label('ID_Cliente', 'ID del Cliente')}}
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
@@ -27,6 +28,7 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        {{Form::label('Nombre_Cliente', 'Nombre del cliente')}}
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
@@ -40,6 +42,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        {{Form::label('Apellido_Cliente', 'Apellido del cliente')}}
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
@@ -53,6 +56,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        {{Form::label('Cedula', 'Cedula del Cliente')}}
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
@@ -66,6 +70,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        {{Form::label('Correo', 'Correo del cliente')}}
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
@@ -81,7 +86,7 @@
                     <div class="row justify-content-center">
                         <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Crear Cliente<i class="mdi mdi-file-check btn-icon-append"></i></button>
                     </div>
-                </form>
+                    {{ Form::close() }}
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Formulario de creación de clientes</h4>
-                <p class="card-description">Completa los campos para crear el cliente</p>                
+                <p class="card-description">Completa los campos para crear el cliente</p>
                 {{ Form::open(array('url' => URL::route('cliente.update', $cliente->ID_Cliente), 'method' => 'put'))}}
                     @csrf
                     <div class="form-group">
@@ -27,6 +27,7 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        {{Form::label('Nombre_Cliente', 'Nombre del cliente')}}
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
@@ -40,6 +41,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        {{Form::label('Apellido_Cliente', 'Apellido del cliente')}}
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
@@ -47,9 +49,10 @@
                                 </button>
                             </div>
                                 <input type="text" class="form-control" placeholder="Ingresa apellido del cliente" name="Apellido_Cliente" value = "{{$cliente->Apellido_Cliente}}">
-                        </div>                        
+                        </div>
                     </div>
                     <div class="form-group">
+                        {{Form::label('Cedula', 'Cedula del cliente')}}
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
@@ -63,6 +66,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        {{Form::label('Correo', 'Correo')}}
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">

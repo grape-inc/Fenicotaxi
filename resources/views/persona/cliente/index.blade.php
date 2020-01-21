@@ -48,7 +48,7 @@
                                         <td>{{ $cliente->Fecha_Ingreso }}</td>
                                         <td>{{ $cliente->Fecha_Realizacion }}</td>
                                         <td> <a href="{{ URL::route('cliente.edit', $cliente->ID_Cliente)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
-                                        <td> <button type="button" onclick="EliminarCliente({{ $cliente->ID_Cliente}},'{{route('cliente.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
+                                        <td> <button type="button" onclick="EliminarCliente({{ $cliente->ID_Cliente}},'{{URL::route('cliente.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
