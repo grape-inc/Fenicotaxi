@@ -15,7 +15,7 @@
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-format-list-bulleted"></i>
             </span> Clientes </h3>
-            <a href="{{ URL::route('Clientes.create')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend"></i>Añadir Cliente</a>
+            <a href="{{route('cliente.create')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend"></i>Añadir Cliente</a>
         </div>
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
@@ -38,7 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($Clientes as $cliente)
+                                @foreach($Cliente as $cliente)
                                     <tr>
                                         <td>{{ $cliente->ID_Cliente }}</td>
                                         <td>{{ $cliente->Nombre_Cliente }}</td>
@@ -47,8 +47,8 @@
                                         <td>{{ $cliente->Correo }}</td>
                                         <td>{{ $cliente->Fecha_Ingreso }}</td>
                                         <td>{{ $cliente->Fecha_Realizacion }}</td>
-                                        <td> <a href="{{ URL::route('Clientes.edit', $cliente->ID_Cliente)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
-                                        <td> <button type="button" onclick="EliminarCliente({{ $cliente->ID_Cliente}},'{{ URL::route('Clientes.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
+                                        <td> <a href="{{ route('cliente.edit', $cliente->ID_Cliente)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
+                                        <td> <button type="button" onclick="EliminarCliente({{ $cliente->ID_Cliente}},'{{route('cliente.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
