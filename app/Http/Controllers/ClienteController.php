@@ -29,14 +29,14 @@ class ClienteController extends Controller
         $clientes = Cliente::find($id);
         return view('persona.cliente.edit',['cliente'=> $clientes]);
     }
-    public function update(Request $request){
-        $clientes = Cliente::find($request->input('ID_Cliente'));
-        $clientes->Nombre_Cliente = $request->input('Nombre_Cliente');
-        $clientes->Apellido_Cliente = $request->input('Apellido_Cliente');
-        $clientes->Cedula = $request->input('Cedula');
-        $clientes->Correo = $request->input('Correo');
+    public function update(Request $request,$ID){          
+        $clientes = Cliente::findOrFail($ID);        
+        $clientes->Nombre_Cliente = $request->get('Nombre_Cliente');
+        $clientes->Apellido_Cliente = $request->get('Apellido_Cliente');
+        $clientes->Cedula = $request->get('Cedula');
+        $clientes->Correo = $request->get('Correo');
         $clientes->Fecha_Realizacion = date('Y-m-d H:i:s');
-        $clientes->save();
+        $clientes->update();
         return redirect()->action('ClienteController@index');
     }
     public function destroy($id){
