@@ -6,7 +6,7 @@
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-format-list-bulleted"></i>
         </span> Roles</h3>
-        <button type="button" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </button>
+        <a type="button" href="{{ URL::route('rol.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
     </div>
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
