@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 class RolController extends Controller
 {
     public function index(){
-        return view('nomina.Rol.Index')->with('Rol',Rol::all());
+        return view('nomina.rol.index') ->with('Roles',Rol::all());
     }
 
     public function create(Request $request){
-        return view('Nomina.Rol.create');
+        return view('nomina.rol.create');
     }
 
     public function store(Request $request){
@@ -22,7 +22,7 @@ class RolController extends Controller
         return redirect()->action('RolController@index');
     }
     public function edit($id){
-        $roles = Rol::fin($id);
+        $roles = Rol::find($id);
         return view('nomina.rol.edit',['rol'=> $roles]);
     }
 

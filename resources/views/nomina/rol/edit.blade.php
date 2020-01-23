@@ -14,7 +14,7 @@
               <div class="card-body">
                 <h4 class="card-title">Formulario de creación de Roles</h4>
                 <p class="card-description">Completa los campos para editar el rol</p>
-                {{ Form::open(array('url' => URL::route('rol.update', $roles->ID_Rol), 'method' => 'put'))}}
+                {{ Form::open(array('url' => URL::route('rol.update', $rol->ID_Rol), 'method' => 'put'))}}
                     @csrf
                     <div class="form-group">
                         {{Form::label('ID_Rol', 'ID del rol')}}
@@ -24,7 +24,7 @@
                                     <i class="mdi mdi-account-outline"></i>
                                 </button>
                             </div>
-                                <input type="text" class="form-control" placeholder="Identificador Autogenerado" readonly value = "{{$roles->ID_Rol}}">
+                                <input type="text" class="form-control" placeholder="Identificador Autogenerado" readonly value = "{{$rol->ID_Rol}}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -35,7 +35,7 @@
                                     <i class="mdi mdi-account-box"></i>
                                 </button>
                             </div>
-                                <input type="text" class="form-control" placeholder="Ingrese el nombre del Rol" name="Nombre_Rol" value = "{{$roles->ID_Rol}}">
+                                <input type="text" class="form-control" placeholder="Ingrese el nombre del Rol" name="Nombre_Rol" value = "{{$rol->ID_Rol}}">
                         </div>
                         @error('Nombre_Rol')
                             <p class="text-danger">{{ $message }}</p>
