@@ -33,12 +33,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($roles as $rol)
+                                @foreach($errors as $rol)
                                     <tr>
-                                        <td>{{ $roles->ID_Rol }}</td>
-                                        <td>{{ $roles->Nombre_Rol }}</td>
-                                        <td> <a href="{{ URL::route('nomina.rol.edit', $roles->ID_Rol)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
-                                        <td> <button type="button" onclick="EliminarRol({{ $roles->ID_Rol}},'{{URL::route('nomina.rol.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
+                                        <td>{{ $errors->ID_Rol }}</td>
+                                        <td>{{ $errors->Nombre_Rol }}</td>
+                                        <td> <a href="{{ URL::route('nomina.rol.edit', $errors->ID_Rol)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
+                                        <td> <button type="button" onclick="EliminarRol({{ $errors->ID_Rol}},'{{URL::route('nomina.rol.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
