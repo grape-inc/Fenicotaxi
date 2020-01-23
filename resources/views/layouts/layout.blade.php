@@ -115,7 +115,7 @@
        </div>
       </div>
     </div>
-    <script src="{{{asset('vendors/js/vendor.bundle.base.js')}}}"></script>    
+    <script src="{{{asset('vendors/js/vendor.bundle.base.js')}}}"></script>
     <script src="{{{asset('js/Plugins/dataTables.bootstrap4.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/sweetalert.js')}}}"></script>
     @stack('scripts-vista')
