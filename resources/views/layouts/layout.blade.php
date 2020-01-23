@@ -72,7 +72,7 @@
                   <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Productos</a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Proveedores</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Categorias.index')}}">Categorias</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Unidades de medida</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('UnidadesDeMedida.index')}}">Unidades de medida</a></li>
                 </ul>
               </div>
             </li>

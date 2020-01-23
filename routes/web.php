@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::resource('Inventario/Categorias', 'CategoriaProductoController');
 Route::resource('persona/cliente','ClienteController');
 Route::resource('nomina/rol','RolController');
+Route::resource('Inventario/UnidadesDeMedida','UnidadesMedida');
