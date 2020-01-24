@@ -23,7 +23,7 @@ class UnidadesMedida extends Controller
         $Unidad = new UnidadMedida();
         $Unidad->Nombre_Unidad=$Request->get('Nombre_Unidad');        
         $Unidad->save();
-        return redirect()->action('UnidadesDeMedidaController@index');
+        return redirect()->action('UnidadesMedidaController@index');
     }
 
     public function edit($ID){
