@@ -37,7 +37,7 @@
                                         <td>{{ $CF->ID_Unidad }}</td>
                                         <td>{{ $CF->Nombre_Unidad }}</td>                                        
                                         <td> <a href="{{ URL::route('UnidadesDeMedida.edit', $CF->ID_Unidad)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
-                                        <td> <button type="button" onclick="EliminarUnidad({{ $CF->ID_Unidad}},'{{ URL::route('Categorias.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
+                                        <td> <button type="button" onclick="EliminarUnidad({{ $CF->ID_Unidad}},'{{ URL::route('UnidadesDeMedida.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

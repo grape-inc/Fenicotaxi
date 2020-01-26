@@ -8,30 +8,34 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\UnidadMedidaFormRequest;
 use DB;
 
-class UnidadesMedida extends Controller
+class UnidadesDeMedidaController extends Controller
 {
     public function index(Request $request){
-        return view('Inventario.UnidadesMedida.index') ->with('Unidad', UnidadMedida::all());
+        return view('Inventario.UnidadesDeMedida.index') ->with('Unidad', UnidadMedida::all());
     }
 
     public function create(){
         return view ('Inventario.UnidadesDeMedida.create');
     }
 
-    public function store(UnidadMedidaFormRequest $Request){
-        $Validacion = $Request->validated();
-        $Unidad = new UnidadMedida();
-        $Unidad->Nombre_Unidad=$Request->get('Nombre_Unidad');        
+    public function store(Request $Request){
+        $Request->validate([            
+            'Nombre_Unidad' => 'required|max:60'
+        ]);
+        $Unidad = new UnidadMedida();        
+        $Unidad->Nombre_Unidad=$Request->get('Nombre_Unidad');
         $Unidad->save();
-        return redirect()->action('UnidadesMedidaController@index');
+        return redirect()->action('UnidadesDeMedidaController@index');
     }
 
     public function edit($ID){
         return view("Inventario.UnidadesDeMedida.edit ",["Unidad"=>UnidadMedida::findOrFail($ID)]);
     }
 
-    public function update(CategoriaProductoFormRequest $Request, $ID){
-        $Validacion = $Request->validated();
+    public function update(Request $Request, $ID){
+        $Request->validate([            
+            'Nombre_Unidad' => 'required|max:60'
+        ]);
         $Unidad = UnidadMedida::findOrFail($ID);
         $Unidad->Nombre_Unidad=$Request->get('Nombre_Unidad');        
         $Unidad->update();    
