@@ -108,6 +108,18 @@
                 </ul>
               </div>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#configuracion" aria-expanded="false" aria-controls="nomina">
+                <span class="menu-title">Configuración</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi mdi-code-not-equal menu-icon"></i>
+              </a>
+              <div class="collapse" id="configuracion">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Divisa.index')}}">Divisas</a></li>                  
+                </ul>
+              </div>
+            </li>
           </ul>
         </nav>
         <!-- Contenido -->
