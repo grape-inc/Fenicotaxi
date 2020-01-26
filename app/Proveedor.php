@@ -14,7 +14,7 @@ class Proveedor extends Model
         'Nombre_Proveedor',
         'Direccion_Proveedor',
         'Telefono',
-        'Logo',
+        'Contacto_Proveedor',
     ];
 
     protected $guarded = [
