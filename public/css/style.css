@@ -13411,3 +13411,15 @@ a > i{
   background-color: #007bff;
   color: #ffffff;
 }
+
+.rectificadorcheck{
+  margin-top: 55px !important;
+}
+
+.rectificadorgrandiv{
+  padding: 0px;
+}
+
+.quitardiv{
+  display: none;
+}

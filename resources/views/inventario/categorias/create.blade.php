@@ -9,7 +9,7 @@
             <a href="{{ URL::route('Categorias.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
         </div>
         <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
+            <div class="col-md-12 grid-margin stretch-card quitardiv">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Formulario de creación de categorias para productos</h4>
