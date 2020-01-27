@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{{asset('vendors/css/vendor.bundle.base.css')}}}">
     <link rel="stylesheet" href="{{{asset('css/style.css')}}}">
     <link rel="stylesheet" href="{{{asset('css/dataTables.bootstrap4.min.css')}}}">
+    <link rel="stylesheet" href="{{{asset('css/bootstrap-select.min.css')}}}">
     <link rel="icon" href="{{{asset('images/favicon.png')}}}" />
   </head>
   <body>

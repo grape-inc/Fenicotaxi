@@ -1,4 +1,7 @@
 @extends('layouts.layout')
+@push('scripts-vista')
+    <script type="text/javascript" src="{{ URL::asset ('js/Eventos/Arqueo.js') }}"></script>
+@endpush
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -49,12 +52,11 @@
                                     <i class="mdi mdi-account-box"></i>
                                 </button>
                             </div>
-                                <select name="ID_Empleado" class="selectpicker"  data-live-search="true">
-                                    @foreach ($empleado as $emp)
-                                         <option value="{{ $emp->ID_Empleado}}">{{$emp->Nombre_Empleado}}</option>
-                                    @endforeach
-                                </select>
-                                {{-- <input type="text" class="form-control" placeholder="Ingrese el nombre del empleado" name="ID_Empleado"> --}}
+                            <select name="ID_Empleado" class="selectpicker">
+                                @foreach ($empleado as $emp)
+                                     <option value="{{ $emp->ID_Empleado}}">{{$emp->Nombre_Empleado}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         @error('ID_Empleado')
                             <p class="text-danger">{{ $message }}</p>
