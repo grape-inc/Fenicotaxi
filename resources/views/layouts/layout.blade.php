@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{{asset('vendors/css/vendor.bundle.base.css')}}}">
     <link rel="stylesheet" href="{{{asset('css/style.css')}}}">
     <link rel="stylesheet" href="{{{asset('css/dataTables.bootstrap4.min.css')}}}">
+    <link rel="stylesheet" href="{{{asset('css/bootstrap-select.min.css')}}}">
     <link rel="icon" href="{{{asset('images/favicon.png')}}}" />
   </head>
   <body>
@@ -153,6 +154,7 @@
     <script src="{{{asset('js/Plugins/dataTables.bootstrap4.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/bootstrap-select.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/sweetalert.js')}}}"></script>
+    <script src="{{{asset('js/Plugins/misc.js')}}}"></script>
     @stack('scripts-vista')
   </body>
 </html>

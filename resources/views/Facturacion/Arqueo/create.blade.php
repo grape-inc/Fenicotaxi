@@ -1,4 +1,7 @@
 @extends('layouts.layout')
+@push('scripts-vista')
+    <script type="text/javascript" src="{{ URL::asset ('js/Eventos/Arqueo.js') }}"></script>
+@endpush
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -43,12 +46,17 @@
                     </div>
                     <div class="form-group">
                         {{Form::label('ID_Empleado', 'Nombre del empleado')}}
-                        <div class="input-group">                            
-                            <select name="ID_Empleado" class="selectpicker"  data-live-search="true">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-sm btn-primary" type="button">
+                                    <i class="mdi mdi-account-box"></i>
+                                </button>
+                            </div>
+                            <select name="ID_Empleado" class="selectpicker form-control" title="Escoja el empleado..." data-live-search="true">
                                 @foreach ($empleado as $emp)
-                                        <option value="{{ $emp->ID_Empleado}}">{{$emp->Nombre_Empleado}}</option>
+                                     <option value="{{ $emp->ID_Empleado}}">{{$emp->Nombre_Empleado}}</option>
                                 @endforeach
-                            </select>                                
+                            </select>
                         </div>
                         @error('ID_Empleado')
                             <p class="text-danger">{{ $message }}</p>
@@ -56,7 +64,7 @@
                     </div>
                     </div>
                     <div class="row justify-content-center">
-                        <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Abrir Caja<i class="mdi mdi-file-check btn-icon-append"></i></button>
+                        <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center mb-4"> Abrir Caja<i class="mdi mdi-file-check btn-icon-append"></i></button>
                     </div>
                     {{ Form::close() }}
             </div>

@@ -1,5 +1,6 @@
 $(document).ready(function () {
     ConfigurarTablas();
+
 });
 
 function ConfigurarTablas() {
