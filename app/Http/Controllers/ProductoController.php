@@ -36,9 +36,19 @@ class ProductoController extends Controller
     }
 
     public function store(Request $Request){
+        dd($Request);
         $Request->validate([            
-            'Nombre_Proveedor' => 'required|max:80',
-            'Direccion_Proveedor' => 'required'
+            'Cod_Producto' => 'required',
+            'Nombre_Producto' => 'required',
+            'Descripcion_Producto' => 'required',
+            'Existencias' => 'required',
+            'Existencias_Minimas' => 'required',
+            'Precio_Venta' => 'required',
+            'ID_Categoria' => 'required',
+            'ID_Proveedor' => 'required',
+            'ID_Divisa' => 'required',
+            'ID_UnidadMedida' => 'required',
+            'Es_Repuesto' => 'required',
         ]);
         $Producto = new Producto();                
         $Producto->save();
