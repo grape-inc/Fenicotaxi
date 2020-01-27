@@ -43,18 +43,12 @@
                     </div>
                     <div class="form-group">
                         {{Form::label('ID_Empleado', 'Nombre del empleado')}}
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-sm btn-primary" type="button">
-                                    <i class="mdi mdi-account-box"></i>
-                                </button>
-                            </div>
-                                <select name="ID_Empleado" class="selectpicker"  data-live-search="true">
-                                    @foreach ($empleado as $emp)
-                                         <option value="{{ $emp->ID_Empleado}}">{{$emp->Nombre_Empleado}}</option>
-                                    @endforeach
-                                </select>
-                                {{-- <input type="text" class="form-control" placeholder="Ingrese el nombre del empleado" name="ID_Empleado"> --}}
+                        <div class="input-group">                            
+                            <select name="ID_Empleado" class="selectpicker"  data-live-search="true">
+                                @foreach ($empleado as $emp)
+                                        <option value="{{ $emp->ID_Empleado}}">{{$emp->Nombre_Empleado}}</option>
+                                @endforeach
+                            </select>                                
                         </div>
                         @error('ID_Empleado')
                             <p class="text-danger">{{ $message }}</p>
