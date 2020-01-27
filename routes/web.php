@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::resource('Inventario/Categorias', 'CategoriaProductoController');
 Route::resource('Inventario/Proveedores', 'ProveedorController');
+Route::resource('Inventario/Productos', 'ProductoController');
 Route::resource('Configuracion/Divisa', 'DivisaController');
 Route::resource('persona/cliente','ClienteController');
 Route::resource('Nomina/Rol','RolController');
