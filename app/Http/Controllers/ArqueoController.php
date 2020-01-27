@@ -18,31 +18,49 @@ class ArqueoController extends Controller
     }
 
     public function create(Request $request){
-        return view ('Facturacion.Arqueo.create');
+        $empleado = DB::table('Empleado')->get();
+        return view ('Facturacion.Arqueo.create',["empleado"=>$empleado]);
     }
 
     public function store(Request $Request){
-        $Cargo = new Arqueo;
-        $Cargo->Nombre_Cargo=$Request->input('Nombre_Cargo');
-        $Cargo->Salario_Cargo=$Request->input('Salario_Cargo');
-        $Cargo->save();
+        $Arqueo = new Arqueo;
+        $Arqueo->Saldo_Inicial=$Request->input('Saldo_Inicial');
+        $Arqueo->ID_Empleado=$Request->input('ID_Empleado');
+        $Arqueo->Fecha_Jornada= date('Y-m-d H:i:s');
+        $Arqueo->Jornada_Abierta=$Request->input('Jornada_Abierta');
+        $Arqueo->Fecha_Actualizacion= date('Y-m-d H:i:s');
+        $Arqueo->save();
         return redirect()->action('ArqueoController@index');
     }
 
     public function edit($ID){
-        return view("Facturacion.Arqueo.edit ",["arqueo"=>Arqueo::findOrFail($ID)]);
+        $empleado = DB::table('Empleado')->get();
+        return view("Facturacion.Arqueo.edit ",["arqueo"=>Arqueo::findOrFail($ID),"empleado"=>$empleado]);
     }
 
     public function update(Request $Request, $ID){
-        $Cargo = Arqueo::findOrFail($ID);
-        $Cargo->Nombre_Cargo=$Request->input('Nombre_Cargo');
-        $Cargo->Salario_Cargo=$Request->input('Salario_Cargo');
-        $Cargo->update();
+        $Arqueo = Arqueo::findOrFail($ID);
+        $Arqueo->Saldo_Inicial=$Request->input('Saldo_Inicial');
+        $Arqueo->Saldo_Final=$Request->input('Saldo_Final');
+        $Arqueo->ID_Empleado=$Request->input('ID_Empleado');
+        $Arqueo->Jornada_Abierta=$Request->input('Jornada_Abierta');
+        $Arqueo->B10=$Request->input('B10');
+        $Arqueo->B20=$Request->input('B20');
+        $Arqueo->B50=$Request->input('B50');
+        $Arqueo->B100=$Request->input('B100');
+        $Arqueo->B500=$Request->input('B500');
+        $Arqueo->B1000=$Request->input('B1000');
+        $Arqueo->M025=$Request->input('M025');
+        $Arqueo->M050=$Request->input('M050');
+        $Arqueo->M1=$Request->input('M1');
+        $Arqueo->M5=$Request->input('M5');
+        $Arqueo->Fecha_Actualizacion= date('Y-m-d H:i:s');
+        $Arqueo->update();
         return redirect()->action('ArqueoController@index');
     }
     public function destroy($ID){
-        $Cargo=Arqueo::findOrFail($ID);
-        $Cargo->where('ID_Cargo',$ID)->delete();
+        $Arqueo=Arqueo::findOrFail($ID);
+        $Arqueo->where('ID_Jornada',$ID)->delete();
         return route('Arqueo.index', ['Eliminado' => true]);
     }
 }
