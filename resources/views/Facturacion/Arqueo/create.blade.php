@@ -52,7 +52,7 @@
                                     <i class="mdi mdi-account-box"></i>
                                 </button>
                             </div>
-                            <select name="ID_Empleado" class="selectpicker">
+                            <select name="ID_Empleado" class="selectpicker form-control" title="Escoja el empleado..." data-live-search="true">
                                 @foreach ($empleado as $emp)
                                      <option value="{{ $emp->ID_Empleado}}">{{$emp->Nombre_Empleado}}</option>
                                 @endforeach
@@ -64,7 +64,7 @@
                     </div>
                     </div>
                     <div class="row justify-content-center">
-                        <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Abrir Caja<i class="mdi mdi-file-check btn-icon-append"></i></button>
+                        <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center mb-4"> Abrir Caja<i class="mdi mdi-file-check btn-icon-append"></i></button>
                     </div>
                     {{ Form::close() }}
             </div>

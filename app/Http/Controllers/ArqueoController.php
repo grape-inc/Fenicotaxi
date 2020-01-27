@@ -12,7 +12,7 @@ class ArqueoController extends Controller
         $arqueo= DB::table('ArqueoCaja as a')
         ->join('Empleado as E','a.ID_Empleado','=','E.ID_Empleado')
         ->select('a.ID_Jornada','a.Saldo_Inicial','a.Saldo_Final','E.Nombre_Empleado','a.Fecha_Jornada','a.Jornada_Abierta',
-                'a.B10','a.B20','a.B50','a.B100','a.B200','a.B500','a.M025','a.M050','a.M1','a.M5','a.Fecha_Actualizacion')
+                'a.B10','a.B20','a.B50','a.B100','a.B200','a.B500','a.B1000','a.M025','a.M050','a.M1','a.M5','a.Fecha_Actualizacion')
         ->get();;
         return view('Facturacion.Arqueo.index',["arqueo"=>$arqueo]);
     }
@@ -27,7 +27,7 @@ class ArqueoController extends Controller
         $Arqueo->Saldo_Inicial=$Request->input('Saldo_Inicial');
         $Arqueo->ID_Empleado=$Request->input('ID_Empleado');
         $Arqueo->Fecha_Jornada= date('Y-m-d H:i:s');
-        $Arqueo->Jornada_Abierta=$Request->input('Jornada_Abierta');
+        $Arqueo->Jornada_Abierta= true;
         $Arqueo->Fecha_Actualizacion= date('Y-m-d H:i:s');
         $Arqueo->save();
         return redirect()->action('ArqueoController@index');

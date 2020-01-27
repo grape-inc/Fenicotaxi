@@ -54,7 +54,7 @@
                                         <td>{{ $arq->ID_Jornada }}</td>
                                         <td>{{ $arq->Saldo_Inicial }}</td>
                                         <td>{{ $arq->Saldo_Final }}</td>
-                                        <td>{{ $arq->ID_Empleado }}</td>
+                                        <td>{{ $arq->Nombre_Empleado }}</td>
                                         <td>{{ $arq->Fecha_Jornada }}</td>
                                         <td>{{ $arq->Jornada_Abierta }}</td>
                                         <td>{{ $arq->B10 }}</td>
