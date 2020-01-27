@@ -6,7 +6,7 @@
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-format-list-bulleted"></i>
         </span> Clientes</h3>
-        <a type="button" href="{{ URL::route('cliente.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
+        <a type="button" href="{{ URL::route('Cliente.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
     </div>
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
@@ -14,7 +14,7 @@
               <div class="card-body">
                 <h4 class="card-title">Formulario de creación de clientes</h4>
                 <p class="card-description">Completa los campos para crear el cliente</p>
-                {{ Form::open(array('url' => URL::route('cliente.store'), 'method' => 'post'))}}
+                {{ Form::open(array('url' => URL::route('Cliente.store'), 'method' => 'post'))}}
                     @csrf
                     <div class="form-group">
                         {{Form::label('ID_Cliente', 'ID del Cliente')}}
