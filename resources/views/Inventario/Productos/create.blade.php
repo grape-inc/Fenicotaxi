@@ -55,24 +55,106 @@
                                 </div>
 
                                 <div class="form-group">
-                                    {{Form::label('Cod_Producto', 'Codigo del producto')}}
+                                    {{Form::label('Nombre_Producto', 'Nombre del producto')}}
                                     <div class="input-group">                                
                                         <div class="input-group-prepend">
                                             <button class="btn btn-sm btn-primary" type="button">
-                                                <i class="mdi mdi-alert-box"></i>
+                                                <i class="mdi mdi mdi-animation"></i>
                                             </button>
                                         </div>
-                                        {{ Form::text('Cod_Producto','',array('id'=>'Cod_Producto','class'=>'form-control','placeholder'=>'Ingresa el codigo del producto'))}}
+                                        {{ Form::text('Nombre_Producto','',array('id'=>'Nombre_Producto','class'=>'form-control','placeholder'=>'Ingresa el nombre del producto'))}}
                                     </div>
 
-                                    @error('Cod_Producto')
+                                    @error('Nombre_Producto')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
-                                </div>                                                            
+                                </div>
+
+                                <div class="form-group">
+                                    {{Form::label('Descripcion_Producto', 'Descripción del producto')}}
+                                    <div class="input-group">                                
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-sm btn-primary" type="button">
+                                                <i class="mdi mdi-altimeter"></i>
+                                            </button>
+                                        </div>
+                                        {{ Form::text('Descripcion_Producto','',array('id'=>'Descripcion_Producto','class'=>'form-control','placeholder'=>'Ingresa la descripción del producto'))}}
+                                    </div>
+
+                                    @error('Descripcion_Producto')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>   
+
                             </div>
 
                             <div class="col-md-4">
-                            
+                                <div class="form-group">
+                                    {{Form::label('Existencias', 'Existencias del producto')}}
+                                    <div class="input-group">                                
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-sm btn-primary" type="button">
+                                                <i class="mdi mdi mdi-apps"></i>
+                                            </button>
+                                        </div>
+                                        {{ Form::text('Existencias','',array('id'=>'Existencias','class'=>'form-control','placeholder'=>'Ingresa las existencias del producto'))}}
+                                    </div>
+
+                                    @error('Existencias')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    {{Form::label('Existencias_Minimas', 'Existencias Minima')}}
+                                    <div class="input-group">                                
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-sm btn-primary" type="button">
+                                                <i class="mdi mdi mdi-apps"></i>
+                                            </button>
+                                        </div>
+                                        {{ Form::text('Existencias_Minimas','',array('id'=>'Existencias_Minimas','class'=>'form-control','placeholder'=>'Existencias minimas del producto'))}}
+                                    </div>
+
+                                    @error('Existencias_Minimas')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                
+                                <div class="form-group">
+                                    {{Form::label('Precio_Venta', 'Precio de venta')}}
+                                    <div class="input-group">                                
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-sm btn-primary" type="button">
+                                                <i class="mdi mdi mdi-diamond"></i>
+                                            </button>
+                                        </div>
+                                        {{ Form::text('Precio_Venta','',array('id'=>'Precio_Venta','class'=>'form-control','placeholder'=>'Precio de venta del producto'))}}
+                                    </div>
+
+                                    @error('Precio_Venta')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    {{Form::label('ID_Categoria', 'Categoria del producto')}}
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-sm btn-primary" type="button">
+                                                <i class="mdi mdi-dice-3"></i>
+                                            </button>
+                                        </div>
+                                        <select name="ID_Categoria" class="selectpicker form-control" data-live-search="true">
+                                            @foreach ($Categorias as $CT)
+                                                <option value="{{ $CT->ID_Categoria}}">{{$CT->Nombre_Categoria}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('ID_Categoria')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
                             </div>
                         </div>                    
                         <div class="row justify-content-center">

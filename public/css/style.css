@@ -13396,3 +13396,18 @@ a > i{
 .normalizarboton{
   padding: 12px;
 }
+
+
+.input-group .bootstrap-select.form-control .dropdown-toggle {
+  background: white;
+  height: 46px;
+  padding-left: 12px;
+  padding-right: 20px;
+  font-family: "ubuntu-regular", sans-serif;
+  font-size: 0.8125rem;
+}
+
+.dropdown .dropdown-menu .dropdown-item:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
