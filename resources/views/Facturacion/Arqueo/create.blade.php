@@ -1,7 +1,4 @@
 @extends('layouts.layout')
-@push('scripts-vista')
-    <script type="text/javascript" src="{{ URL::asset ('js/Eventos/Arqueo.js') }}"></script>
-@endpush
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">

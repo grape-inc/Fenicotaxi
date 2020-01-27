@@ -42,8 +42,7 @@ class ArqueoController extends Controller
         $Arqueo = Arqueo::findOrFail($ID);
         $Arqueo->Saldo_Inicial=$Request->input('Saldo_Inicial');
         $Arqueo->Saldo_Final=$Request->input('Saldo_Final');
-        $Arqueo->ID_Empleado=$Request->input('ID_Empleado');
-        $Arqueo->Jornada_Abierta=$Request->input('Jornada_Abierta');
+        $Arqueo->Jornada_Abierta=0;
         $Arqueo->B10=$Request->input('B10');
         $Arqueo->B20=$Request->input('B20');
         $Arqueo->B50=$Request->input('B50');

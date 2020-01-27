@@ -70,7 +70,7 @@
                                         <td>{{ $arq->M5 }}</td>
                                         <td>{{ $arq->Fecha_Actualizacion }}</td>
                                         <td> <a href="{{ URL::route('Arqueo.edit', $arq->ID_Jornada)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
-                                        <td> <button type="button" onclick="EliminarRol({{ $arq->ID_Jornada}},'{{URL::route('Arqueo.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
+                                        <td> <button type="button" onclick="EliminarArqueo({{ $arq->ID_Jornada}},'{{URL::route('Arqueo.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

@@ -155,6 +155,7 @@
     <script src="{{{asset('js/Plugins/bootstrap-select.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/sweetalert.js')}}}"></script>
     <script src="{{{asset('js/Plugins/misc.js')}}}"></script>
+    <script src="{{{asset('js/Plugins/hoverable-collapse.js')}}}"></script>
     @stack('scripts-vista')
   </body>
 </html>
