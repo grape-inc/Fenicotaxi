@@ -21,7 +21,7 @@
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
-                                    <i class="mdi mdi-account-outline"></i>
+                                    <i class="mdi mdi-account-badge-horizontal"></i>
                                 </button>
                             </div>
                                 <input type="text" class="form-control" placeholder="Identificador Autogenerado" readonly>

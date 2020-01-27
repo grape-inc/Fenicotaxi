@@ -66,7 +66,7 @@
               <a class="nav-link" data-toggle="collapse" href="#inventario" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Inventario</span>
                 <i class="menu-arrow"></i>
-                <i class="mdi mdi-wunderlist menu-icon"></i>
+                <i class="mdi mdi-clipboard-text menu-icon"></i>
               </a>
               <div class="collapse" id="inventario">
                 <ul class="nav flex-column sub-menu">
@@ -81,7 +81,7 @@
               <a class="nav-link" data-toggle="collapse" href="#facturacion" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Facturacion</span>
                 <i class="menu-arrow"></i>
-                <i class="mdi mdi-wunderlist menu-icon"></i>
+                <i class="mdi mdi-point-of-sale menu-icon"></i>
               </a>
               <div class="collapse" id="facturacion">
                 <ul class="nav flex-column sub-menu">
@@ -122,7 +122,7 @@
               <a class="nav-link" data-toggle="collapse" href="#configuracion" aria-expanded="false" aria-controls="nomina">
                 <span class="menu-title">Configuración</span>
                 <i class="menu-arrow"></i>
-                <i class="mdi mdi mdi-code-not-equal menu-icon"></i>
+                <i class="mdi mdi mdi-settings menu-icon"></i>
               </a>
               <div class="collapse" id="configuracion">
                 <ul class="nav flex-column sub-menu">

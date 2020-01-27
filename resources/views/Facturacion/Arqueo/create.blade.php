@@ -21,7 +21,7 @@
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
-                                    <i class="mdi mdi-account-outline"></i>
+                                    <i class="mdi mdi-upload-network-outline"></i>
                                 </button>
                             </div>
                                 <input type="text" class="form-control" placeholder="Identificador Autogenerado" readonly>
@@ -32,7 +32,7 @@
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button class="btn btn-sm btn-primary" type="button">
-                                    <i class="mdi mdi-account-box"></i>
+                                    <i class="mdi mdi-cash-register"></i>
                                 </button>
                             </div>
                                 <input type="text" class="form-control" placeholder="Ingrese el saldo inicial" name="Saldo_Inicial">

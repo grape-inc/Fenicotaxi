@@ -24,7 +24,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-outline"></i>
+                                            <i class="mdi mdi-upload-network-outline"></i>
                                         </button>
                                     </div>
                                         <input type="text" class="form-control" readonly value = "{{$arqueo->ID_Jornada}}">
@@ -35,7 +35,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-box"></i>
+                                            <i class="mdi mdi-cash-register"></i>
                                         </button>
                                     </div>
                                         <input type="text" class="form-control" readonly name="Saldo_Inicial" value = "{{$arqueo->Saldo_Inicial}}">
@@ -63,7 +63,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-box"></i>
+                                            <i class="mdi mdi-calendar-range"></i>
                                         </button>
                                     </div>
                                     <input type="datetime" class="form-control" readonly name="Fecha_Jornada" value = "{{$arqueo->Fecha_Jornada}}">
@@ -77,7 +77,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-outline"></i>
+                                            <i class="mdi mdi-cash"></i>
                                         </button>
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="B10" value = "{{$arqueo->B10}}">
@@ -88,7 +88,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-box"></i>
+                                            <i class="mdi mdi-cash"></i>
                                         </button>
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="B20" value = "{{$arqueo->B20}}">
@@ -99,7 +99,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-box"></i>
+                                            <i class="mdi mdi-cash"></i>
                                         </button>
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="B50" value = "{{$arqueo->B50}}">
@@ -110,7 +110,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-box"></i>
+                                            <i class="mdi mdi-coins"></i>
                                         </button>
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="M1" value = "{{$arqueo->M1}}">
@@ -123,7 +123,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-outline"></i>
+                                            <i class="mdi mdi-cash"></i>
                                         </button>
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="B100" value = "{{$arqueo->B100}}">
@@ -134,7 +134,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-box"></i>
+                                            <i class="mdi mdi-cash"></i>
                                         </button>
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="B200" value = "{{$arqueo->B200}}">
@@ -145,7 +145,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-box"></i>
+                                            <i class="mdi mdi-cash"></i>
                                         </button>
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="B500" value = "{{$arqueo->B500}}">
@@ -156,7 +156,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-box"></i>
+                                            <i class="mdi mdi-coins"></i>
                                         </button>
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="M5" value = "{{$arqueo->M5}}">
@@ -169,7 +169,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-outline"></i>
+                                            <i class="mdi mdi-cash"></i>
                                         </button>
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="B1000" value = "{{$arqueo->B1000}}">
@@ -180,7 +180,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-box"></i>
+                                            <i class="mdi mdi-coins"></i>
                                         </button>
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="M025" value = "{{$arqueo->M025}}">
@@ -191,7 +191,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-box"></i>
+                                            <i class="mdi mdi-coins"></i>
                                         </button>
                                     </div>
                                         <input type="number" min="1" step="any" class="form-control" placeholder="Monto" name="M050" value = "{{$arqueo->M050}}">
@@ -202,7 +202,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
-                                            <i class="mdi mdi-account-box"></i>
+                                            <i class="mdi mdi-cash"></i>
                                         </button>
                                     </div>
                                         <input type="text" class="form-control" placeholder="Monto" name="Saldo_Final" value = "{{$arqueo->M050}}">
