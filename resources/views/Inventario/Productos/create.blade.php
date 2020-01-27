@@ -1,4 +1,7 @@
 @extends('layouts.layout')
+@push('scripts-vista')
+    <script type="text/javascript" src="{{ URL::asset ('js/Eventos/ProductoAñadirEditar.js') }}"></script>    
+@endpush
 @section('content')
     <div class="content-wrapper">
         <div class="page-header">
@@ -19,10 +22,12 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                    <img src="{{{asset('images/dummy.jpg')}}}" style="height:300px;" alt="ImagenProducto" class="img-thumbnail">
+                                        <img id="ImagenProducto" name="Imagen" src="{{{asset('images/dummy.jpg')}}}" style="height:300px;" alt="ImagenProducto" class="img-thumbnail">                                        
                                     </div>  
                                     <div class="row justify-content-center">
-                                        <button class="btn btn-gradient-dark btn-icon-text text-center"> Cambiar Imagen<i class="mdi mdi-file-image btn-icon-append"></i></button>
+                                        <!--<button class="btn btn-gradient-dark btn-icon-text text-center"> Cambiar Imagen<i class="mdi mdi-file-image btn-icon-append"></i></button>-->
+                                        {{Form::label('Imagen', 'Cambiar Imagen',['class' => 'btn btn-gradient-dark btn-icon-text text-center'])}}
+                                        <input type="file" class="Imagen" id="Imagen" name="Imagen" accept="image/png,image/jpg,image/jpeg" onchange="document.getElementById('ImagenProducto').src = window.URL.createObjectURL(this.files[0])" />                                        
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -215,7 +220,7 @@
                                     <div class="form-group rectificadorcheck">
                                         <div class="form-check form-check-flat form-check-primary">
                                             <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input"> ¿Es un repuesto?<i class="input-helper"></i></label>
+                                            <input name="Es_Repuesto" id="esrepuesto" type="checkbox" class="form-check-input"> ¿Es un repuesto?<i class="input-helper"></i></label>
                                         </div>
                                     </div>
                                 </div>
