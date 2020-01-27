@@ -85,17 +85,12 @@
               </a>
               <div class="collapse" id="facturacion">
                 <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Cliente.index')}}">Clientes</a></li>
                   <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Ventas</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Proveedores.index')}}">Compras</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Arqueo.index')}}">Arqueo</a></li>
                 </ul>
               </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ URL::route('cliente.index')}}">
-                <span class="menu-title">Clientes</span>
-                <i class="mdi mdi mdi-bank menu-icon"></i>
-              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#usuarios" aria-expanded="false" aria-controls="usuarios">
