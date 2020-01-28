@@ -11,7 +11,7 @@
             </span> Productos </h3>
             <a href="{{ URL::route('Productos.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
         </div>
-        {{ Form::open(array('url' => URL::route('Productos.store'), 'method' => 'post'))}}
+        {{Form::open(array('url' => URL::route('Productos.store'), 'method' => 'post', 'files' => true))}}        
             <div class="row">
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
@@ -26,7 +26,7 @@
                                     </div>  
                                     <div class="row justify-content-center">
                                         <!--<button class="btn btn-gradient-dark btn-icon-text text-center"> Cambiar Imagen<i class="mdi mdi-file-image btn-icon-append"></i></button>-->
-                                        {{Form::label('Imagen', 'Cambiar Imagen',['class' => 'btn btn-gradient-dark btn-icon-text text-center'])}}
+                                        {{Form::label('Imagen', 'Cambiar Imagen',['class' => 'btn btn-gradient-dark btn-icon-text text-center','files' => true])}}
                                         <input type="file" class="Imagen" id="Imagen" name="Imagen" accept="image/png,image/jpg,image/jpeg" onchange="document.getElementById('ImagenProducto').src = window.URL.createObjectURL(this.files[0])" />                                        
                                     </div>
                                 </div>
@@ -171,7 +171,7 @@
                                                     <i class="mdi mdi mdi-diamond"></i>
                                                 </button>
                                             </div>
-                                            {{ Form::number('Precio_Venta','',array('id'=>'Precio_Venta','class'=>'form-control','placeholder'=>'Precio de venta del producto'))}}
+                                            {{ Form::number('Precio_Venta','',array('id'=>'Precio_Venta','class'=>'form-control','placeholder'=>'Precio de venta del producto','step'=>'0.01'))}}
                                         </div>
 
                                         @error('Precio_Venta')

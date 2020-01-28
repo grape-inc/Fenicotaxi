@@ -9,6 +9,7 @@ use App\Proveedor;
 use App\Divisa;
 use App\UnidadMedida;
 use Illuminate\Support\Facades\Redirect;
+use Symfony\Component\Console\Input\Input;
 use DB;
 
 
@@ -36,7 +37,18 @@ class ProductoController extends Controller
     }
 
     public function store(Request $Request){
-        dd($Request);
+        $Base = "";
+        $EsRepuesto = true;
+        if ($Request->hasFile('Imagen')) {
+            $Base = $Request->file('Imagen')->getRealPath();
+            $Base = file_get_contents($Base);
+            $Base = base64_encode($Base);
+        }   
+
+        if($Request->Es_Repuesto == null){
+           $EsRepuesto = false; 
+           dd('G');
+        }
         $Request->validate([
             'Cod_Producto' => 'required',
             'Nombre_Producto' => 'required',
@@ -47,8 +59,7 @@ class ProductoController extends Controller
             'ID_Categoria' => 'required',
             'ID_Proveedor' => 'required',
             'ID_Divisa' => 'required',
-            'ID_UnidadMedida' => 'required',
-            'Es_Repuesto' => 'required',
+            'ID_UnidadMedida' => 'required'
         ]);                
         $Producto = new Producto();
         $Producto->Cod_Producto=$Request->get('Cod_Producto');
@@ -60,12 +71,13 @@ class ProductoController extends Controller
         $Producto->ID_Categoria=$Request->get('ID_Categoria');
         $Producto->ID_Proveedor=$Request->get('ID_Proveedor');
         $Producto->ID_UnidadMedida=$Request->get('ID_UnidadMedida');
-        $Producto->Es_Repuesto=$Request->get('Es_Repuesto');
+        $Producto->ID_Divisa=$Request->get('ID_Divisa');
+        $Producto->Es_Repuesto=$EsRepuesto;
         $Producto->Año=$Request->get('Año');
         $Producto->Modelo=$Request->get('Modelo');
         $Producto->Origen=$Request->get('Origen');
         $Producto->Marca=$Request->get('Marca');
-        $Producto->Marca=$Request->get('Imagen');
+        $Producto->Imagen=$Base;
         $Producto->save();
         return redirect()->action('ProductoController@index');
     }
