@@ -13427,3 +13427,8 @@ a > i{
 .Imagen{
   display: none;
 }
+
+.ImagenTamañoTabla {
+  width: 150px !important;
+  height: 100px !important;
+}

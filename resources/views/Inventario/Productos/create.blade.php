@@ -124,7 +124,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        @error('ID_Proveedor')
+                                        @error('ID_UnidadMedida')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
@@ -208,7 +208,7 @@
                                             </div>
                                             <select name="ID_Proveedor" class="selectpicker form-control" data-live-search="true">
                                                 @foreach ($Proveedores as $PR)
-                                                    <option value="{{ $CT->ID_Categoria}}">{{$PR->Nombre_Proveedor}}</option>
+                                                    <option value="{{ $PR->ID_Proveedor}}">{{$PR->Nombre_Proveedor}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

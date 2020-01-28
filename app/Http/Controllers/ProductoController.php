@@ -36,6 +36,20 @@ class ProductoController extends Controller
         ]);
     }
 
+    public function edit($ID){
+        $Categorias =  CategoriaProducto::all();
+        $Proveedores =  Proveedor::all();
+        $Divisas =  Divisa::all();
+        $UnidadMedidas =  UnidadMedida::all();      
+        return view ('Inventario.Productos.edit',[
+            'Categorias' => $Categorias, 
+            'Proveedores' => $Proveedores,
+            'Divisas' => $Divisas,
+            'Unidades' => $UnidadMedidas,
+            'Producto' => Producto::findOrFail($ID),
+        ]);
+    }
+
     public function store(Request $Request){
         $Base = "";
         $EsRepuesto = true;
@@ -46,8 +60,7 @@ class ProductoController extends Controller
         }   
 
         if($Request->Es_Repuesto == null){
-           $EsRepuesto = false; 
-           dd('G');
+           $EsRepuesto = false;
         }
         $Request->validate([
             'Cod_Producto' => 'required',
@@ -68,7 +81,7 @@ class ProductoController extends Controller
         $Producto->Existencias=$Request->get('Existencias');
         $Producto->Existencias_Minimas=$Request->get('Existencias_Minimas');
         $Producto->Precio_Venta=$Request->get('Precio_Venta');
-        $Producto->ID_Categoria=$Request->get('ID_Categoria');
+        $Producto->ID_Categoria=$Request->get('ID_Categoria');        
         $Producto->ID_Proveedor=$Request->get('ID_Proveedor');
         $Producto->ID_UnidadMedida=$Request->get('ID_UnidadMedida');
         $Producto->ID_Divisa=$Request->get('ID_Divisa');
@@ -80,6 +93,57 @@ class ProductoController extends Controller
         $Producto->Imagen=$Base;
         $Producto->save();
         return redirect()->action('ProductoController@index');
+    }
+
+    public function update(Request $Request, $ID){
+        $Base = "";
+        $EsRepuesto = true;
+        if ($Request->hasFile('Imagen')) {
+            $Base = $Request->file('Imagen')->getRealPath();
+            $Base = file_get_contents($Base);
+            $Base = base64_encode($Base);
+        }   
+
+        if($Request->Es_Repuesto == null){
+           $EsRepuesto = false;
+        }
+        $Request->validate([
+            'Cod_Producto' => 'required',
+            'Nombre_Producto' => 'required',
+            'Descripcion_Producto' => 'required',
+            'Existencias' => 'required',
+            'Existencias_Minimas' => 'required',
+            'Precio_Venta' => 'required',
+            'ID_Categoria' => 'required',
+            'ID_Proveedor' => 'required',
+            'ID_Divisa' => 'required',
+            'ID_UnidadMedida' => 'required'
+        ]);                
+        $Producto = Producto::findOrFail($ID);
+        $Producto->Cod_Producto=$Request->get('Cod_Producto');
+        $Producto->Nombre_Producto=$Request->get('Nombre_Producto');
+        $Producto->Descripcion_Producto=$Request->get('Descripcion_Producto');
+        $Producto->Existencias=$Request->get('Existencias');
+        $Producto->Existencias_Minimas=$Request->get('Existencias_Minimas');
+        $Producto->Precio_Venta=$Request->get('Precio_Venta');
+        $Producto->ID_Categoria=$Request->get('ID_Categoria');        
+        $Producto->ID_Proveedor=$Request->get('ID_Proveedor');
+        $Producto->ID_UnidadMedida=$Request->get('ID_UnidadMedida');
+        $Producto->ID_Divisa=$Request->get('ID_Divisa');
+        $Producto->Es_Repuesto=$EsRepuesto;
+        $Producto->Año=$Request->get('Año');
+        $Producto->Modelo=$Request->get('Modelo');
+        $Producto->Origen=$Request->get('Origen');
+        $Producto->Marca=$Request->get('Marca');
+        $Producto->Imagen=$Base;
+        $Producto->update();
+        return redirect()->action('ProductoController@index');
+    }
+
+    public function destroy($ID){
+        $Producto=Producto::findOrFail($ID);
+        $Producto->where('ID_Producto',$ID)->delete();
+        return route('Productos.index', ['Eliminado' => true]);
     }
 
 }

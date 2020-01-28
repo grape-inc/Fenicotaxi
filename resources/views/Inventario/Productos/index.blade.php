@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @push('scripts-vista')
-    <script type="text/javascript" src="{{ URL::asset ('js/Eventos/Productos.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset ('js/Eventos/Producto.js') }}"></script>
     @if (Request()->Eliminado)
         <script>
             Swal.fire('¡Excelente!','Eliminaste el registro correctamente.','success');
@@ -13,7 +13,7 @@
             <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-format-list-bulleted"></i>
-            </span> Categorias de producto </h3>
+            </span> Productos </h3>
             <a href="{{ URL::route('Productos.create')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend"></i>Añadir Producto</a>
         </div>
         <div class="row">
@@ -26,6 +26,7 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>ID</th>
+                                        <th>Imagen</th>
                                         <th>Codigo de producto</th>                                        
                                         <th>Nombre de producto</th>
                                         <th>Descripción de producto</th>
@@ -41,7 +42,12 @@
                                 <tbody>
                                 @foreach($Productos as $CF)
                                     <tr>
-                                        <td>{{ $CF->ID_Producto }}</td>
+                                        <td>{{ $CF->ID_Producto }}</td>                                        
+                                        @if($CF->Imagen != "")
+                                            <td><img class="ImagenTamañoTabla" src ="data:image/png;base64,{{$CF->Imagen}}"/></td>
+                                        @else
+                                             <td><img class="ImagenTamañoTabla" src="{{{asset('images/dummy.jpg')}}}"/></td>
+                                        @endif
                                         <td>{{ $CF->Cod_Producto }}</td>
                                         <td>{{ $CF->Nombre_Producto }}</td>
                                         <td>{{ $CF->Descripcion_Producto }}</td>

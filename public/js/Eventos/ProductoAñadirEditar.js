@@ -10,6 +10,10 @@ function ConfigurarEventos(){
         }
         else{            
             $("#divrepuesto").addClass("quitardiv");
+            $('#Año').val("");
+            $('#Modelo').val("");
+            $('#Origen').val("");
+            $('#Marca').val("");
         }
     });
 }
