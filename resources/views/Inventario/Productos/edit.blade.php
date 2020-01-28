@@ -22,14 +22,14 @@
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Formulario de creación de productos</h4>
-                        <p class="card-description">Completa los campos para crear el producto</p>
+                        <h4 class="card-title">Formulario de edición de productos</h4>
+                        <p class="card-description">Completa los campos para editar el producto</p>
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">                                        
                                         @if($Producto->Imagen != "")                                            
-                                            <img alt="ImagenProducto" class="img-thumbnail" id="ImagenProducto" name="Imagen" src ="data:image/png;base64,{{$CF->Imagen}}" style="height:300px;" alt="ImagenProducto" class="img-thumbnail">
+                                            <img alt="ImagenProducto" class="img-thumbnail" id="ImagenProducto" name="Imagen" src ="data:image/png;base64,{{$Producto->Imagen}}" style="height:300px;" alt="ImagenProducto" class="img-thumbnail">
                                         @else
                                              <img alt="ImagenProducto" class="img-thumbnail" id="ImagenProducto" class="ImagenTamañoTabla" src="{{{asset('images/dummy.jpg')}}}"/>
                                         @endif
@@ -237,7 +237,7 @@
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Crear Producto<i class="mdi mdi-file-check btn-icon-append"></i></button>
+                                <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Editar Producto<i class="mdi mdi-file-check btn-icon-append"></i></button>
                             </div>        
                     </div>
                 </div>        
