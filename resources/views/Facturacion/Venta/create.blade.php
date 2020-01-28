@@ -1,4 +1,7 @@
 @extends('layouts.layout')
+@push('scripts-vista')
+    <script type="text/javascript" src="{{ URL::asset ('js/Eventos/FacturaVentas.js') }}"></script>
+@endpush
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -149,7 +152,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                {{Form::label('ID_Producto', 'Nombre del Producto')}}
+                                {{Form::label('ID_ProductoLabel', 'Nombre del Producto')}}
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">

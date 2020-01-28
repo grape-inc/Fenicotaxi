@@ -31,12 +31,52 @@ class FacturaVentaController extends Controller
         ->get();
         return view('Facturacion.Venta.Create',["empleado"=>$empleado,"producto"=>$producto,"cliente"=>$cliente,"divisa" =>$divisa]);
     }
-    public function store(){
+    public function store(Request $request){
+        try{
+            DB::beginTransaction();
+            $facturaventa=new FacturaVenta;
+            $facturaventa->Codigo_Factura=$request->get('Codigo_Factura');
+            $facturaventa->ID_Divisa=$request->get('ID_Divisa');
+
+            $facturaventa->Es_Credito= true;
+            if ($request->get('Descuento') == Null){
+                $facturaventa->Es_Credito=false;
+            }
+
+            $facturaventa->Descuento=$request->get('Descuento');
+            $facturaventa->SubTotal=$request->get('SubTotal');
+
+            $mytime = Carbon::now('America/Managua');
+            $facturaventa->Fecha_Realizacion = $mytime->toDateTimeString();
+            $facturaventa->Fecha_Actualizacion = $mytime->toDateTimeString();
+            $facturaventa->save();
+
+            $producto = $request->get('ID_Producto');
+            $cantidad = $request->get('Cantidad');
+            $cont = 0;
+
+            while($cont < count($producto)){
+                $detalle = new FacturaVentaDetalle();
+                $detalle->ID_Factura= $facturaventa->ID_Factura;
+                $detalle->ID_Producto= $producto[$cont];
+                $detalle->Cantidad= $cantidad[$cont];
+                $detalle->save();
+                $cont=$cont+1;
+            }
+
+            DB::commit();
+
+           }catch(\Exception $e)
+           {
+              DB::rollback();
+           }
+
+           return redirect()->action('FacturaVentaController@index');
 
     }
 
-    public function edit(){
-
+    public function valoresCalculo( ){
+        echo "im in AjaxController index";
     }
 
     public function update(){

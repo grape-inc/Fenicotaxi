@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @push('scripts-vista')
-    <script type="text/javascript" src="{{ URL::asset ('js/Eventos/FacturaVentas.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset ('js/Eventos/FacturaVentasTabla.js') }}"></script>
     @if (Request()->Eliminado)
         <script>
             Swal.fire('¡Excelente!','Eliminaste el registro correctamente.','success');
