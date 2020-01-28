@@ -24,3 +24,4 @@ Route::resource('Nomina/Rol','RolController');
 Route::resource('Inventario/UnidadesDeMedida','UnidadesDeMedidaController');
 Route::resource('Nomina/Cargo','CargoController');
 Route::resource('Facturacion/Arqueo','ArqueoController');
+Route::resource('Facturacion/Venta','FacturaVentaController');
