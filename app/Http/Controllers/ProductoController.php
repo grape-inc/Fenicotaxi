@@ -37,7 +37,7 @@ class ProductoController extends Controller
 
     public function store(Request $Request){
         dd($Request);
-        $Request->validate([            
+        $Request->validate([
             'Cod_Producto' => 'required',
             'Nombre_Producto' => 'required',
             'Descripcion_Producto' => 'required',
@@ -49,8 +49,23 @@ class ProductoController extends Controller
             'ID_Divisa' => 'required',
             'ID_UnidadMedida' => 'required',
             'Es_Repuesto' => 'required',
-        ]);
-        $Producto = new Producto();                
+        ]);                
+        $Producto = new Producto();
+        $Producto->Cod_Producto=$Request->get('Cod_Producto');
+        $Producto->Nombre_Producto=$Request->get('Nombre_Producto');
+        $Producto->Descripcion_Producto=$Request->get('Descripcion_Producto');
+        $Producto->Existencias=$Request->get('Existencias');
+        $Producto->Existencias_Minimas=$Request->get('Existencias_Minimas');
+        $Producto->Precio_Venta=$Request->get('Precio_Venta');
+        $Producto->ID_Categoria=$Request->get('ID_Categoria');
+        $Producto->ID_Proveedor=$Request->get('ID_Proveedor');
+        $Producto->ID_UnidadMedida=$Request->get('ID_UnidadMedida');
+        $Producto->Es_Repuesto=$Request->get('Es_Repuesto');
+        $Producto->Año=$Request->get('Año');
+        $Producto->Modelo=$Request->get('Modelo');
+        $Producto->Origen=$Request->get('Origen');
+        $Producto->Marca=$Request->get('Marca');
+        $Producto->Marca=$Request->get('Imagen');
         $Producto->save();
         return redirect()->action('ProductoController@index');
     }

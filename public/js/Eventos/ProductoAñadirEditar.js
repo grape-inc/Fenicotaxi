@@ -3,8 +3,8 @@ $(document).ready(function () {
 });
 
 function ConfigurarEventos(){
-    $('#esrepuesto').change(function() {
-        if ($('#esrepuesto')[0].checked)
+    $('#Es_Repuesto').change(function() {
+        if ($('#Es_Repuesto')[0].checked)
         {
             $("#divrepuesto").removeClass("quitardiv");            
         }
