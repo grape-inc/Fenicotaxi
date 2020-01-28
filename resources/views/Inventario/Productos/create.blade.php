@@ -120,7 +120,7 @@
                                             </div>
                                             <select name="ID_UnidadMedida" class="selectpicker form-control" data-live-search="true">
                                                 @foreach ($Unidades as $U)
-                                                    <option value="{{ $U->Unidad_Medida}}">{{$U->Nombre_Unidad}}</option>
+                                                    <option value="{{ $U->ID_Unidad}}">{{$U->Nombre_Unidad}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -139,7 +139,7 @@
                                                     <i class="mdi mdi mdi-apps"></i>
                                                 </button>
                                             </div>
-                                            {{ Form::text('Existencias','',array('id'=>'Existencias','class'=>'form-control','placeholder'=>'Ingresa las existencias del producto'))}}
+                                            {{ Form::number('Existencias','',array('id'=>'Existencias','class'=>'form-control','placeholder'=>'Ingresa las existencias del producto'))}}
                                         </div>
 
                                         @error('Existencias')
@@ -155,7 +155,7 @@
                                                     <i class="mdi mdi mdi-apps"></i>
                                                 </button>
                                             </div>
-                                            {{ Form::text('Existencias_Minimas','',array('id'=>'Existencias_Minimas','class'=>'form-control','placeholder'=>'Existencias minimas del producto'))}}
+                                            {{ Form::number('Existencias_Minimas','',array('id'=>'Existencias_Minimas','class'=>'form-control','placeholder'=>'Existencias minimas del producto'))}}
                                         </div>
 
                                         @error('Existencias_Minimas')
@@ -171,7 +171,7 @@
                                                     <i class="mdi mdi mdi-diamond"></i>
                                                 </button>
                                             </div>
-                                            {{ Form::text('Precio_Venta','',array('id'=>'Precio_Venta','class'=>'form-control','placeholder'=>'Precio de venta del producto'))}}
+                                            {{ Form::number('Precio_Venta','',array('id'=>'Precio_Venta','class'=>'form-control','placeholder'=>'Precio de venta del producto'))}}
                                         </div>
 
                                         @error('Precio_Venta')
@@ -220,7 +220,9 @@
                                     <div class="form-group rectificadorcheck">
                                         <div class="form-check form-check-flat form-check-primary">
                                             <label class="form-check-label">
-                                            <input name="Es_Repuesto" id="esrepuesto" type="checkbox" class="form-check-input"> ¿Es un repuesto?<i class="input-helper"></i></label>
+                                            {{Form::checkbox('Es_Repuesto', 'Es Repuesto', false, ['class' => 'form-check-input','id'=> 'Es_Repuesto'])}}
+                                                ¿Es un repuesto?
+                                            </label>                                            
                                         </div>
                                     </div>
                                 </div>
