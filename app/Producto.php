@@ -12,7 +12,6 @@ class Producto extends Model
 
     protected $fillable =[
         'Cod_Producto',
-        'Codigo_Barra',
         'Nombre_Producto',
         'Descripcion_Producto',
         'Existencias',
