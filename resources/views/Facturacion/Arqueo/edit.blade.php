@@ -18,7 +18,7 @@
                     @csrf
                     <div class="row">
                     {{-- Inicio de la Primera Columna --}}
-                        <div class="col-md-6" style="width:0%">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 {{Form::label('ID_Jornada', 'ID de la Jornada')}}
                                 <div class="input-group">
