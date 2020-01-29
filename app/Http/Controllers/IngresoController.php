@@ -22,13 +22,12 @@ class IngresoController extends Controller
 
     public function create(){
         $empleado = DB::table('Empleado')->get();
-        $cliente = DB::table('Cliente')->get();
-        $divisa = DB::table('Divisa')->get();
+        $proveedor = DB::table('Proveedor')->get();
         $producto = DB::table('Producto as prod')
         ->select(DB::Raw('CONCAT(prod.Cod_Producto," / ",prod.Nombre_Producto) as producto'),'prod.ID_Producto')
         ->where('prod.Existencias_Minimas','>','0')
         ->get();
-        return view('Inventario.Ingresos.Create',["empleado"=>$empleado,"producto"=>$producto,"cliente"=>$cliente,"divisa" =>$divisa]);
+        return view('Inventario.Ingresos.Create',["empleado"=>$empleado,"producto"=>$producto,"proveedor"=>$proveedor]);
     }
 
     public function store(Request $request){
