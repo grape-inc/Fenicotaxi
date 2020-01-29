@@ -4,6 +4,33 @@ $(document).ready(function () {
 
 function ConfigurarTablas() {
     $('#TablaCategorias').DataTable({
+        dom: 'Bfrtip',
+        "autoWidth": true,
+        buttons: [            
+            {                
+                extend: 'excel',
+                text: 'Exportar a excel',
+                title: "Fenicotaxi",
+                messageTop: 'Reporte de categorias',
+                customize: function( Xlsx ) {
+                    var Source = Xlsx.xl['workbook.xml'].getElementsByTagName('sheet')[0];
+                    Source.setAttribute('name','Categorias');
+                },
+                exportOptions: {
+                    columns: [ 0,1,2]
+                },
+            },
+            {                
+                extend: 'pdf',
+                orientation: 'landscape',                
+                text: 'Exportar a pdf',
+                title: "Fenicotaxi",
+                messageTop: 'Reporte de categorias',                
+                exportOptions: {
+                    columns: [ 0,1,2]
+                },
+            },
+        ],
         "language": {
             "lengthMenu": "Mostrar _MENU_ registros por pagina",
             "zeroRecords": "No se encontraron datos",
