@@ -27,4 +27,4 @@ Route::resource('Facturacion/Arqueo','ArqueoController');
 Route::resource('Facturacion/Venta','FacturaVentaController');
 
 //Peticiones ajax
-Route::get('ValoresCalculo','FacturaVentaController@valoresCalculo');
+Route::get('valoresCalculo','FacturaVentaController@valoresCalculo');

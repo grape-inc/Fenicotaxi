@@ -3,6 +3,7 @@
     <script type="text/javascript" src="{{ URL::asset ('js/Eventos/FacturaVentas.js') }}"></script>
 @endpush
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
@@ -159,7 +160,7 @@
                                             <i class="mdi mdi-account-box"></i>
                                         </button>
                                     </div>
-                                    <select name="ID_Producto" class="selectpicker form-control" title="Escoja el producto..." data-live-search="true">
+                                    <select onchange="selected()" name="ID_Producto" class="selectpicker form-control" title="Escoja el producto..." data-live-search="true">
                                         @foreach ($producto as $prod)
                                             <option value="{{ $prod->ID_Producto}}">{{$prod->producto}}</option>
                                         @endforeach

@@ -75,8 +75,10 @@ class FacturaVentaController extends Controller
 
     }
 
-    public function valoresCalculo( ){
-        echo "im in AjaxController index";
+    public function valoresCalculo(){
+        $msg = "This is a simple message.";
+        return response()->json(array('msg'=> $msg), 200);
+
     }
 
     public function update(){
