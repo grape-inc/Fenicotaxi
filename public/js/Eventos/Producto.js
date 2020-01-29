@@ -4,6 +4,10 @@ $(document).ready(function () {
 
 function ConfigurarTablas() {
     $('#TablaProductos').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'excel','print'
+        ],
         "language": {
             "lengthMenu": "Mostrar _MENU_ registros por pagina",
             "zeroRecords": "No se encontraron datos",

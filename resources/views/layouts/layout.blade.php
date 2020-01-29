@@ -147,6 +147,15 @@
     <script src="{{{asset('vendors/js/vendor.bundle.base.js')}}}"></script>
     <script src="{{{asset('js/Plugins/jquery.dataTables.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/dataTables.bootstrap4.min.js')}}}"></script>
+
+    <script src="{{{asset('js/Plugins/dataTables.buttons.min.js')}}}"></script>
+    <script src="{{{asset('js/Plugins/buttons.flash.min.js')}}}"></script>
+    <script src="{{{asset('js/Plugins/jszip.min.js')}}}"></script>
+    <script src="{{{asset('js/Plugins/pdfmake.min.js')}}}"></script>
+    <script src="{{{asset('js/Plugins/vfs_fonts.js')}}}"></script>
+    <script src="{{{asset('js/Plugins/buttons.html5.min.js')}}}"></script>
+    <script src="{{{asset('js/Plugins/buttons.print.min.js')}}}"></script>
+
     <script src="{{{asset('js/Plugins/bootstrap-select.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/sweetalert.js')}}}"></script>
     <script src="{{{asset('js/Plugins/misc.js')}}}"></script>
