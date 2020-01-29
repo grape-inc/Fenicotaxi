@@ -4,6 +4,33 @@ $(document).ready(function () {
 
 function ConfigurarTablas() {
     $('#TablaArqueo').DataTable({
+        buttons: [            
+            {                
+                extend: 'excel',
+                text: 'Exportar a excel',
+                title: "Fenicotaxi",
+                messageTop: 'Reporte de Arqueo',
+                className: 'btn btn-success btn-fw btn-rounded rectificadortablaboton',
+                customize: function( Xlsx ) {
+                    var Source = Xlsx.xl['workbook.xml'].getElementsByTagName('sheet')[0];
+                    Source.setAttribute('name','Arqueo');
+                },
+                exportOptions: {
+                    columns: [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
+                },
+            },
+            {
+                extend: 'pdf',
+                orientation: 'landscape',
+                text: 'Exportar a pdf',
+                title: "Fenicotaxi",
+                messageTop: 'Reporte de arqueo',
+                className: 'btn btn-success btn-fw btn-rounded rectificadortablaboton',
+                exportOptions: {
+                    columns: [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
+                },
+            },
+        ],
         "language": {
             "lengthMenu": "Mostrar _MENU_ registros por pagina",
             "zeroRecords": "No se encontraron datos",
