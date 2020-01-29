@@ -12,6 +12,7 @@ function ConfigurarTablas() {
                 text: 'Exportar a excel',
                 title: "Fenicotaxi",
                 messageTop: 'Reporte de categorias',
+                className: 'btn btn-success btn-fw btn-rounded rectificadortablaboton',
                 customize: function( Xlsx ) {
                     var Source = Xlsx.xl['workbook.xml'].getElementsByTagName('sheet')[0];
                     Source.setAttribute('name','Categorias');
@@ -20,12 +21,13 @@ function ConfigurarTablas() {
                     columns: [ 0,1,2]
                 },
             },
-            {                
+            {
                 extend: 'pdf',
-                orientation: 'landscape',                
+                orientation: 'landscape',
                 text: 'Exportar a pdf',
                 title: "Fenicotaxi",
-                messageTop: 'Reporte de categorias',                
+                messageTop: 'Reporte de categorias',
+                className: 'btn btn-success btn-fw btn-rounded rectificadortablaboton',
                 exportOptions: {
                     columns: [ 0,1,2]
                 },

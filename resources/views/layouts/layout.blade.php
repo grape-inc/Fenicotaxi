@@ -16,7 +16,7 @@
     <div class="container-scroller">
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="#"><img src="{{{asset('images/logo.svg')}}}" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="#"><img src="{{{asset('images/logo_fenicotaxi.png')}}}" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="#"><img src="{{{asset('images/logo-mini.svg')}}}" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -36,7 +36,7 @@
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">David Greymaax</p>
+                  <p class="mb-1 text-black">Oscar Rivera</p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -92,20 +92,7 @@
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Arqueo.index')}}">Arqueo</a></li>
                 </ul>
               </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#usuarios" aria-expanded="false" aria-controls="usuarios">
-                <span class="menu-title">Usuarios</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-contacts menu-icon"></i>
-              </a>
-              <div class="collapse" id="usuarios">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Categorias</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Productos</a></li>
-                </ul>
-              </div>
-            </li>
+            </li>            
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#nomina" aria-expanded="false" aria-controls="nomina">
                 <span class="menu-title">Nomina</span>
@@ -125,9 +112,16 @@
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi mdi-settings menu-icon"></i>
               </a>
+
               <div class="collapse" id="configuracion">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Divisa.index')}}">Divisas</a></li>
+                </ul>
+              </div>
+
+              <div class="collapse" id="configuracion">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Divisa.index')}}">Usuarios</a></li>
                 </ul>
               </div>
             </li>

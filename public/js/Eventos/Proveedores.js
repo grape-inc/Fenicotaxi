@@ -12,6 +12,7 @@ function ConfigurarTablas() {
                 text: 'Exportar a excel',
                 title: "Fenicotaxi",
                 messageTop: 'Reporte de proveedores',
+                className: 'btn btn-success btn-fw btn-rounded rectificadortablaboton',
                 customize: function( Xlsx ) {
                     var Source = Xlsx.xl['workbook.xml'].getElementsByTagName('sheet')[0];
                     Source.setAttribute('name','Proveedores');
@@ -25,6 +26,7 @@ function ConfigurarTablas() {
                 orientation: 'landscape',
                 text: 'Exportar a pdf',
                 title: "Fenicotaxi",
+                className: 'btn btn-success btn-fw btn-rounded rectificadortablaboton',
                 messageTop: 'Reporte de proveedores',
                 exportOptions: {
                     columns: [ 0,1,2,3,4]

@@ -4,6 +4,35 @@ $(document).ready(function () {
 
 function ConfigurarTablas() {
     $('#TablaClientes').DataTable({
+        dom: 'Bfrtip',
+        "autoWidth": true,
+        buttons: [            
+            {                
+                extend: 'excel',
+                text: 'Exportar a excel',
+                title: "Fenicotaxi",
+                messageTop: 'Reporte de clientes',
+                className: 'btn btn-success btn-fw btn-rounded rectificadortablaboton',
+                customize: function( Xlsx ) {
+                    var Source = Xlsx.xl['workbook.xml'].getElementsByTagName('sheet')[0];
+                    Source.setAttribute('name','Clientes');
+                },
+                exportOptions: {
+                    columns: [ 0,1,2,3,4,5,6]
+                },
+            },
+            {
+                extend: 'pdf',
+                orientation: 'landscape',
+                text: 'Exportar a pdf',
+                title: "Fenicotaxi",
+                messageTop: 'Reporte de clientes',
+                className: 'btn btn-success btn-fw btn-rounded rectificadortablaboton',
+                exportOptions: {
+                    columns: [ 0,1,2,3,4,5,6]
+                },
+            },
+        ],
         "language": {
             "lengthMenu": "Mostrar _MENU_ registros por pagina",
             "zeroRecords": "No se encontraron datos",
