@@ -74,6 +74,7 @@
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Proveedores.index')}}">Proveedores</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Categorias.index')}}">Categorias</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('UnidadesDeMedida.index')}}">Unidades de medida</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Ingresos.index')}}">Ingresos</a></li>
                 </ul>
               </div>
             </li>

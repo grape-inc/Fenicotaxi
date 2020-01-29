@@ -160,7 +160,7 @@
                                             <i class="mdi mdi-account-box"></i>
                                         </button>
                                     </div>
-                                    <select onchange="selected()" name="ID_Producto" class="selectpicker form-control" title="Escoja el producto..." data-live-search="true">
+                                    <select onchange="selected()" id="ID_Producto" name="ID_Producto" class="selectpicker form-control" title="Escoja el producto..." data-live-search="true">
                                         @foreach ($producto as $prod)
                                             <option value="{{ $prod->ID_Producto}}">{{$prod->producto}}</option>
                                         @endforeach
