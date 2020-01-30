@@ -10,7 +10,7 @@ class IngresoDetalle extends Model
     protected $primaryKey = 'ID';
     public $timestamps = false;
     protected $fillable = [
-        'ID_Ingreso',
+        'Codigo_Ingreso',
         'ID_Producto',
         'Cantidad',
         'Precio'

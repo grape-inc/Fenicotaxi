@@ -36,6 +36,9 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    @error('ID_Proveedor')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -57,14 +60,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {{Form::label('Impuesto', 'Impuesto')}}
+                                    {{Form::label('Impuestolabel', 'Impuesto')}}
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <button class="btn btn-sm btn-primary" type="button">
                                                 <i class="mdi mdi-upload-network-outline"></i>
                                             </button>
                                         </div>
-                                            <input type="text" class="form-control" name="Impuesto" placeholder="Ingrese el impuesto">
+                                            <input type="text" class="form-control" id="Impuesto" name="Impuesto" placeholder="Ingrese el impuesto">
                                     </div>
                                 </div>
                             </div>
@@ -72,14 +75,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {{Form::label('SubTotal', 'Subtotal')}}
+                                    {{Form::label('CodIngreso', 'Codigo Ingreso')}}
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <button class="btn btn-sm btn-primary" type="button">
                                                 <i class="mdi mdi-upload-network-outline"></i>
                                             </button>
                                         </div>
-                                            <input type="text" class="form-control" name="SubTotal" placeholder="Subtotal" readonly>
+                                            <input type="text" class="form-control" name="Codigo_Ingreso" placeholder="Codigo del ingreso" >
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +95,7 @@
                                                 <i class="mdi mdi-upload-network-outline"></i>
                                             </button>
                                         </div>
-                                            <input type="text" class="form-control" name="Total" placeholder="Total facturado" readonly>
+                                            <input type="text" class="form-control" name="Total" id="Total" placeholder="Total facturado">
                                     </div>
                                 </div>
                             </div>
@@ -183,6 +186,7 @@
                                                 <th>ID Producto</th>
                                                 <th>Nombre Producto</th>
                                                 <th>Cantidad</th>
+                                                <th>Precio</th>
                                                 <th>Subtotal</th>
                                             </tr>
                                         </thead>

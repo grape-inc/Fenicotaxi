@@ -10,21 +10,24 @@ subtotal = [];
 $("#guardar").hide();
 
 function agregar() {
-    idproducto = $("#ID_Producto").val();
+    ID_Producto = $("#ID_Producto").val();
     producto = $("#ID_Producto option:selected").text();
-    cantidad = $("#Cantidad").val();
-    precio = $("#Precio").val();
+    Cantidad = $("#Cantidad").val();
+    Impuesto = $("#Impuesto").val();
+    Precio = $("#Precio").val();
+    Total = $("Total")
 
-    if (idproducto != "" && cantidad != "" && cantidad > 0 && precio != "") {
-        subtotal[cont] = (cantidad * precio);
+    if (ID_Producto != "" && Cantidad != "" && Cantidad > 0 && Precio != "") {
+        subtotal[cont] = (Cantidad * Precio);
         total = total + subtotal[cont];
+        Total.val(total)
 
-        var fila = '<tr class="selected" id="fila' + cont + '"><td><button type="button" class="btn btn-warning" onclick="eliminar(' + cont + ');">X</button></td><td><input type="hidden" name="idproducto[]" value="' + idproducto + '">' + producto + '</td><td><input type="number" name="Cantidad[]" value="' + cantidad + '"></td><td><input type="number" name="precio[]" value="' + precio + '"></td><td><input type="number" name="precio[]" value="' + precio + '"></td><td>' + subtotal[cont] + '</td></tr>';
+        var Fila = '<tr class="selected" id="Fila' + cont + '"><td><button type="button" class="btn btn-warning" onclick="eliminar(' + cont + ');">X</button></td><td><input type="hidden" name="ID_Producto[]" value="' + ID_Producto + '">' + producto + '</td><td><input type="number" name="Cantidad[]" value="' + Cantidad + '"></td><td><input type="number" name="Precio[]" value="' + Precio + '"></td><td>' + subtotal[cont] + '</td></tr>';
         cont++;
         limpiar();
         $('#total').html("$/ " + total);
         evaluar();
-        $('#TablaDetalle').append(fila);
+        $('#TablaDetalle').append(Fila);
 
     } else {
         alert("Error al ingresar el detalle del ingreso, revise los datos del articulo")
@@ -49,7 +52,7 @@ function evaluar() {
 function eliminar(index) {
     total = total - subtotal[index];
     $("#total").html("S/. " + total);
-    $("#fila" + index).remove();
+    $("#Fila" + index).remove();
     evaluar();
 
 }

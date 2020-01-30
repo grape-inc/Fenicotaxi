@@ -41,7 +41,7 @@
                                 @foreach($ingresos as $ingreso)
                                     <tr>
                                         <td>{{ $ingreso->ID_Ingreso }}</td>
-                                        <td>{{ $ingreso->Nomrbe_Proveedor }}</td>
+                                        <td>{{ $ingreso->Nombre_Proveedor }}</td>
                                         <td>{{ $ingreso->Nombre_Empleado }}</td>
                                         <td>{{ $ingreso->Fecha_Realizacion }}</td>
                                         <td>{{ $ingreso->Impuesto }}</td>

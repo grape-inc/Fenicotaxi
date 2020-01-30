@@ -14,6 +14,7 @@ class Ingreso extends Model
         'ID_Empleado',
         'Fecha_Realizacion',
         'Impuesto',
-        'Total'
+        'Total',
+        'Codigo_Ingreso'
     ];
 }
