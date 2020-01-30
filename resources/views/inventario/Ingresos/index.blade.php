@@ -28,7 +28,6 @@
                                     <tr>
                                         <th>Numero Ingreso</th>
                                         <th>Proveedor</th>
-                                        <th>Empleado</th>
                                         <th>Vendedor</th>
                                         <th>Fecha Realizacion</th>
                                         <th>Impuesto</th>
