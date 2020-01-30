@@ -102,6 +102,7 @@
               <div class="collapse" id="nomina">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Cargo.index')}}">Cargos</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Empleado.index')}}">Empleados</a></li>
                 </ul>
               </div>
             </li>
@@ -120,7 +121,7 @@
 
               <div class="collapse" id="configuracion">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Divisa.index')}}">Usuarios</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Usuarios.index')}}">Usuarios</a></li>
                 </ul>
               </div>
 

@@ -13441,3 +13441,7 @@ a > i{
   width:60px !important;
   height:60px !important;
 }
+
+.table th img, .table td img {  
+  border-radius: 5%;
+}
