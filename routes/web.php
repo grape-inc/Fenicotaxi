@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('Dashboard.dashboard');
 });
 
+Route::resource('Login','LoginController');
 Route::resource('Inventario/Categorias', 'CategoriaProductoController');
 Route::resource('Inventario/Proveedores', 'ProveedorController');
 Route::resource('Inventario/Productos', 'ProductoController');
