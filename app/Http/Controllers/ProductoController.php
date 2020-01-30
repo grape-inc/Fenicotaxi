@@ -19,17 +19,17 @@ class ProductoController extends Controller
         $Productos = DB::table('producto')
             ->join('categoria_producto', 'producto.id_categoria', '=', 'categoria_producto.id_categoria')
             ->join('proveedor', 'producto.id_proveedor', '=', 'proveedor.id_proveedor')
-            ->get();        
+            ->get();
         return view('Inventario.Productos.index') ->with('Productos',$Productos);
     }
 
-    public function create(Request $Request){        
+    public function create(Request $Request){
         $Categorias =  CategoriaProducto::all();
         $Proveedores =  Proveedor::all();
         $Divisas =  Divisa::all();
         $UnidadMedidas =  UnidadMedida::all();
         return view ('Inventario.Productos.create',[
-            'Categorias' => $Categorias, 
+            'Categorias' => $Categorias,
             'Proveedores' => $Proveedores,
             'Divisas' => $Divisas,
             'Unidades' => $UnidadMedidas
@@ -40,9 +40,9 @@ class ProductoController extends Controller
         $Categorias =  CategoriaProducto::all();
         $Proveedores =  Proveedor::all();
         $Divisas =  Divisa::all();
-        $UnidadMedidas =  UnidadMedida::all();      
+        $UnidadMedidas =  UnidadMedida::all();
         return view ('Inventario.Productos.edit',[
-            'Categorias' => $Categorias, 
+            'Categorias' => $Categorias,
             'Proveedores' => $Proveedores,
             'Divisas' => $Divisas,
             'Unidades' => $UnidadMedidas,
@@ -57,7 +57,7 @@ class ProductoController extends Controller
             $Base = $Request->file('Imagen')->getRealPath();
             $Base = file_get_contents($Base);
             $Base = base64_encode($Base);
-        }   
+        }
 
         if($Request->Es_Repuesto == null){
            $EsRepuesto = false;
@@ -73,7 +73,7 @@ class ProductoController extends Controller
             'ID_Proveedor' => 'required',
             'ID_Divisa' => 'required',
             'ID_UnidadMedida' => 'required'
-        ]);                
+        ]);
         $Producto = new Producto();
         $Producto->Cod_Producto=$Request->get('Cod_Producto');
         $Producto->Nombre_Producto=$Request->get('Nombre_Producto');
@@ -81,7 +81,7 @@ class ProductoController extends Controller
         $Producto->Existencias=$Request->get('Existencias');
         $Producto->Existencias_Minimas=$Request->get('Existencias_Minimas');
         $Producto->Precio_Venta=$Request->get('Precio_Venta');
-        $Producto->ID_Categoria=$Request->get('ID_Categoria');        
+        $Producto->ID_Categoria=$Request->get('ID_Categoria');
         $Producto->ID_Proveedor=$Request->get('ID_Proveedor');
         $Producto->ID_UnidadMedida=$Request->get('ID_UnidadMedida');
         $Producto->ID_Divisa=$Request->get('ID_Divisa');
@@ -102,7 +102,7 @@ class ProductoController extends Controller
             $Base = $Request->file('Imagen')->getRealPath();
             $Base = file_get_contents($Base);
             $Base = base64_encode($Base);
-        }   
+        }
 
         if($Request->Es_Repuesto == null){
            $EsRepuesto = false;
@@ -118,7 +118,7 @@ class ProductoController extends Controller
             'ID_Proveedor' => 'required',
             'ID_Divisa' => 'required',
             'ID_UnidadMedida' => 'required'
-        ]);                
+        ]);
         $Producto = Producto::findOrFail($ID);
         $Producto->Cod_Producto=$Request->get('Cod_Producto');
         $Producto->Nombre_Producto=$Request->get('Nombre_Producto');
@@ -126,7 +126,7 @@ class ProductoController extends Controller
         $Producto->Existencias=$Request->get('Existencias');
         $Producto->Existencias_Minimas=$Request->get('Existencias_Minimas');
         $Producto->Precio_Venta=$Request->get('Precio_Venta');
-        $Producto->ID_Categoria=$Request->get('ID_Categoria');        
+        $Producto->ID_Categoria=$Request->get('ID_Categoria');
         $Producto->ID_Proveedor=$Request->get('ID_Proveedor');
         $Producto->ID_UnidadMedida=$Request->get('ID_UnidadMedida');
         $Producto->ID_Divisa=$Request->get('ID_Divisa');

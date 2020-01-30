@@ -13,7 +13,7 @@
         <a type="button" href="{{ URL::route('Ingresos.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
     </div>
 {{ Form::open(array('url' => URL::route('Ingresos.store'), 'method' => 'post'))}}
-    @csrf
+    {{ csrf_field() }}
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
@@ -56,6 +56,9 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    @error('ID_Empleado')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -69,6 +72,9 @@
                                         </div>
                                             <input type="text" class="form-control" id="Impuesto" name="Impuesto" placeholder="Ingrese el impuesto">
                                     </div>
+                                    @error('Impuesto')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -84,6 +90,9 @@
                                         </div>
                                             <input type="text" class="form-control" name="Codigo_Ingreso" placeholder="Codigo del ingreso" >
                                     </div>
+                                    @error('Codigo_Ingreso')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -97,6 +106,9 @@
                                         </div>
                                             <input type="text" class="form-control" name="Total" id="Total" placeholder="Total facturado">
                                     </div>
+                                    @error('Total')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

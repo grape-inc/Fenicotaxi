@@ -74,6 +74,7 @@
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Proveedores.index')}}">Proveedores</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Categorias.index')}}">Categorias</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('UnidadesDeMedida.index')}}">Unidades de medida</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Ingresos.index')}}">Ingresos</a></li>
                 </ul>
               </div>
             </li>
@@ -91,7 +92,7 @@
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Arqueo.index')}}">Arqueo</a></li>
                 </ul>
               </div>
-            </li>            
+            </li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#nomina" aria-expanded="false" aria-controls="nomina">
                 <span class="menu-title">Nomina</span>
@@ -99,7 +100,7 @@
                 <i class="mdi mdi mdi-bank menu-icon"></i>
               </a>
               <div class="collapse" id="nomina">
-                <ul class="nav flex-column sub-menu">                  
+                <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Cargo.index')}}">Cargos</a></li>
                 </ul>
               </div>
@@ -128,7 +129,7 @@
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Rol.index')}}">Roles</a></li>
                 </ul>
               </div>
-            
+
           </ul>
         </nav>
         <!-- Contenido -->

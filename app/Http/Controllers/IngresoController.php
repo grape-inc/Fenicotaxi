@@ -11,7 +11,7 @@ class IngresoController extends Controller
 {
     public function index(){
         $ingresos= DB::table('Ingreso as i')
-        ->join('Proveedor as p','i.ID_Proveedor','=','i.ID_Proveedor')
+        ->join('Proveedor as p','i.ID_Proveedor','=','p.ID_Proveedor')
         ->join('Empleado as e','i.ID_Empleado','=','e.ID_Empleado')
         ->join('Ingreso_detalle as ide','i.Codigo_Ingreso','=','ide.Codigo_Ingreso')
         ->join('Producto as prod','ide.ID_Producto','=','prod.ID_Producto')
@@ -33,8 +33,15 @@ class IngresoController extends Controller
     public function store(Request $request){
         try{
             DB::beginTransaction();
+            $request->validate([
+                'ID_Proveedor' => 'required',
+                'ID_Empleado' => 'required',
+                'Impuesto' => 'required',
+                'Total' => 'required',
+                'Codigo_Ingreso' => 'required|numeric',
+            ]);
            $ingreso=new Ingreso;
-           $ingreso->ID_Proveedor=$request->input('ID_Proveedor');
+           $ingreso->ID_Proveedor=$request->get('ID_Proveedor');
            $ingreso->ID_Empleado=$request->get('ID_Empleado');
            $ingreso->Fecha_Realizacion = date('Y-m-d H:i:s');
            $ingreso->Impuesto=$request->get('Impuesto');
