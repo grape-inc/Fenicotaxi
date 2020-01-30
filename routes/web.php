@@ -22,6 +22,7 @@ Route::resource('Inventario/Ingresos', 'IngresoController');
 Route::resource('Configuracion/Divisa', 'DivisaController');
 Route::resource('Facturacion/Cliente','ClienteController');
 Route::resource('Nomina/Rol','RolController');
+Route::resource('Nomina/Empleado','EmpleadoController');
 Route::resource('Inventario/UnidadesDeMedida','UnidadesDeMedidaController');
 Route::resource('Nomina/Cargo','CargoController');
 Route::resource('Facturacion/Arqueo','ArqueoController');
