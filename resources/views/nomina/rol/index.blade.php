@@ -14,7 +14,7 @@
             <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-format-list-bulleted"></i>
-            </span> Roles </h3>            
+            </span> Roles </h3>
         </div>
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
@@ -26,14 +26,14 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nombre de Rol</th>                                        
+                                        <th>Nombre de Rol</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($Roles as $rol)
                                     <tr>
                                         <td>{{ $rol->ID_Rol }}</td>
-                                        <td>{{ $rol->Nombre_Rol }}</td>                                        
+                                        <td>{{ $rol->Nombre_Rol }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

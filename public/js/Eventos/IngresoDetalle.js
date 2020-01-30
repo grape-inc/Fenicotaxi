@@ -7,7 +7,6 @@ $(document).ready(function () {
 var cont = 0;
 total = 0;
 subtotal = [];
-$("#guardar").hide();
 
 function agregar() {
     ID_Producto = $("#ID_Producto").val();
@@ -20,12 +19,10 @@ function agregar() {
     if (ID_Producto != "" && Cantidad != "" && Cantidad > 0 && Precio != "") {
         subtotal[cont] = (Cantidad * Precio);
         total = total + subtotal[cont];
-        Total.val(total)
 
         var Fila = '<tr class="selected" id="Fila' + cont + '"><td><button type="button" class="btn btn-warning" onclick="eliminar(' + cont + ');">X</button></td><td><input type="hidden" name="ID_Producto[]" value="' + ID_Producto + '">' + producto + '</td><td><input type="number" name="Cantidad[]" value="' + Cantidad + '"></td><td><input type="number" name="Precio[]" value="' + Precio + '"></td><td>' + subtotal[cont] + '</td></tr>';
         cont++;
         limpiar();
-        $('#total').html("$/ " + total);
         evaluar();
         $('#TablaDetalle').append(Fila);
 
@@ -42,11 +39,7 @@ function limpiar() {
 }
 
 function evaluar() {
-    if (total > 0) {
-        $("#guardar").show();
-    } else {
-        $("#guardar").hide();
-    }
+    $("#Total").val(total);
 }
 
 function eliminar(index) {

@@ -32,8 +32,6 @@
                                         <th>Fecha Realizacion</th>
                                         <th>Impuesto</th>
                                         <th>Total</th>
-                                        <th>Editar</th>
-                                        <th>Eliminar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,8 +43,6 @@
                                         <td>{{ $ingreso->Fecha_Realizacion }}</td>
                                         <td>{{ $ingreso->Impuesto }}</td>
                                         <td>{{ $ingreso->Total }}</td>
-                                        <td> <a href="{{ URL::route('Ingresos.edit', $ingreso->ID_Ingreso)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
-                                        <td> <button type="button" onclick="EliminarArqueo({{ $ingreso->ID_Ingreso}},'{{URL::route('Ingresos.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
