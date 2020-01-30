@@ -74,5 +74,4 @@ class IngresoController extends Controller
            return redirect()->action('IngresoController@index');
 
     }
-
 }
