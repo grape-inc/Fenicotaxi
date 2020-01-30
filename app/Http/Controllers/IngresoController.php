@@ -36,8 +36,8 @@ class IngresoController extends Controller
             $request->validate([
                 'ID_Proveedor' => 'required',
                 'ID_Empleado' => 'required',
-                'Impuesto' => 'required',
-                'Total' => 'required',
+                'Impuesto' => 'required|numeric',
+                'Total' => 'required|numeric',
                 'Codigo_Ingreso' => 'required|numeric',
             ]);
            $ingreso=new Ingreso;

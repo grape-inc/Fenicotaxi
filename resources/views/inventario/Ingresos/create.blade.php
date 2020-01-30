@@ -70,7 +70,7 @@
                                                 <i class="mdi mdi-upload-network-outline"></i>
                                             </button>
                                         </div>
-                                            <input type="text" class="form-control" id="Impuesto" name="Impuesto" placeholder="Ingrese el impuesto">
+                                            <input type="number" class="form-control" id="Impuesto" name="Impuesto" value="0.15" placeholder="Ingrese el impuesto" readonly>
                                     </div>
                                     @error('Impuesto')
                                     <p class="text-danger">{{ $message }}</p>
@@ -88,7 +88,7 @@
                                                 <i class="mdi mdi-upload-network-outline"></i>
                                             </button>
                                         </div>
-                                            <input type="text" class="form-control" name="Codigo_Ingreso" placeholder="Codigo del ingreso" >
+                                            <input type="number" class="form-control" name="Codigo_Ingreso" placeholder="Codigo del ingreso" >
                                     </div>
                                     @error('Codigo_Ingreso')
                                     <p class="text-danger">{{ $message }}</p>
@@ -104,7 +104,7 @@
                                                 <i class="mdi mdi-upload-network-outline"></i>
                                             </button>
                                         </div>
-                                            <input type="text" class="form-control" name="Total" id="Total" placeholder="Total facturado">
+                                            <input type="text" class="form-control" name="Total" id="Total" placeholder="Total facturado" readonly>
                                     </div>
                                     @error('Total')
                                     <p class="text-danger">{{ $message }}</p>
