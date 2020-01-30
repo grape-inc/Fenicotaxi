@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\FacturaVenta;
 use App\FacturaVentaDetalle;
+use App\Arqueo;
 use DB;
 use Illuminate\Support\Carbon;
+
 class FacturaVentaController extends Controller
 {
     public function index(){
@@ -29,7 +31,20 @@ class FacturaVentaController extends Controller
         ->select(DB::Raw('CONCAT(prod.Cod_Producto," / ",prod.Nombre_Producto) as producto'),'prod.ID_Producto')
         ->where('prod.Existencias_Minimas','>','0')
         ->get();
-        return view('Facturacion.Venta.Create',["empleado"=>$empleado,"producto"=>$producto,"cliente"=>$cliente,"divisa" =>$divisa]);
+
+        $fecha_hoy = date('Y-m-d');;
+        $jornada = DB::table('ArqueoCaja')
+        ->where('Fecha_Caja','=',$fecha_hoy,'AND','Jornada_Abierta','=','1')
+        ->get();
+        $as = count($jornada);
+
+        if ( $as == 1){
+            return view('Facturacion.Venta.Create',["empleado"=>$empleado,"producto"=>$producto,"cliente"=>$cliente,"divisa" =>$divisa]);
+        }else{
+            flash('Necesita abrir caja para poder facturar')->error();
+            return redirect()->action('FacturaVentaController@index');
+        }
+
     }
     public function store(Request $request){
         try{

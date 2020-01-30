@@ -26,6 +26,7 @@ class Arqueo extends Model
         'M050',
         'M1',
         'M5',
-        'Fecha_Actualizacion'
+        'Fecha_Actualizacion',
+        'Fecha_Caja'
     ];
 }

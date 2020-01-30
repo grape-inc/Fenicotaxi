@@ -27,6 +27,7 @@ class ArqueoController extends Controller
         $Arqueo->Saldo_Inicial=$Request->input('Saldo_Inicial');
         $Arqueo->ID_Empleado=$Request->input('ID_Empleado');
         $Arqueo->Fecha_Jornada= date('Y-m-d H:i:s');
+        $Arqueo->Fecha_Caja = date('Y-m-d');
         $Arqueo->Jornada_Abierta= true;
         $Arqueo->Fecha_Actualizacion= date('Y-m-d H:i:s');
         $Arqueo->save();
