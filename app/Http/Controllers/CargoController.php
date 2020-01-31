@@ -16,7 +16,7 @@ class CargoController extends Controller
         return view ('Nomina.Cargo.create');
     }
 
-    public function store(Request $Request){
+    public function store(CargoFormRequest $Request){
         $Cargo = new Cargo;
         $Cargo->Nombre_Cargo=$Request->input('Nombre_Cargo');
         $Cargo->Salario_Cargo=$Request->input('Salario_Cargo');
@@ -28,7 +28,7 @@ class CargoController extends Controller
         return view("Nomina.Cargo.edit ",["cargo"=>Cargo::findOrFail($ID)]);
     }
 
-    public function update(Request $Request, $ID){
+    public function update(CargoFormRequest $Request, $ID){
         $Cargo = Cargo::findOrFail($ID);
         $Cargo->Nombre_Cargo=$Request->input('Nombre_Cargo');
         $Cargo->Salario_Cargo=$Request->input('Salario_Cargo');
