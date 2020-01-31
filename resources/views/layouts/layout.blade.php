@@ -32,18 +32,22 @@
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                  <img src="{{{asset('images/faces/face1.jpg')}}}" alt="image">
+                  @if(session('Imagen') != "")
+                    <img src ="data:image/png;base64,{{{session('Imagen')}}}"  alt="ImagenProducto" class="img-thumbnail">
+                  @else
+                    <img src="{{{asset('images/dummy.jpg')}}}"/>
+                  @endif                  
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">Oscar Rivera</p>
+                  <p class="mb-1 text-black">{{session("Nombre") . " " . session("Apellido") }}</p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{ URL::route('Empleado.edit', session('ID_Empleado'))}}">
                   <i class="mdi mdi-cached mr-2 text-success"></i> Mi Perfil </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{ URL::route('Login.index')}}">
                   <i class="mdi mdi-logout mr-2 text-primary"></i> Cerrar Sesión </a>
               </div>
             </li>

@@ -27,8 +27,8 @@
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="form-group">                                        
-                                        @if($Producto->Imagen != "")                                            
+                                    <div class="form-group">
+                                        @if($Producto->Imagen != "")
                                             <img alt="ImagenProducto" class="img-thumbnail" id="ImagenProducto" name="Imagen" src ="data:image/png;base64,{{$Producto->Imagen}}" style="height:300px;" alt="ImagenProducto" class="img-thumbnail">
                                         @else
                                              <img alt="ImagenProducto" class="img-thumbnail" id="ImagenProducto" class="ImagenTamañoTabla" src="{{{asset('images/dummy.jpg')}}}"/>

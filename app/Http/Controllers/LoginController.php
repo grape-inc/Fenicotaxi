@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Hash;
+use Session;
 use App\Empleado;
 
 class LoginController extends Controller
 {
-    public function index(Request $Request){     
+    public function index(Request $Request){    
+        Session::flush();
         return view('Login.index');
     }
 

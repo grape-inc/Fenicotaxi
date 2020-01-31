@@ -9,6 +9,7 @@ use App\Cargo;
 use App\Rol;
 use Carbon\Carbon;
 use DB;
+use Session;
 
 class EmpleadoController extends Controller
 {
@@ -97,8 +98,12 @@ class EmpleadoController extends Controller
         $Empleado->Correo=$Request->get('Correo');
         $Empleado->ID_Cargo=$Request->get('ID_Cargo');
         $Empleado->ID_Rol=$Request->get('ID_Rol');
-        $Empleado->Imagen=$Base;
+        $Empleado->Imagen=$Base;    
         $Empleado->update();
+        $Usuario = Empleado::where('ID_Empleado', session("ID_Empleado"))->first();
+        Session::put('Nombre', $Usuario->Nombre_Empleado);
+        Session::put('Apellido', $Usuario->Apellido_Empleado);
+        Session::put('Imagen', $Usuario->Imagen);
         return redirect()->action('EmpleadoController@index');
     }
     public function destroy($ID){
