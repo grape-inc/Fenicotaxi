@@ -11,7 +11,7 @@
             </span> Productos </h3>
             <a href="{{ URL::route('Productos.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
         </div>
-        {{Form::open(array('url' => URL::route('Productos.store'), 'method' => 'post', 'files' => true))}}        
+        {{Form::open(array('url' => URL::route('Productos.store'), 'method' => 'post', 'files' => true))}}
             <div class="row">
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">

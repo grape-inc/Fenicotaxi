@@ -21,6 +21,10 @@ class LoginController extends Controller
         $Usuario = Empleado::where('Usuario', $Request->Usuario)->first();
         
         if($Usuario != null){
+            Session::put('ID_Empleado', $Usuario->ID_Empleado);
+            Session::put('Nombre', $Usuario->Nombre_Empleado);
+            Session::put('Apellido', $Usuario->Apellido_Empleado);
+            Session::put('Imagen', $Usuario->Imagen);
             if(Hash::check($Request->Password, $Usuario->Password))
                 return redirect()->action('DashboardController@index');
             else{
