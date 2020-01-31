@@ -55,6 +55,6 @@ class ProveedorController extends Controller
     public function destroy($ID){
         $Proveedor=Proveedor::findOrFail($ID);
         $Proveedor->where('ID_Proveedor',$ID)->delete();
-        return route('Inventario.Proveedor.index', ['Eliminado' => true]);
+        return route('Proveedores.index', ['Eliminado' => true]);
     }
 }
