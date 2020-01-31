@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Arqueo;
+use App\Http\Requests\ArqueoFormRequest;
 use DB;
 
 class ArqueoController extends Controller
@@ -22,7 +23,7 @@ class ArqueoController extends Controller
         return view ('Facturacion.Arqueo.create',["empleado"=>$empleado]);
     }
 
-    public function store(Request $Request){
+    public function store(ArqueoFormRequest $Request){
         $Arqueo = new Arqueo;
         $Arqueo->Saldo_Inicial=$Request->input('Saldo_Inicial');
         $Arqueo->ID_Empleado=$Request->input('ID_Empleado');
@@ -39,7 +40,7 @@ class ArqueoController extends Controller
         return view("Facturacion.Arqueo.edit ",["arqueo"=>Arqueo::findOrFail($ID),"empleado"=>$empleado]);
     }
 
-    public function update(Request $Request, $ID){
+    public function update(ArqueoFormRequest $Request, $ID){
         $Arqueo = Arqueo::findOrFail($ID);
         $Arqueo->Saldo_Inicial=$Request->input('Saldo_Inicial');
         $Arqueo->Saldo_Final=$Request->input('Saldo_Final');

@@ -6,6 +6,15 @@
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-format-list-bulleted"></i>
         </span> Arqueo </h3>
+        @if (count($errors)>0)
+        <div class="alert alert-danger">
+            <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+            </ul>
+        </div>
+        @endif
         <a type="button" href="{{ URL::route('Arqueo.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
     </div>
     <div class="row">
@@ -49,7 +58,7 @@
                                             <i class="mdi mdi-account-box"></i>
                                         </button>
                                     </div>
-                                    <select name="ID_Empleado" class="selectpicker form-control" disabled title="Escoja el empleado..." data-live-search="true">
+                                    <select name="ID_Empleado" class="selectpicker form-control" title="Escoja el empleado..." data-live-search="true">
                                         @foreach ($empleado as $emp)
                                             @if ($emp->ID_Empleado == $arqueo->ID_Empleado)
                                              <option value="{{ $emp->ID_Empleado}}" selected>{{$emp->Nombre_Empleado}}</option>
@@ -82,6 +91,9 @@
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="B10" value = "{{$arqueo->B10}}">
                                 </div>
+                                @error('B10')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                             <div class="form-group">
                                 {{Form::label('B20', 'Billetes 20')}}
@@ -93,6 +105,9 @@
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="B20" value = "{{$arqueo->B20}}">
                                 </div>
+                                @error('B20')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                             <div class="form-group">
                                 {{Form::label('B50', 'Billetes 50')}}
@@ -104,6 +119,9 @@
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="B50" value = "{{$arqueo->B50}}">
                                 </div>
+                                @error('B50')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                             <div class="form-group">
                                 {{Form::label('M1', 'Moneda 1')}}
@@ -115,6 +133,9 @@
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="M1" value = "{{$arqueo->M1}}">
                                 </div>
+                                @error('M1')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -128,6 +149,9 @@
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="B100" value = "{{$arqueo->B100}}">
                                 </div>
+                                @error('B100')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                             <div class="form-group">
                                 {{Form::label('B200', 'Billetes 200')}}
@@ -139,6 +163,9 @@
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="B200" value = "{{$arqueo->B200}}">
                                 </div>
+                                @error('B200')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                             <div class="form-group">
                                 {{Form::label('B500', 'Billetes 500')}}
@@ -150,6 +177,9 @@
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="B500" value = "{{$arqueo->B500}}">
                                 </div>
+                                @error('B500')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                             <div class="form-group">
                                 {{Form::label('M5', 'Moneda 5')}}
@@ -161,6 +191,9 @@
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="M5" value = "{{$arqueo->M5}}">
                                 </div>
+                                @error('M5')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -174,6 +207,9 @@
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="B1000" value = "{{$arqueo->B1000}}">
                                 </div>
+                                @error('B1000')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                             <div class="form-group">
                                 {{Form::label('M025', 'Moneda 0.25')}}
@@ -185,6 +221,9 @@
                                     </div>
                                         <input type="number" class="form-control" placeholder="Monto" name="M025" value = "{{$arqueo->M025}}">
                                 </div>
+                                @error('M025')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                             <div class="form-group">
                                 {{Form::label('M050', 'Moneda 0.50')}}
@@ -196,6 +235,9 @@
                                     </div>
                                         <input type="number" min="1" step="any" class="form-control" placeholder="Monto" name="M050" value = "{{$arqueo->M050}}">
                                 </div>
+                                @error('M050')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                             <div class="form-group">
                                 {{Form::label('Saldo_Final', 'Saldo Final')}}
@@ -207,6 +249,9 @@
                                     </div>
                                         <input type="text" class="form-control" placeholder="Monto" name="Saldo_Final" value = "{{$arqueo->M050}}">
                                 </div>
+                                @error('Saldo_Final')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             </div>
                         </div>
                     </div>
