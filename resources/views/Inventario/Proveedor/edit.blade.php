@@ -87,7 +87,7 @@
                         </div>
 
                         <div class="row justify-content-center">
-                            <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Crear Proveedor<i class="mdi mdi-file-check btn-icon-append"></i></button>
+                            <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Editar Proveedor<i class="mdi mdi-file-check btn-icon-append"></i></button>
                         </div>
                     {{ Form::close() }}
                 </div>
