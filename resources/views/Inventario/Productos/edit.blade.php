@@ -2,10 +2,13 @@
 @push('scripts-vista')
     <script type="text/javascript" src="{{ URL::asset ('js/Eventos/ProductoAñadirEditar.js') }}"></script>    
     <script>
-        $('#ID_UnidadMedida').val($Producto->ID_UnidadMedida);
-        $('#ID_Divisa').val($Producto->ID_Divisa);
-        $('#ID_Categoria').val($Producto->ID_Categoria);
-        $('#ID_Proveedor').val($Producto->ID_Proveedor);
+        $('#ID_UnidadMedida').val({{$Producto->ID_UnidadMedida}});
+        $('#ID_Divisa').val({{$Producto->ID_Divisa}});
+        $('#ID_Categoria').val({{$Producto->ID_Categoria}});
+        $('#ID_Proveedor').val({{$Producto->ID_Proveedor}});
+        if ({{$Producto->Es_Repuesto}} == true){
+            $('#divrepuesto').removeClass('quitardiv');
+        }
     </script>
 @endpush
 @section('content')

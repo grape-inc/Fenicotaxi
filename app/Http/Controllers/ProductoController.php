@@ -135,7 +135,9 @@ class ProductoController extends Controller
         $Producto->Modelo=$Request->get('Modelo');
         $Producto->Origen=$Request->get('Origen');
         $Producto->Marca=$Request->get('Marca');
-        $Producto->Imagen=$Base;
+        if ($Base != ""){
+            $Producto->Imagen=$Base;
+        }
         $Producto->update();
         return redirect()->action('ProductoController@index');
     }
