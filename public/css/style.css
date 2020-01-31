@@ -13445,3 +13445,11 @@ a > i{
 .table th img, .table td img {  
   border-radius: 5%;
 }
+
+.logo-login{
+  text-align:center;
+}
+
+.ajustarbotonlogin{
+  padding-bottom: 25px !important;
+}

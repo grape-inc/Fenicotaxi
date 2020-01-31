@@ -12,10 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('Dashboard.dashboard');
+    return view('Login.index');
 });
 
 Route::resource('Login','LoginController');
+Route::resource('Dashboard','DashboardController');
 Route::resource('Inventario/Categorias', 'CategoriaProductoController');
 Route::resource('Inventario/Proveedores', 'ProveedorController');
 Route::resource('Inventario/Productos', 'ProductoController');
