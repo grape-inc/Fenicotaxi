@@ -51,7 +51,7 @@
                             </div>
                                 <input type="text" class="form-control" placeholder="Ingresa apellido del cliente" name="Apellido_Cliente">
                         </div>
-                        @error('Descripcion_Categoria')
+                        @error('Apellido_Cliente')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
