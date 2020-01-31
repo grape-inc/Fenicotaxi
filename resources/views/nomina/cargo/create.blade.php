@@ -56,7 +56,7 @@
                         @enderror
                     </div>
                     </div>
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center mb-4">
                         <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Crear Cargo<i class="mdi mdi-file-check btn-icon-append"></i></button>
                     </div>
                     {{ Form::close() }}

@@ -25,8 +25,18 @@ class CargoFormRequest extends FormRequest
     {
         return [
             'Nombre_Cargo' => 'required|max:60',
-            'Salario_Cargo' => 'required|numeric'
+            'Salario_Cargo' => 'required|numeric|min:0'
             //
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'Nombre_Cargo.required' => 'El nombre del cargo es requerido, no puede estar vacío',
+            'Salario_Cargo.required' => 'El monto de salario es requerido, no puede estar vacío',
+            'Salario_Cargo.numeric' => 'El monto de salario debe ser un numero valido, mayor que 0',
+            'Salario_Cargo.min' => 'El monto de salario debe ser un numero mayor que 0'
         ];
     }
 }

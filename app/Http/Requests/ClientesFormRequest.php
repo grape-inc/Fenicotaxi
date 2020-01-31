@@ -24,13 +24,19 @@ class ClientesFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'ID_Cliente' => 'required',
             'Nombre_Cliente' => 'required|max:100',
-            'Apellido_Cliente' => 'required|max1:00',
-            'Cedula' => 'required|max20',
-            'Fecha_Ingreso' => 'nullable|date',
-            'Correo' => 'email|max:100',
-            'Fecha_Realizacion' => 'nullable|date',
+            'Apellido_Cliente' => 'required|max:100',
+            'Cedula' => 'required|max:20',
+            'Correo' => 'email|max:100'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'Nombre_Cliente.required' => 'El nombre del cliente es requerido, no puede estar vacio',
+            'Apellido_Cliente.required'=> 'El apellido del  cliente es requerido, no puede estar vacio',
+            'Cedula.required' => 'La cedula del cliente es requerida, no puede estar vacio',
         ];
     }
 }
