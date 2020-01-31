@@ -9,7 +9,7 @@ use App\Empleado;
 
 class LoginController extends Controller
 {
-    public function index(Request $Request){    
+    public function index(Request $Request){
         Session::flush();
         return view('Login.index');
     }

@@ -47,7 +47,7 @@
                 <a class="dropdown-item" href="{{ URL::route('Empleado.edit', session('ID_Empleado'))}}">
                   <i class="mdi mdi-cached mr-2 text-success"></i> Mi Perfil </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ URL::route('Login.index')}}">
+                <a class="dropdown-item" href="/">
                   <i class="mdi mdi-logout mr-2 text-primary"></i> Cerrar Sesión </a>
               </div>
             </li>
