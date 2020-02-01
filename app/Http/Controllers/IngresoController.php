@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\IngresosFormRequest;
 use Illuminate\Http\Request;
 use DB;
 use App\Ingreso;
@@ -30,7 +31,7 @@ class IngresoController extends Controller
         return view('Inventario.Ingresos.Create',["empleado"=>$empleado,"producto"=>$producto,"proveedor"=>$proveedor]);
     }
 
-    public function store(Request $request){
+    public function store(IngresosFormRequest $request){
         try{
             DB::beginTransaction();
             $request->validate([

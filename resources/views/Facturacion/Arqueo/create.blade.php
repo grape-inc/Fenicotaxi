@@ -35,7 +35,7 @@
                                     <i class="mdi mdi-cash-register"></i>
                                 </button>
                             </div>
-                                <input type="text" class="form-control" placeholder="Ingrese el saldo inicial" name="Saldo_Inicial">
+                                <input type="number" class="form-control" step="0.01"placeholder="Ingrese el saldo inicial" name="Saldo_Inicial">
                         </div>
                         @error('Saldo_Inicial')
                             <p class="text-danger">{{ $message }}</p>

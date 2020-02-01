@@ -70,7 +70,7 @@
                                                 <i class="mdi mdi-upload-network-outline"></i>
                                             </button>
                                         </div>
-                                            <input type="number" class="form-control" id="Impuesto" name="Impuesto" value="0.15" placeholder="Ingrese el impuesto" readonly>
+                                            <input type="number" step="0.01" class="form-control" id="Impuesto" name="Impuesto" value="0.15" placeholder="Ingrese el impuesto" readonly>
                                     </div>
                                     @error('Impuesto')
                                     <p class="text-danger">{{ $message }}</p>
@@ -122,7 +122,7 @@
                 <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Detalle de Productos</h4>
-                        <div class="row" style="outline: 1px solid purple; padding: 10px;">
+                        <div class="row">
                             <div class="col-xl-12">
                                 <h4 class="card-title">Productos</h4>
                             </div>

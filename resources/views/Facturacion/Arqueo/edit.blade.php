@@ -247,7 +247,7 @@
                                             <i class="mdi mdi-cash"></i>
                                         </button>
                                     </div>
-                                        <input type="text" class="form-control" placeholder="Monto" name="Saldo_Final" value = "{{$arqueo->M050}}">
+                                        <input type="number" step="0.01" class="form-control" placeholder="Monto" name="Saldo_Final" value = "{{$arqueo->M050}}">
                                 </div>
                                 @error('Saldo_Final')
                                 <p class="text-danger">{{ $message }}</p>
