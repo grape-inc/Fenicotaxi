@@ -14,7 +14,7 @@
             </span> Empleados </h3>
             <a href="{{ URL::route('Empleado.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
         </div>
-        {{Form::open(array('url' => URL::route('Empleado.update',$Empleado->ID_Empleado), 'method' => 'put', 'files' => true))}}        
+        {{Form::open(array('url' => URL::route('Empleado.update',$Empleado->ID_Empleado), 'method' => 'put', 'files' => true))}}
             <div class="row">
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">

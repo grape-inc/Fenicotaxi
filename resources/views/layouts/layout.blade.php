@@ -107,6 +107,7 @@
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Cargo.index')}}">Cargos</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Empleado.index')}}">Empleados</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Horas.index')}}">Horas Laborales</a></li>
                 </ul>
               </div>
             </li>
@@ -156,6 +157,8 @@
     <script src="{{{asset('js/Plugins/jszip.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/pdfmake.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/vfs_fonts.js')}}}"></script>
+    <script src="{{{asset('js/Plugins/buttons.html5.min.js')}}}"></script>
+    <script src="{{{asset('js/Plugins/buttons.print.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/bootstrap-select.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/sweetalert.js')}}}"></script>
     <script src="{{{asset('js/Plugins/misc.js')}}}"></script>
