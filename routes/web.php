@@ -26,6 +26,7 @@ Route::resource('Configuracion/Usuarios', 'UsuarioController');
 Route::resource('Facturacion/Cliente','ClienteController');
 Route::resource('Nomina/Rol','RolController');
 Route::resource('Nomina/Empleado','EmpleadoController');
+Route::resource('Nomina/Horas','HorasController');
 Route::resource('Inventario/UnidadesDeMedida','UnidadesDeMedidaController');
 Route::resource('Nomina/Cargo','CargoController');
 Route::resource('Facturacion/Arqueo','ArqueoController');
