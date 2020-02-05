@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Divisa extends Model
 {    
-    protected $table = 'Divisa';
+    protected $table = 'divisa';
     protected $primaryKey = 'ID_Divisa';
     public $timestamps = false;
 

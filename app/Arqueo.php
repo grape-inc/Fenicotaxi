@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Arqueo extends Model
 {
-    protected $table = 'ArqueoCaja';
+    protected $table = 'arqueoCaja';
     protected $primaryKey = 'ID_Jornada';
     public $timestamps = false;
     protected $fillable = [

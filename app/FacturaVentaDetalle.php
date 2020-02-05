@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FacturaVentaDetalle extends Model
 {
-    protected $table = 'Factura_Venta_Detalle';
+    protected $table = 'factura_venta_detalle';
     protected $primaryKey = 'ID_Factura';
     public $timestamps = false;
     protected $fillable = [

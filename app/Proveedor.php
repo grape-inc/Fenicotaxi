@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proveedor extends Model
 {
-    protected $table = 'Proveedor';
+    protected $table = 'proveedor';
     protected $primaryKey = 'ID_Proveedor';
     public $timestamps = false;
 

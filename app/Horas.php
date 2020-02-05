@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Horas extends Model
 {
-    protected $table = 'Empleado_Hora_Laborada';
+    protected $table = 'empleado_hora_laborada';
     protected $primaryKey = 'ID_Empleado';
     public $timestamps = false;
     protected $fillable = [
