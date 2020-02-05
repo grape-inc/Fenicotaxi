@@ -1,7 +1,7 @@
 @extends('layouts.layout')
-@push('scripts-vista')    
-    <script>
-        $('#ID_Empleado').val({{$Empleado->ID_Empleado}});
+@push('scripts-vista')
+    <script>         
+         $('#ID_Empleado').val({{$Horas->ID_Empleado}});
     </script>
 @endpush
 @section('content')
@@ -19,7 +19,7 @@
                   <div class="card-body">
                     <h4 class="card-title">Formulario para editar horas laborales</h4>
                     <p class="card-description">Completa los campos para editar las horas laborales</p>
-                    {{ Form::open(array('url' => URL::route('Horas.update',$Emp->ID_Empleado), 'method' => 'put'))}}
+                    {{ Form::open(array('url' => URL::route('Horas.update',$Horas->ID_Empleado), 'method' => 'put'))}}
                         {{ csrf_field() }}
                         <div class="form-group">
                             {{Form::label('ID_Empleado', 'Empleado')}}
@@ -30,8 +30,8 @@
                                     </button>
                                 </div>
                                 <select name="ID_Empleado" class="selectpicker form-control" data-live-search="true">
-                                    @foreach ($Empleados as $Emp)
-                                        <option data-subtext="#{{$Emp->ID_Empleado}}" value="{{ $Emp->ID_Empleado}}">{{$Empleados->Nombre_Empleado . " " . $Empleados->Apellido_Empleado }}</option>
+                                    @foreach ($Empleado as $Emp)
+                                        <option data-subtext="#{{$Emp->ID_Empleado}}" value="{{ $Emp->ID_Empleado}}">{{$Emp->Nombre_Empleado . " " . $Emp->Apellido_Empleado }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -48,7 +48,7 @@
                                         <i class="mdi mdi-apps-box"></i>
                                     </button>
                                 </div>
-                                {{ Form::date('Fecha_Registro',$Empleado->Fecha_Registro,array('id'=>'Fecha_Registro','class'=>'form-control','readonly'))}}
+                                {{ Form::date('Fecha_Registro',$Horas->Fecha_Registro,array('id'=>'Fecha_Registro','class'=>'form-control','readonly'))}}
                             </div>
 
                             @error('Fecha_Registro')
@@ -64,7 +64,7 @@
                                         <i class="mdi mdi mdi-apps"></i>
                                     </button>
                                 </div>
-                                {{ Form::number('Horas_Laboradas',$Empleado->Horas_Laboradas,array('id'=>'Horas_Laboradas','class'=>'form-control','placeholder'=>'Ingresa las horas laboradas','min'=>'0','max'=>'8'))}}
+                                {{ Form::number('Horas_Laboradas',$Horas->Horas_Laboradas,array('id'=>'Horas_Laboradas','class'=>'form-control','placeholder'=>'Ingresa las horas laboradas','min'=>'0','max'=>'8'))}}
                             </div>
                             @error('Horas_Laboradas')
                                 <p class="text-danger">{{ $message }}</p>
@@ -72,7 +72,7 @@
                         </div>
 
                         <div class="row justify-content-center">
-                            <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Agregar Horas<i class="mdi mdi-file-check btn-icon-append"></i></button>
+                            <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Editar Horas<i class="mdi mdi-file-check btn-icon-append"></i></button>
                         </div>
                     {{ Form::close() }}
                 </div>

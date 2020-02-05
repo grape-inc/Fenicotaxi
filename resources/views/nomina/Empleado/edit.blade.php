@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 @push('scripts-vista')    
     <script>
-        $('#ID_Cargo').val($Empleado->ID_Cargo);
-        $('#ID_Rol').val($Empleado->ID_Rol);
+        $('#ID_Cargo').val({{$Empleado->ID_Cargo}});
+        $('#ID_Rol').val({{$Empleado->ID_Rol}});
     </script>
 @endpush
 @section('content')

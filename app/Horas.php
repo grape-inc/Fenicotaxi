@@ -11,7 +11,6 @@ class Horas extends Model
     public $timestamps = false;
     protected $fillable = [
         'Fecha_Registro',
-        'Horas_Laboradas',
-        'Comentarios'
+        'Horas_Laboradas'
     ];
 }

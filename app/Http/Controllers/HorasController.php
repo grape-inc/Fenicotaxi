@@ -26,17 +26,16 @@ class HorasController extends Controller
     }
     
     public function edit(Request $Request,$ID){
-        $Empleado=  Empleado::all();        
+        $Empleado=  Empleado::all();
         $Horas = Horas::where('ID_Empleado','=',$ID)
-                 ->where('Fecha_Registro','=',$Request->Fecha_Registro)->get();
+                 ->where('Fecha_Registro','=',$Request->Fecha_Registro)->get()->first();
         return view ('Nomina.Horas.edit',[
-            'Empleados' => $Empleado,
-            'Empleado' => $Horas,
+            'Empleado' => $Empleado,
+            'Horas' => $Horas,
         ]);
     }
 
     public function store(Request $Request){
-            
         $Horas = new Horas();
         $Horas->ID_Empleado=$Request->get('ID_Empleado');
         $Horas->Fecha_Registro=$Request->get('Fecha_Registro');
@@ -46,10 +45,8 @@ class HorasController extends Controller
     }
 
     public function update(Request $Request, $ID){
-        dd($ID);
-        $Horas=Horas::findOrFail($ID);
-        $Horas->ID_Empleado=$Request->get('ID_Empleado');
-        $Horas->Fecha_Registro=$Request->get('Fecha_Registro');
+        $Horas= Horas::where('ID_Empleado','=',$ID)
+               ->where('Fecha_Registro','=',$Request->Fecha_Registro)->get()->first();
         $Horas->Horas_Laboradas=$Request->get('Horas_Laboradas');
         $Horas->update();
         return redirect()->action('HorasController@index');
