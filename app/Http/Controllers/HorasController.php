@@ -46,9 +46,8 @@ class HorasController extends Controller
 
     public function update(Request $Request, $ID){
         $Horas= Horas::where('ID_Empleado','=',$ID)
-               ->where('Fecha_Registro','=',$Request->Fecha_Registro)->get()->first();
-        $Horas->Horas_Laboradas=$Request->get('Horas_Laboradas');
-        $Horas->update();
+               ->where('Fecha_Registro','=',$Request->Fecha_Registro)
+               ->update(['Horas_Laboradas'=>$Request->get('Horas_Laboradas')]);;
         return redirect()->action('HorasController@index');
     }
 }
