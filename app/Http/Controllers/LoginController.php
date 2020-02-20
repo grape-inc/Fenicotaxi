@@ -28,7 +28,7 @@ class LoginController extends Controller
             Session::put('Apellido', $Usuario->Apellido_Empleado);
             Session::put('Imagen', $Usuario->Imagen);
             if(Hash::check($Request->Password, $Usuario->Password))
-                return redirect()->action('DashboardController@index');
+                return redirect()->action('ProductoController@index');
             else{
                 flash('La contraseña no es correcta.')->error();
                 return redirect()->back();
