@@ -43,7 +43,9 @@ class IngresosFormRequest extends FormRequest
             'Total.min' => 'El total debe ser mayor que 0',
             'ID_Producto.required' => 'Es necesario que agregue un producto',
             'Cantidad.required' => 'Es necesario que agregue la cantidad',
-            'Precio.required' => 'Es necesario que agregue el precio'
+            'Precio.required' => 'Es necesario que agregue el precio',
+            'Codigo_Ingreso.required' => 'Es necesario introducir un codigo',
+            'Codigo_Ingreso.numeric' => 'La secuencia del codigo debe ser numerica'
         ];
     }
 }

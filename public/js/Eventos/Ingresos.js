@@ -4,6 +4,9 @@ $(document).ready(function () {
 
 function ConfigurarTablas() {
     $('#TablaIngreso').DataTable({
+        "order": [
+            [0, "desc"]
+        ],
         dom: 'Bfrtip',
         "autoWidth": true,
         buttons: [{
