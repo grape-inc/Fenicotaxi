@@ -16,7 +16,6 @@ Route::get('/', function () {
 });
 
 Route::resource('Login','LoginController');
-Route::resource('Dashboard','DashboardController');
 Route::resource('Inventario/Categorias', 'CategoriaProductoController');
 Route::resource('Inventario/Proveedores', 'ProveedorController');
 Route::resource('Inventario/Productos', 'ProductoController');
@@ -27,6 +26,7 @@ Route::resource('Facturacion/Cliente','ClienteController');
 Route::resource('Nomina/Rol','RolController');
 Route::resource('Nomina/Empleado','EmpleadoController');
 Route::resource('Nomina/Horas','HorasController');
+Route::resource('Nomina/Nomina','NominaController');
 Route::resource('Inventario/UnidadesDeMedida','UnidadesDeMedidaController');
 Route::resource('Nomina/Cargo','CargoController');
 Route::resource('Facturacion/Arqueo','ArqueoController');

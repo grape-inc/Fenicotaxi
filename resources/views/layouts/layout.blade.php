@@ -59,13 +59,7 @@
       </nav>
       <div class="container-fluid page-body-wrapper">
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" href="{{ URL::route('Categorias.index')}}">
-                <span class="menu-title">Dashboard</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-            </li>
+          <ul class="nav">            
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#inventario" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Inventario</span>
@@ -108,6 +102,7 @@
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Cargo.index')}}">Cargos</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Empleado.index')}}">Empleados</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Horas.index')}}">Horas Laborales</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Nomina.index')}}">Nomina</a></li>
                 </ul>
               </div>
             </li>
