@@ -15,6 +15,7 @@ class AddDefaulAdmin extends Seeder
     public function run()
     {
         DB::table('empleado')->insert([
+            'ID_Empleado' => '1',
             'Nombre_Empleado' => 'Admin',
             'Apellido_Empleado' => 'Admin',
             'Fecha_Nacimiento' => '2020-01-01',
@@ -24,7 +25,6 @@ class AddDefaulAdmin extends Seeder
             'Password'=> Hash::make('password'),
             'Correo' => 'admin@admin.com',
             'ID_Cargo' => '1',
-            'Imagen' => '1',
             'ID_Rol' => '1'
         ]);
     }

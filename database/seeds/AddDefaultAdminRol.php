@@ -13,6 +13,7 @@ class AddDefaultAdminRol extends Seeder
     public function run()
     {
         DB::table('rol')->insert([
+            'ID_Rol' => '1',
             'Nombre_Rol' => 'Admin'
         ]);
     }
