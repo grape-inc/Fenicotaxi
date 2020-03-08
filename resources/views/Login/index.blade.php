@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>    
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Fenicotaxi - Login</title>
@@ -12,10 +12,10 @@
     <link rel="icon" href="{{{asset('images/favicon.png')}}}" />
   </head>
   <body>
-  {{Form::open(array('url' => URL::route('Login.store'), 'method' => 'post'))}}    
+  {{Form::open(array('url' => URL::route('Login.store'), 'method' => 'post'))}}
     {{ csrf_field() }}
     <div class="container-scroller">
-      <div class="container-fluid page-body-wrapper full-page-wrapper">        
+      <div class="container-fluid page-body-wrapper full-page-wrapper">
         <div class="content-wrapper d-flex align-items-center auth">
           <div class="row flex-grow">
             <div class="col-lg-4 mx-auto">
@@ -29,7 +29,7 @@
                 <form class="pt-3">
                   <div class="form-group">
                       {{Form::label('Usuario', 'Usuario')}}
-                      <div class="input-group">                                
+                      <div class="input-group">
                           <div class="input-group-prepend">
                               <button class="btn btn-sm btn-primary" type="button">
                                   <i class="mdi mdi-account"></i>
@@ -44,12 +44,12 @@
                   </div>
                   <div class="form-group">
                       {{Form::label('Password', 'Contraseña')}}
-                      <div class="input-group">                                
+                      <div class="input-group">
                           <div class="input-group-prepend">
                               <button class="btn btn-sm btn-primary" type="button">
                                   <i class="mdi mdi-security"></i>
                               </button>
-                          </div>                          
+                          </div>
                           {{ Form::password('Password',array('id'=>'Password','class'=>'form-control','placeholder'=>'Ingresa tu contraseña'))}}
                       </div>
 
@@ -57,7 +57,7 @@
                           <p class="text-danger">{{ $message }}</p>
                       @enderror
                   </div>
-                  <div class="mt-3">                    
+                  <div class="mt-3">
                     <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn"> Autenticar </button>
                   </div>
                 </form>
@@ -65,10 +65,10 @@
             </div>
           </div>
         </div>
-      </div>      
+      </div>
     </div>
   {{ Form::close() }}
-    <script src="{{{asset('vendors/js/vendor.bundle.base.js')}}}"></script>    
+    <script src="{{{asset('vendors/js/vendor.bundle.base.js')}}}"></script>
     <script src="{{{asset('js/Plugins/sweetalert.js')}}}"></script>
     <script src="{{{asset('js/Plugins/misc.js')}}}"></script>
     <script src="{{{asset('js/Plugins/hoverable-collapse.js')}}}"></script>

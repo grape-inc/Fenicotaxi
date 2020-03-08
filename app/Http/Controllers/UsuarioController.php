@@ -14,15 +14,15 @@ class UsuarioController extends Controller
         return view('Configuracion.Usuario.index') ->with('Empleado', $Empleado);
     }
 
-    public function edit($ID){        
-        $Usuario = Empleado::find($ID);                
-        return view ('Configuracion.Usuario.edit',[        
+    public function edit($ID){
+        $Usuario = Empleado::find($ID);
+        return view ('Configuracion.Usuario.edit',[
             'Usuario' => $Usuario
         ]);
     }
 
     public function update(Request $Request, $ID){
-        
+
         $Request->validate([
             'ID_Empleado' => 'required',
             'Usuario' => 'required',
@@ -32,11 +32,11 @@ class UsuarioController extends Controller
         $Empleado = Empleado::findOrFail($ID);
         $Empleado->Usuario=$Request->get('Usuario');
         $Empleado->Password=bcrypt($Request->get('Password'));
-        
+
         $Empleado->update();
         return redirect()->action('UsuarioController@index');
     }
-    public function destroy($ID){        
+    public function destroy($ID){
         $Empleado=Empleado::findOrFail($ID);
         $Empleado->Usuario=null;
         $Empleado->Password=null;

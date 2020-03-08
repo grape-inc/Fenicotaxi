@@ -14,9 +14,9 @@ use Session;
 class EmpleadoController extends Controller
 {
     public function index(Request $Request){
-        $Empleado = DB::table('empleado')
-            ->join('cargo', 'empleado.id_cargo', '=', 'cargo.id_cargo')            
-            ->get();        
+        $Empleado = DB::table('Empleado')
+            ->join('cargo', 'Empleado.id_cargo', '=', 'Cargo.id_cargo')
+            ->get();
         return view('Nomina.Empleado.index') ->with('Empleado', $Empleado);
     }
 
@@ -29,14 +29,14 @@ class EmpleadoController extends Controller
         ]);
     }
 
-    public function store(Request $Request){        
-        $Base = "";        
+    public function store(Request $Request){
+        $Base = "";
         if ($Request->hasFile('Imagen')) {
             $Base = $Request->file('Imagen')->getRealPath();
             $Base = file_get_contents($Base);
             $Base = base64_encode($Base);
-        }           
-        $Request->validate([            
+        }
+        $Request->validate([
             'Nombre_Empleado' => 'required|max:100',
             'Apellido_Empleado' => 'required',
             'Fecha_Nacimiento' => 'required',
@@ -46,7 +46,7 @@ class EmpleadoController extends Controller
             'ID_Rol' => 'required',
         ]);
 
-        $Empleado = new Empleado();        
+        $Empleado = new Empleado();
         $Empleado->Nombre_Empleado=$Request->get('Nombre_Empleado');
         $Empleado->Apellido_Empleado=$Request->get('Apellido_Empleado');
         $Empleado->Fecha_Nacimiento=$Request->get('Fecha_Nacimiento');
@@ -77,13 +77,13 @@ class EmpleadoController extends Controller
             $Base = $Request->file('Imagen')->getRealPath();
             $Base = file_get_contents($Base);
             $Base = base64_encode($Base);
-        }   
-        
-        $Request->validate([            
+        }
+
+        $Request->validate([
             'Nombre_Empleado' => 'required|max:100',
             'Apellido_Empleado' => 'required',
             'Fecha_Nacimiento' => 'required',
-            'Cedula' => 'required',            
+            'Cedula' => 'required',
             'Correo' => 'required',
             'ID_Cargo' => 'required',
             'ID_Rol' => 'required',

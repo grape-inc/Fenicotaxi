@@ -12,8 +12,8 @@ use DB;
 class HorasController extends Controller
 {
     public function index(){
-        $Horas = DB::table('empleado_hora_laborada')
-            ->join('empleado', 'empleado.ID_Empleado', '=', 'empleado_hora_laborada.ID_Empleado')
+        $Horas = DB::table('Empleado_Hora_Laborada')
+            ->join('Empleado', 'Empleado.ID_Empleado', '=', 'Empleado_Hora_Laborada.ID_Empleado')
             ->get();
         return view('Nomina.Horas.index') ->with('Horas', $Horas);
     }
@@ -24,7 +24,7 @@ class HorasController extends Controller
             'Empleados' => $Empleado,
         ]);
     }
-    
+
     public function edit(Request $Request,$ID){
         $Empleado=  Empleado::all();
         $Horas = Horas::where('ID_Empleado','=',$ID)

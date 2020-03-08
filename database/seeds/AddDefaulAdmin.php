@@ -14,7 +14,7 @@ class AddDefaulAdmin extends Seeder
      */
     public function run()
     {
-        DB::table('empleado')->insert([
+        DB::table('Empleado')->insert([
             'ID_Empleado' => '1',
             'Nombre_Empleado' => 'Admin',
             'Apellido_Empleado' => 'Admin',

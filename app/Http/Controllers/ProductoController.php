@@ -16,9 +16,9 @@ use DB;
 class ProductoController extends Controller
 {
     public function index(Request $Request){
-        $Productos = DB::table('producto')
-            ->join('categoria_producto', 'producto.id_categoria', '=', 'categoria_producto.id_categoria')
-            ->join('proveedor', 'producto.id_proveedor', '=', 'proveedor.id_proveedor')
+        $Productos = DB::table('Producto')
+            ->join('Categoria_Producto', 'Producto.id_categoria', '=', 'Categoria_Producto.id_categoria')
+            ->join('Proveedor', 'Producto.id_proveedor', '=', 'Proveedor.id_proveedor')
             ->get();
         return view('Inventario.Productos.index') ->with('Productos',$Productos);
     }

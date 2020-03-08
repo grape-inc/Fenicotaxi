@@ -12,7 +12,7 @@ class AddDefaultAdminCargo extends Seeder
      */
     public function run()
     {
-        DB::table('cargo')->insert([
+        DB::table('Cargo')->insert([
             'ID_Cargo' => '1',
             'Nombre_cargo' => 'Admin',
             'Salario_Cargo' => '0000'
