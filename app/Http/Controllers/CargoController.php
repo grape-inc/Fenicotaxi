@@ -9,11 +9,11 @@ use App\Http\Requests\CargoFormRequest;
 class CargoController extends Controller
 {
     public function index(Request $request){
-        return view('Nomina.Cargo.index') ->with('Cargo', Cargo::all());
+        return view('nomina.cargo.index') ->with('Cargo', Cargo::all());
     }
 
     public function create(Request $request){
-        return view ('Nomina.Cargo.create');
+        return view ('nomina.cargo.create');
     }
 
     public function store(CargoFormRequest $Request){
@@ -25,7 +25,7 @@ class CargoController extends Controller
     }
 
     public function edit($ID){
-        return view("Nomina.Cargo.edit ",["cargo"=>Cargo::findOrFail($ID)]);
+        return view("nomina.cargo.edit ",["cargo"=>Cargo::findOrFail($ID)]);
     }
 
     public function update(CargoFormRequest $Request, $ID){

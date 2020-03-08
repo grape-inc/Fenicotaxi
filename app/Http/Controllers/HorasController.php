@@ -15,12 +15,12 @@ class HorasController extends Controller
         $Horas = DB::table('Empleado_Hora_Laborada')
             ->join('Empleado', 'Empleado.ID_Empleado', '=', 'Empleado_Hora_Laborada.ID_Empleado')
             ->get();
-        return view('Nomina.Horas.index') ->with('Horas', $Horas);
+        return view('nomina.Horas.index') ->with('Horas', $Horas);
     }
 
     public function create(Request $Request){
         $Empleado=  Empleado::all();
-        return view ('Nomina.Horas.create',[
+        return view ('nomina.Horas.create',[
             'Empleados' => $Empleado,
         ]);
     }
@@ -29,7 +29,7 @@ class HorasController extends Controller
         $Empleado=  Empleado::all();
         $Horas = Horas::where('ID_Empleado','=',$ID)
                  ->where('Fecha_Registro','=',$Request->Fecha_Registro)->get()->first();
-        return view ('Nomina.Horas.edit',[
+        return view ('nomina.Horas.edit',[
             'Empleado' => $Empleado,
             'Horas' => $Horas,
         ]);

@@ -36,7 +36,7 @@
                     <img src ="data:image/png;base64,{{{session('Imagen')}}}"  alt="ImagenProducto" class="img-thumbnail">
                   @else
                     <img src="{{{asset('images/dummy.jpg')}}}"/>
-                  @endif                  
+                  @endif
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
@@ -59,7 +59,7 @@
       </nav>
       <div class="container-fluid page-body-wrapper">
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">            
+          <ul class="nav">
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#inventario" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Inventario</span>
@@ -116,21 +116,10 @@
               <div class="collapse" id="configuracion">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Divisa.index')}}">Divisas</a></li>
-                </ul>
-              </div>
-
-              <div class="collapse" id="configuracion">
-                <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Usuarios.index')}}">Usuarios</a></li>
-                </ul>
-              </div>
-
-              <div class="collapse" id="configuracion">
-                <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Rol.index')}}">Roles</a></li>
                 </ul>
               </div>
-
           </ul>
         </nav>
         <!-- Contenido -->
@@ -148,7 +137,7 @@
     <script src="{{{asset('vendors/js/vendor.bundle.base.js')}}}"></script>
     <script src="{{{asset('js/Plugins/jquery.dataTables.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/dataTables.bootstrap4.min.js')}}}"></script>
-    <script src="{{{asset('js/Plugins/dataTables.buttons.min.js')}}}"></script> 
+    <script src="{{{asset('js/Plugins/dataTables.buttons.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/jszip.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/pdfmake.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/vfs_fonts.js')}}}"></script>

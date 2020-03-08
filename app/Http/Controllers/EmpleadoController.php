@@ -15,15 +15,15 @@ class EmpleadoController extends Controller
 {
     public function index(Request $Request){
         $Empleado = DB::table('Empleado')
-            ->join('cargo', 'Empleado.id_cargo', '=', 'Cargo.id_cargo')
+            ->join('Cargo', 'Empleado.id_cargo', '=', 'Cargo.id_cargo')
             ->get();
-        return view('Nomina.Empleado.index') ->with('Empleado', $Empleado);
+        return view('nomina.Empleado.index') ->with('Empleado', $Empleado);
     }
 
     public function create(){
         $Cargos =  Cargo::all();
         $Roles =  Rol::all();
-        return view ('Nomina.Empleado.create',[
+        return view ('nomina.Empleado.create',[
             'Cargos' => $Cargos,
             'Roles' => $Roles
         ]);
@@ -64,7 +64,7 @@ class EmpleadoController extends Controller
         $Cargos =  Cargo::all();
         $Roles =  Rol::all();
         $Empleado = Empleado::find($ID);
-        return view ('Nomina.Empleado.edit',[
+        return view ('nomina.Empleado.edit',[
             'Cargos' => $Cargos,
             'Roles' => $Roles,
             'Empleado' => $Empleado

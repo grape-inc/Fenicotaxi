@@ -19,20 +19,20 @@ class DivisaController extends Controller
     }
 
     public function update(Request $Request, $ID){
-        $Request->validate([            
+        $Request->validate([
             'Equivalencia_Cordoba' => 'required'
         ]);
         $Divisa = Divisa::findOrFail($ID);
-        $Divisa->Equivalencia_Cordoba=$Request->get('Equivalencia_Cordoba');        
-        $Divisa->update();    
+        $Divisa->Equivalencia_Cordoba=$Request->get('Equivalencia_Cordoba');
+        $Divisa->update();
         return redirect()->action('DivisaController@index',['Actualizado'=>true]);
     }
 
-    public function create(Request $Request){    
+    public function create(Request $Request){
         $Cliente = new Client();
         $Response = $Cliente->request('POST', 'https://www.baccredomatic.com/es-ni/bac/exchange-rate-ajax/es-ni');
         $DS = json_decode(($Response->getBody()->getContents()));
-        
+
         #Actualizar la divisa de dolares
         $Divisa = Divisa::findOrFail(1);
         $Divisa->Equivalencia_Cordoba=$DS->saleRateUSD;

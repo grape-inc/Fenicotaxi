@@ -11,6 +11,6 @@ use DB;
 class NominaController extends Controller
 {
     public function index(Request $Request){
-        return view('Nomina.Nomina.index') ->with('Nomina', Nomina::all());
+        return view('nomina.Nomina.index') ->with('Nomina', Nomina::all());
     }
 }

@@ -14,10 +14,10 @@ class IngresoController extends Controller
         $ingresos= DB::table('Ingreso as i')
         ->join('Proveedor as p','i.ID_Proveedor','=','p.ID_Proveedor')
         ->join('Empleado as e','i.ID_Empleado','=','e.ID_Empleado')
-        ->join('Ingreso_detalle as ide','i.Codigo_Ingreso','=','ide.Codigo_Ingreso')
+        ->join('Ingreso_Detalle as ide','i.Codigo_Ingreso','=','ide.Codigo_Ingreso')
         ->select('i.ID_Ingreso','i.Impuesto','i.Total','i.Fecha_Realizacion','p.Nombre_Proveedor','e.Nombre_Empleado','ide.Cantidad')
         ->get();
-        return view('Inventario.Ingresos.index',["ingresos"=>$ingresos]);
+        return view('inventario.Ingresos.index',["ingresos"=>$ingresos]);
     }
 
     public function create(){
@@ -27,7 +27,7 @@ class IngresoController extends Controller
         ->select(DB::Raw('CONCAT(prod.Cod_Producto," / ",prod.Nombre_Producto) as producto'),'prod.ID_Producto')
         ->where('prod.Existencias_Minimas','>','0')
         ->get();
-        return view('Inventario.Ingresos.Create',["empleado"=>$empleado,"producto"=>$producto,"proveedor"=>$proveedor]);
+        return view('inventario.Ingresos.create',["empleado"=>$empleado,"producto"=>$producto,"proveedor"=>$proveedor]);
     }
 
     public function store(IngresosFormRequest $request){
