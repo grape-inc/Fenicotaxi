@@ -1,11 +1,6 @@
 @extends('layouts.layout')
 @push('scripts-vista')
     <script type="text/javascript" src="{{ URL::asset ('js/Eventos/Ingresos.js') }}"></script>
-    @if (Request()->Eliminado)
-        <script>
-            Swal.fire('¡Excelente!','Eliminaste el registro correctamente.','success');
-        </script>
-    @endif
 @endpush
 
 @section('content')
@@ -30,7 +25,7 @@
                                         <th>Proveedor</th>
                                         <th>Vendedor</th>
                                         <th>Fecha Realizacion</th>
-                                        <th>Impuesto</th>
+                                        <th>Porcentaje de impuesto</th>
                                         <th>Total</th>
                                     </tr>
                                 </thead>
@@ -41,8 +36,8 @@
                                         <td>{{ $ingreso->Nombre_Proveedor }}</td>
                                         <td>{{ $ingreso->Nombre_Empleado }}</td>
                                         <td>{{ $ingreso->Fecha_Realizacion }}</td>
-                                        <td>{{ $ingreso->Impuesto }}</td>
-                                        <td>{{ $ingreso->Total }}</td>
+                                        <td>{{ ($ingreso->Impuesto) * 100 }}%</td>
+                                        <td>{{ $ingreso->Total }} C$</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

@@ -36,11 +36,21 @@ class HorasController extends Controller
     }
 
     public function store(Request $Request){
-        $Horas = new Horas();
-        $Horas->ID_Empleado=$Request->get('ID_Empleado');
-        $Horas->Fecha_Registro=$Request->get('Fecha_Registro');
-        $Horas->Horas_Laboradas=$Request->get('Horas_Laboradas');
-        $Horas->save();
+        $Request->validate([
+            'ID_Empleado' => 'required',
+            'Fecha_Registro' => 'required',
+            'Horas_Laboradas' => 'required'
+        ]);
+        try {
+            $Horas = new Horas();
+            $Horas->ID_Empleado=$Request->get('ID_Empleado');
+            $Horas->Fecha_Registro=$Request->get('Fecha_Registro');
+            $Horas->Horas_Laboradas=$Request->get('Horas_Laboradas');
+            $Horas->save();
+        } catch (\Exception $E) {
+            flash('Ya existe un registro de horas asociado a este empleado en este dia.')->error();
+            return redirect()->back();
+        }
         return redirect()->action('HorasController@index');
     }
 

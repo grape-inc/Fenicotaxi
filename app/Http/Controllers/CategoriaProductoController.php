@@ -40,8 +40,13 @@ class CategoriaProductoController extends Controller
         return redirect()->action('CategoriaProductoController@index');
     }
     public function destroy($ID){
-        $Categorias=CategoriaProducto::findOrFail($ID);
-        $Categorias->where('ID_Categoria',$ID)->delete();
-        return route('Categorias.index', ['Eliminado' => true]);
+        $Eliminado = true;
+        try {
+            $Categorias=CategoriaProducto::findOrFail($ID);
+            $Categorias->where('ID_Categoria',$ID)->delete();
+        } catch (\Exception $E) {
+            $Eliminado = false;
+        }
+        return route('Categorias.index', ['Eliminado' => $Eliminado]);
     }
 }

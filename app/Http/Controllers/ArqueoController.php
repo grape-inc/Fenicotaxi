@@ -60,8 +60,13 @@ class ArqueoController extends Controller
         return redirect()->action('ArqueoController@index');
     }
     public function destroy($ID){
-        $Arqueo=Arqueo::findOrFail($ID);
-        $Arqueo->where('ID_Jornada',$ID)->delete();
-        return route('Arqueo.index', ['Eliminado' => true]);
+        $Eliminado = true;
+        try {
+            $Arqueo=Arqueo::findOrFail($ID);
+            $Arqueo->where('ID_Jornada',$ID)->delete();
+        } catch (\Exception $E) {
+            $Eliminado = false;
+        }
+        return route('Arqueo.index', ['Eliminado' => $Eliminado]);
     }
 }

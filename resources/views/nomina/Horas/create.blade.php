@@ -8,6 +8,7 @@
             </span> Horas Laborales </h3>
             <a href="{{ URL::route('Horas.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
         </div>
+        @include('flash::message')
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
@@ -16,7 +17,7 @@
                     <p class="card-description">Completa los campos para añadir las horas laborales</p>
                     {{ Form::open(array('url' => URL::route('Horas.store'), 'method' => 'post'))}}
                         {{ csrf_field() }}
-                        
+
                         <div class="form-group">
                             {{Form::label('ID_Empleado', 'Empleado')}}
                             <div class="input-group">
@@ -35,7 +36,7 @@
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                        
+
                         <div class="form-group">
                             {{Form::label('Fecha_Registro', 'Fecha de registro')}}
                             <div class="input-group">
@@ -51,7 +52,7 @@
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                                                
+
                         <div class="form-group">
                             {{Form::label('Horas_Laboradas', 'Horas Laboradas')}}
                             <div class="input-group">
@@ -75,4 +76,4 @@
             </div>
         </div>
     </div>
-@endsection 
+@endsection

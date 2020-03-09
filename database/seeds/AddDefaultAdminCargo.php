@@ -14,7 +14,7 @@ class AddDefaultAdminCargo extends Seeder
     {
         DB::table('Cargo')->insert([
             'ID_Cargo' => '1',
-            'Nombre_cargo' => 'Admin',
+            'Nombre_cargo' => 'Administrador',
             'Salario_Cargo' => '0000'
         ]);
     }

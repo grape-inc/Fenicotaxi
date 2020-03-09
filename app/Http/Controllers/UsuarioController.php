@@ -37,10 +37,16 @@ class UsuarioController extends Controller
         return redirect()->action('UsuarioController@index');
     }
     public function destroy($ID){
+        $Eliminado = true;
         $Empleado=Empleado::findOrFail($ID);
-        $Empleado->Usuario=null;
-        $Empleado->Password=null;
-        $Empleado->update();
-        return route('Usuarios.index', ['Eliminado' => true]);
+        if($Empleado->ID_Rol != 1){
+            $Empleado->Usuario=null;
+            $Empleado->Password=null;
+            $Empleado->update();
+        }
+        else {
+            $Eliminado = false;
+        }
+        return route('Usuarios.index', ['Eliminado' => $Eliminado]);
     }
 }

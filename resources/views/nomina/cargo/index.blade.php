@@ -1,11 +1,17 @@
 @extends('layouts.layout')
 @push('scripts-vista')
     <script type="text/javascript" src="{{ URL::asset ('js/Eventos/Cargo.js') }}"></script>
-    @if (Request()->Eliminado)
-        <script>
-            Swal.fire('¡Excelente!','Eliminaste el registro correctamente.','success');
-        </script>
-    @endif
+    @isset(Request()->Eliminado)
+        @if (Request()->Eliminado)
+            <script>
+                Swal.fire('¡Excelente!','Eliminaste el registro correctamente.','success');
+            </script>
+        @else
+            <script>
+                Swal.fire('¡Error!','No se puede eliminar el cargo, Intenta eliminar todas las referencias a este y vuelve a intentarlo.','error');
+            </script>
+        @endif
+    @endisset
 @endpush
 
 @section('content')

@@ -1,11 +1,17 @@
 @extends('layouts.layout')
 @push('scripts-vista')
     <script type="text/javascript" src="{{ URL::asset ('js/Eventos/Arqueo.js') }}"></script>
-    @if (Request()->Eliminado)
-        <script>
-            Swal.fire('¡Excelente!','Eliminaste el registro correctamente.','success');
-        </script>
-    @endif
+    @isset(Request()->Eliminado)
+        @if (Request()->Eliminado)
+            <script>
+                Swal.fire('¡Excelente!','Eliminaste el registro correctamente.','success');
+            </script>
+        @else
+            <script>
+                Swal.fire('¡Error!','No se puede eliminar el arqueo, Intenta eliminar todas las referencias a este y vuelve a intentarlo.','error');
+            </script>
+        @endif
+    @endisset
 @endpush
 
 @section('content')
@@ -52,8 +58,8 @@
                                 @foreach($arqueo as $arq)
                                     <tr>
                                         <td>{{ $arq->ID_Jornada }}</td>
-                                        <td>{{ $arq->Saldo_Inicial }}</td>
-                                        <td>{{ $arq->Saldo_Final }}</td>
+                                        <td>{{ $arq->Saldo_Inicial }} C$</td>
+                                        <td>{{ $arq->Saldo_Final }} C$</td>
                                         <td>{{ $arq->Nombre_Empleado }}</td>
                                         <td>{{ $arq->Fecha_Jornada }}</td>
                                         <td>{{ $arq->Jornada_Abierta }}</td>

@@ -143,9 +143,14 @@ class ProductoController extends Controller
     }
 
     public function destroy($ID){
-        $Producto=Producto::findOrFail($ID);
-        $Producto->where('ID_Producto',$ID)->delete();
-        return route('Productos.index', ['Eliminado' => true]);
+        $Eliminado = true;
+        try {
+            $Producto=Producto::findOrFail($ID);
+            $Producto->where('ID_Producto',$ID)->delete();
+        } catch (\Exception $E) {
+            $Eliminado = false;
+        }
+        return route('Productos.index', ['Eliminado' => $Eliminado]);
     }
 
 }

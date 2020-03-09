@@ -21,9 +21,9 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Empleados Registrados en el sistema</h4>
+                        <h4 class="card-title">Nominas Generadas por el sistema</h4>
                         <div class="table-responsive">
-                            <table id="TablaEmpleados" class="table table-hover table-bordered">
+                            <table id="TablaNomina" class="table table-hover table-bordered">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>ID</th>

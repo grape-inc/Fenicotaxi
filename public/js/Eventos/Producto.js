@@ -6,8 +6,8 @@ function ConfigurarTablas() {
     $('#TablaProductos').DataTable({
         dom: 'Bfrtip',
         "autoWidth": true,
-        buttons: [            
-            {                
+        buttons: [
+            {
                 extend: 'excel',
                 text: 'Exportar a excel',
                 title: "Fenicotaxi",
@@ -77,4 +77,3 @@ function EliminarProducto(ID, URL) {
         }
     })
 }
-

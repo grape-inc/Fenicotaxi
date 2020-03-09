@@ -36,8 +36,13 @@ class CargoController extends Controller
         return redirect()->action('CargoController@index');
     }
     public function destroy($ID){
-        $Cargo=Cargo::findOrFail($ID);
-        $Cargo->where('ID_Cargo',$ID)->delete();
-        return route('Cargo.index', ['Eliminado' => true]);
+        $Eliminado = true;
+        try {
+            $Cargo=Cargo::findOrFail($ID);
+            $Cargo->where('ID_Cargo',$ID)->delete();
+        } catch (\Exception $E) {
+            $Eliminado = false;
+        }
+        return route('Cargo.index', ['Eliminado' => $Eliminado]);
     }
 }

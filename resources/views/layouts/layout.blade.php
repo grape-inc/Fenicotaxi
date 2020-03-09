@@ -86,7 +86,6 @@
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Cliente.index')}}">Clientes</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Venta.index')}}">Ventas</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Proveedores.index')}}">Compras</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Arqueo.index')}}">Arqueo</a></li>
                 </ul>
               </div>

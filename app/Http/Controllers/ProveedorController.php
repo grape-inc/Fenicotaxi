@@ -18,13 +18,13 @@ class ProveedorController extends Controller
     }
 
     public function store(Request $Request){
-        $Request->validate([            
+        $Request->validate([
             'Nombre_Proveedor' => 'required|max:80',
             'Direccion_Proveedor' => 'required',
             'Telefono' => 'required',
             'Contacto_Proveedor' => 'required'
         ]);
-        $Proveedor = new Proveedor();        
+        $Proveedor = new Proveedor();
         $Proveedor->Nombre_Proveedor=$Request->get('Nombre_Proveedor');
         $Proveedor->Direccion_Proveedor=$Request->get('Direccion_Proveedor');
         $Proveedor->Telefono=$Request->get('Telefono');
@@ -38,7 +38,7 @@ class ProveedorController extends Controller
     }
 
     public function update(Request $Request, $ID){
-        $Request->validate([            
+        $Request->validate([
             'Nombre_Proveedor' => 'required|max:80',
             'Direccion_Proveedor' => 'required',
             'Telefono' => 'required',
@@ -49,12 +49,17 @@ class ProveedorController extends Controller
         $Proveedor->Direccion_Proveedor=$Request->get('Direccion_Proveedor');
         $Proveedor->Telefono=$Request->get('Telefono');
         $Proveedor->Contacto_Proveedor=$Request->get('Contacto_Proveedor');
-        $Proveedor->update();    
+        $Proveedor->update();
         return redirect()->action('ProveedorController@index');
     }
-    public function destroy($ID){
-        $Proveedor=Proveedor::findOrFail($ID);
-        $Proveedor->where('ID_Proveedor',$ID)->delete();
-        return route('Proveedores.index', ['Eliminado' => true]);
+    public function destroy($ID) {
+        $Eliminado = true;
+        try {
+            $Proveedor=Proveedor::findOrFail($ID);
+            $Proveedor->where('ID_Proveedor',$ID)->delete();
+        } catch (\Exception $E) {
+            $Eliminado = false;
+        }
+        return route('Proveedores.index', ['Eliminado' => $Eliminado]);
     }
 }

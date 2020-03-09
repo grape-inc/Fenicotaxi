@@ -1,11 +1,17 @@
 @extends('layouts.layout')
 @push('scripts-vista')
     <script type="text/javascript" src="{{ URL::asset ('js/Eventos/Producto.js') }}"></script>
-    @if (Request()->Eliminado)
-        <script>
-            Swal.fire('¡Excelente!','Eliminaste el registro correctamente.','success');
-        </script>
-    @endif
+    @isset(Request()->Eliminado)
+        @if (Request()->Eliminado)
+            <script>
+                Swal.fire('¡Excelente!','Eliminaste el registro correctamente.','success');
+            </script>
+        @else
+            <script>
+                Swal.fire('¡Error!','No se puede eliminar el producto, Intenta eliminar todas las referencias a este y vuelve a intentarlo.','error');
+            </script>
+        @endif
+    @endisset
 @endpush
 @section('content')
     <div class="content-wrapper">
@@ -27,7 +33,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Imagen</th>
-                                        <th>Codigo de producto</th>                                        
+                                        <th>Codigo de producto</th>
                                         <th>Nombre de producto</th>
                                         <th>Descripción de producto</th>
                                         <th>Existencias</th>
@@ -42,7 +48,7 @@
                                 <tbody>
                                 @foreach($Productos as $CF)
                                     <tr>
-                                        <td>{{ $CF->ID_Producto }}</td>                                        
+                                        <td>{{ $CF->ID_Producto }}</td>
                                         @if($CF->Imagen != "")
                                             <td><img class="ImagenTamañoTabla" src ="data:image/png;base64,{{$CF->Imagen}}"/></td>
                                         @else
@@ -53,7 +59,7 @@
                                         <td>{{ $CF->Descripcion_Producto }}</td>
                                         <td>{{ $CF->Existencias }}</td>
                                         <td>{{ $CF->Existencias_Minimas }}</td>
-                                        <td>{{ $CF->Precio_Venta }}</td>
+                                        <td>{{ $CF->Precio_Venta }} C$</td>
                                         <td>{{ $CF->Nombre_Categoria }}</td>
                                         <td>{{ $CF->Nombre_Proveedor }}</td>
                                         <td> <a href="{{ URL::route('Productos.edit', $CF->ID_Producto)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>

@@ -41,8 +41,13 @@ class ClienteController extends Controller
         return redirect()->action('ClienteController@index');
     }
     public function destroy($id){
-        $clientes=Cliente::findOrFail($id);
-        $clientes->delete();
-        return route('Cliente.index', ['Eliminado' => true]);
+        $Eliminado = true;
+        try {
+            $clientes=Cliente::findOrFail($id);
+            $clientes->delete();
+        } catch (\Exception $E) {
+            $Eliminado = false;
+        }
+        return route('Cliente.index', ['Eliminado' => $Eliminado]);
     }
 }

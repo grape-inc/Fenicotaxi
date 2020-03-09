@@ -1,11 +1,17 @@
 @extends('layouts.layout')
 @push('scripts-vista')
     <script type="text/javascript" src="{{ URL::asset ('js/Eventos/CategoriasProducto.js') }}"></script>
-    @if (Request()->Eliminado)
-        <script>
-            Swal.fire('¡Excelente!','Eliminaste el registro correctamente.','success');
-        </script>
-    @endif
+    @isset(Request()->Eliminado)
+        @if (Request()->Eliminado)
+            <script>
+                Swal.fire('¡Excelente!','Eliminaste el registro correctamente.','success');
+            </script>
+        @else
+            <script>
+                Swal.fire('¡Error!','No se puede eliminar la categoria, Intenta eliminar todas las referencias a esta y vuelve a intentarlo.','error');
+            </script>
+        @endif
+    @endisset
 @endpush
 @section('content')
     <div class="content-wrapper">

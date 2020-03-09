@@ -13,4 +13,8 @@ class NominaController extends Controller
     public function index(Request $Request){
         return view('nomina.Nomina.index') ->with('Nomina', Nomina::all());
     }
+
+    public function create(Request $Request){
+        dd($Request);
+    }
 }

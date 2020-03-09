@@ -109,8 +109,13 @@ class EmpleadoController extends Controller
         return redirect()->action('EmpleadoController@index');
     }
     public function destroy($ID){
-        $Empleado=Empleado::findOrFail($ID);
-        $Empleado->where('ID_Empleado',$ID)->delete();
-        return route('Empleado.index', ['Eliminado' => true]);
+        $Eliminado = true;
+        try {
+            $Empleado=Empleado::findOrFail($ID);
+            $Empleado->where('ID_Empleado',$ID)->delete();
+        } catch (\Exception $E) {
+            $Eliminado = false;
+        }
+        return route('Empleado.index', ['Eliminado' => $Eliminado]);
     }
 }

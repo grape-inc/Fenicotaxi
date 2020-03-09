@@ -19,10 +19,10 @@ class UnidadesDeMedidaController extends Controller
     }
 
     public function store(Request $Request){
-        $Request->validate([            
+        $Request->validate([
             'Nombre_Unidad' => 'required|max:60'
         ]);
-        $Unidad = new UnidadMedida();        
+        $Unidad = new UnidadMedida();
         $Unidad->Nombre_Unidad=$Request->get('Nombre_Unidad');
         $Unidad->save();
         return redirect()->action('UnidadesDeMedidaController@index');
@@ -33,17 +33,22 @@ class UnidadesDeMedidaController extends Controller
     }
 
     public function update(Request $Request, $ID){
-        $Request->validate([            
+        $Request->validate([
             'Nombre_Unidad' => 'required|max:60'
         ]);
         $Unidad = UnidadMedida::findOrFail($ID);
-        $Unidad->Nombre_Unidad=$Request->get('Nombre_Unidad');        
-        $Unidad->update();    
+        $Unidad->Nombre_Unidad=$Request->get('Nombre_Unidad');
+        $Unidad->update();
         return redirect()->action('UnidadesDeMedidaController@index');
     }
     public function destroy($ID){
-        $Unidad=UnidadMedida::findOrFail($ID);
-        $Unidad->where('ID_Unidad',$ID)->delete();
-        return route('UnidadesDeMedida.index', ['Eliminado' => true]);
+        $Eliminado = true;
+        try {
+            $Unidad=UnidadMedida::findOrFail($ID);
+            $Unidad->where('ID_Unidad',$ID)->delete();
+        } catch (\Exception $E) {
+            $Eliminado = false;
+        }
+        return route('UnidadesDeMedida.index', ['Eliminado' => $Eliminado]);
     }
 }
