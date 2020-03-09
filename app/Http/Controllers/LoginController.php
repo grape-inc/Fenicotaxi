@@ -17,11 +17,11 @@ class LoginController extends Controller
     public function store(Request $Request){
         $Request->validate([
             'Usuario' => 'required',
-            'Password' => 'required'        
+            'Password' => 'required'
         ]);
-        
+
         $Usuario = Empleado::where('Usuario', $Request->Usuario)->first();
-        
+
         if($Usuario != null){
             Session::put('ID_Empleado', $Usuario->ID_Empleado);
             Session::put('Nombre', $Usuario->Nombre_Empleado);

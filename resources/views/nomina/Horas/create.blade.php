@@ -45,7 +45,7 @@
                                         <i class="mdi mdi-apps-box"></i>
                                     </button>
                                 </div>
-                                {{ Form::date('Fecha_Registro',date('Y-m-d'),array('id'=>'Fecha_Registro','class'=>'form-control','readonly'))}}
+                                {{ Form::date('Fecha_Registro',date('Y-m-d'),array('id'=>'Fecha_Registro','class'=>'form-control'))}}
                             </div>
 
                             @error('Fecha_Registro')

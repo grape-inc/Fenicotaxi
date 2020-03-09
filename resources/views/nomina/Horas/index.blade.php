@@ -35,10 +35,10 @@
                                 <tbody>
                                 @foreach($Horas as $Emp)
                                     <tr>
-                                        <td>{{ $Emp->ID_Empleado }}</td>
+                                        <td>#{{ $Emp->ID_Empleado }}</td>
                                         <td>{{ $Emp->Nombre_Empleado }}</td>
                                         <td>{{ $Emp->Fecha_Registro }}</td>
-                                        <td>{{ $Emp->Horas_Laboradas }}</td>
+                                        <td>{{ $Emp->Horas_Laboradas }} Horas</td>
                                         <td> <a href="{{ URL::route('Horas.edit', [$Emp->ID_Empleado,'Fecha_Registro'=>$Emp->Fecha_Registro])}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
                                     </tr>
                                 @endforeach

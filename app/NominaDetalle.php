@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class NominaDetalle extends Model
 {
-    protected $table = 'Nominadetalle';
+    protected $table = 'NominaDetalle';
     protected $primaryKey = 'ID_Nomina';
     public $timestamps = false;
     protected $fillable = [

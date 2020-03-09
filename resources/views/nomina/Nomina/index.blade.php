@@ -1,11 +1,17 @@
 @extends('layouts.layout')
 @push('scripts-vista')
     <script type="text/javascript" src="{{ URL::asset ('js/Eventos/Nomina.js') }}"></script>
-    @if (Request()->Eliminado)
-        <script>
-            Swal.fire('¡Excelente!','Eliminaste el registro correctamente.','success');
-        </script>
-    @endif
+    @isset(Request()->Eliminado)
+        @if (Request()->Eliminado)
+            <script>
+                Swal.fire('¡Excelente!','Eliminaste el registro correctamente.','success');
+            </script>
+        @else
+            <script>
+                Swal.fire('¡Error!','No se puede eliminar la nomina, Intenta eliminar todas las referencias a esta y vuelve a intentarlo.','error');
+            </script>
+        @endif
+    @endisset
 @endpush
 
 @section('content')
@@ -17,6 +23,7 @@
             </span> Nomina </h3>
             <a href="{{route('Nomina.create')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend"></i>General Nomina</a>
         </div>
+        @include('flash::message')
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
