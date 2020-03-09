@@ -11,9 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
         $this->call(AddDefaultAdminRol::class);
         $this->call(AddDefaultAdminCargo::class);
         $this->call(AddDefaulAdmin::class);
+        $this->call(AddDefaultCurrency::class);
     }
 }
