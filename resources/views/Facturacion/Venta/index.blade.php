@@ -33,7 +33,6 @@
                                         <th>Tipo Factura</th>
                                         <th>Descuento</th>
                                         <th>Total Facturado</th>
-                                        <th>Monto Restante</th>
                                         <th>Numero de Jornada</th>
                                         <th>Fecha Creacion</th>
                                         <th>Fecha Actualizacion</th>
@@ -51,7 +50,6 @@
                                         <td>{{ $fv->Es_Credito }}</td>
                                         <td>{{ $fv->Total_Facturado }}</td>
                                         <td>{{ $fv->ID_Jornada }}</td>
-                                        <td>{{ $fv->Monto_Restante }}</td>
                                         <td>{{ $fv->Fecha_Realizacion }}</td>
                                         <td>{{ $fv->Fecha_Actualizacion }}</td>
                                         <td>{{ $fv->Descuento }}</td>

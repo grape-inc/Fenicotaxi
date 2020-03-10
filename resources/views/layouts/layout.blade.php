@@ -101,7 +101,7 @@
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Cargo.index')}}">Cargos</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Empleado.index')}}">Empleados</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Horas.index')}}">Horas Laborales</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Nomina.index')}}">Nomina</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Nomina.index')}}">General Nomina</a></li>
                 </ul>
               </div>
             </li>

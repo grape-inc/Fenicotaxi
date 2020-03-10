@@ -39,7 +39,7 @@ class FacturaVentaController extends Controller
         $as = count($jornada);
 
         if ( $as == 1){
-            return view('Facturacion.Venta.Create',["empleado"=>$empleado,"producto"=>$producto,"cliente"=>$cliente,"divisa" =>$divisa]);
+            return view('Facturacion.Venta.create',["empleado"=>$empleado,"producto"=>$producto,"cliente"=>$cliente,"divisa" =>$divisa]);
         }else{
             flash('Necesita abrir caja para poder facturar')->error();
             return redirect()->action('FacturaVentaController@index');
