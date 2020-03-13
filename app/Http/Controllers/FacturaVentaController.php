@@ -47,7 +47,7 @@ class FacturaVentaController extends Controller
 
     }
     public function store(Request $request){
-        try{
+        try {
             DB::beginTransaction();
             $facturaventa=new FacturaVenta;
             $facturaventa->Codigo_Factura=$request->get('Codigo_Factura');
@@ -60,12 +60,17 @@ class FacturaVentaController extends Controller
 
             $facturaventa->Descuento=$request->get('Descuento');
             $facturaventa->SubTotal=$request->get('SubTotal');
+            $facturaventa->Total_Facturado=$request->get('Total_Facturado');
+            $facturaventa->ID_Empleado=$request->get('ID_Empleado');
+            $facturaventa->ID_Cliente=$request->get('ID_Cliente');
+            $facturaventa->ID_Divisa=$request->get('ID_Divisa');
 
             $mytime = Carbon::now('America/Managua');
             $facturaventa->Fecha_Realizacion = $mytime->toDateTimeString();
             $facturaventa->Fecha_Actualizacion = $mytime->toDateTimeString();
             $facturaventa->save();
 
+            dd($request);
             $producto = $request->get('ID_Producto');
             $cantidad = $request->get('Cantidad');
             $cont = 0;
@@ -83,6 +88,7 @@ class FacturaVentaController extends Controller
 
            }catch(\Exception $e)
            {
+              dd($e);
               DB::rollback();
            }
 
