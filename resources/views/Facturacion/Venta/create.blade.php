@@ -16,7 +16,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Formulario de creación de caja</h4>
+                <h4 class="card-title">Formulario de creación de Facturas</h4>
                 <p class="card-description">Completa los campos para generar factura</p>
                 {{ Form::open(array('url' => URL::route('Venta.store'), 'method' => 'post'))}}
                     @csrf
@@ -30,9 +30,9 @@
                                             <i class="mdi mdi-upload-network-outline"></i>
                                         </button>
                                     </div>
-                                    <select name="ID_Cliente" class="selectpicker form-control" title="Escoja el empleado..." data-live-search="true">
+                                    <select name="ID_Cliente" class="selectpicker form-control" title="Escoja el cliente..." data-live-search="true">
                                         @foreach ($cliente as $client)
-                                            <option value="{{ $client->ID_Cliente}}">{{$client->Nombre_Cliente}}</option>
+                                    <option value="{{ $client->ID_Cliente}}">{{$client->Nombre_Cliente}} {{ $client->Apellido_Cliente}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -82,7 +82,7 @@
                                     </div>
                                     <select name="ID_Empleado" class="selectpicker form-control" title="Escoja el empleado..." data-live-search="true">
                                         @foreach ($empleado as $emp)
-                                            <option value="{{ $emp->ID_Empleado}}">{{$emp->Nombre_Empleado}}</option>
+                                            <option value="{{ $emp->ID_Empleado}}">{{$emp->Nombre_Empleado}} {{$emp->Apellido_Empleado}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -115,7 +115,7 @@
                                             <i class="mdi mdi-upload-network-outline"></i>
                                         </button>
                                     </div>
-                                        <input type="text" class="form-control" name="Descuento" placeholder="Ingrese el descuento">
+                                        <input id="Descuento" type="number" min="0" max="100" value="0" class="form-control" name="Descuento" placeholder="Ingrese el descuento">
                                 </div>
                             </div>
                         </div>
@@ -128,7 +128,7 @@
                                             <i class="mdi mdi-upload-network-outline"></i>
                                         </button>
                                     </div>
-                                        <input type="text" class="form-control" name="SubTotal" placeholder="Subtotal">
+                                        <input id="SubTotal" type="text" class="form-control" name="SubTotal" placeholder="Subtotal" readonly>
                                 </div>
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                                             <i class="mdi mdi-upload-network-outline"></i>
                                         </button>
                                     </div>
-                                        <input type="text" class="form-control" name="Total_Facturado" placeholder="Total facturado">
+                                        <input id="Total" type="text" class="form-control" name="Total_Facturado" placeholder="Total facturado" readonly>
                                 </div>
                             </div>
                         </div>
@@ -246,7 +246,7 @@
                     </div>
                 </div>
             </div>
-        {{ Form::close() }}
     </div>
+    {{ Form::close() }}
 </div>
 @endsection

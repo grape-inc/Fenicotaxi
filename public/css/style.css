@@ -13377,7 +13377,7 @@ dl {
 
 /*# sourceMappingURL=style.css.map */
 
-div.dataTables_wrapper div.dataTables_length select {  
+div.dataTables_wrapper div.dataTables_length select {
   margin-top: 5px;
 }
 
@@ -13442,7 +13442,7 @@ a > i{
   height:60px !important;
 }
 
-.table th img, .table td img {  
+.table th img, .table td img {
   border-radius: 5%;
 }
 
@@ -13452,4 +13452,8 @@ a > i{
 
 .ajustarbotonlogin{
   padding-bottom: 25px !important;
+}
+
+#TablaDetalle > tbody > tr > td > input {
+  height:50px;
 }

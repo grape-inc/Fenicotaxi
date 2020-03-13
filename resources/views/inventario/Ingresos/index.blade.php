@@ -37,7 +37,7 @@
                                         <td>{{ $ingreso->Nombre_Empleado }}</td>
                                         <td>{{ $ingreso->Fecha_Realizacion }}</td>
                                         <td>{{ ($ingreso->Impuesto) * 100 }}%</td>
-                                        <td>{{ $ingreso->Total }} C$</td>
+                                        <td>{{ $ingreso->Total }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
