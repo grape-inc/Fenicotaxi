@@ -4,8 +4,8 @@ $(document).ready(function () {
 
 function ConfigurarTablas() {
     $('#TablaVenta').DataTable({
-        buttons: [            
-            {                
+        buttons: [
+            {
                 extend: 'excel',
                 text: 'Exportar a excel',
                 title: "Fenicotaxi",
@@ -55,7 +55,7 @@ function ConfigurarTablas() {
 function EliminarVenta(ID, URL) {
     Swal.fire({
         title: '¿Seguro?',
-        text: "Se eliminara El Rol.",
+        text: "Se eliminara la Factura.",
         icon: 'question',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',

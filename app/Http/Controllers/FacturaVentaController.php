@@ -123,7 +123,15 @@ class FacturaVentaController extends Controller
 
     }
 
-    public function destroy(){
-
+    public function destroy($id){
+        $Eliminado = true;
+        try {
+            DB::table('Factura_Venta_Detalle')->where('ID_Factura', $id)->delete();
+            $Factura=FacturaVenta::findOrFail($id);
+            $Factura->delete();
+        } catch (\Exception $E) {
+            $Eliminado = false;
+        }
+        return route('Venta.index', ['Eliminado' => $Eliminado]);
     }
 }

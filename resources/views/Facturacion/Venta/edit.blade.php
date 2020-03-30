@@ -27,8 +27,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Formulario de edición de Facturas</h4>
-                <p class="card-description">Completa los campos para editar la factura</p>
+                <h4 class="card-title">Formulario para ver Facturas</h4>
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="form-group">
