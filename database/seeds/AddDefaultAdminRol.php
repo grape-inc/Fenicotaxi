@@ -16,5 +16,15 @@ class AddDefaultAdminRol extends Seeder
             'ID_Rol' => '1',
             'Nombre_Rol' => 'Admin'
         ]);
+
+        DB::table('Tipo_Factura')->insert([
+            'ID_TipoFactura' => '1',
+            'NombreTipo' => 'CONTADO'
+        ]);
+
+        DB::table('Tipo_Factura')->insert([
+            'ID_TipoFactura' => '2',
+            'NombreTipo' => 'CREDITO'
+        ]);
     }
 }

@@ -13,13 +13,13 @@
         <a type="button" href="{{ URL::route('Venta.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
     </div>
     <div class="row">
+    {{ Form::open(array('url' => URL::route('Venta.store'), 'method' => 'post'))}}
+        @csrf
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Formulario de creación de Facturas</h4>
                 <p class="card-description">Completa los campos para generar factura</p>
-                {{ Form::open(array('url' => URL::route('Venta.store'), 'method' => 'post'))}}
-                    @csrf
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="form-group">

@@ -10,6 +10,7 @@
 
     function agregar() {
         ID_Producto = $("#ID_Producto").val();
+        debugger;
         producto = $("#ID_Producto option:selected").text();
         Cantidad = $("#Cantidad").val();
         Impuesto = $("#Impuesto").val();
@@ -19,7 +20,7 @@
         if (ID_Producto != "" && Cantidad != "" && Cantidad > 0 && Precio != "") {
             subtotal[cont] = (Cantidad * Precio);
             total = total + subtotal[cont];
-
+            debugger;
             var Fila = '<tr class="selected" id="Fila' + cont + '"><td><button type="button" class="btn btn-warning" onclick="eliminar(' + cont + ');">X</button></td><td><input type="hidden" name="ID_Producto[]" value="' + ID_Producto + '">' + producto + '</td><td><input type="number" name="Cantidad[]" value="' + Cantidad + '"></td><td><input type="number" name="Precio[]" value="' + Precio + '"></td><td>' + subtotal[cont] + '</td></tr>';
             cont++;
             limpiar();
@@ -33,7 +34,6 @@
     }
 
     function limpiar() {
-        $("#ID_Producto").val("");
         $("#Cantidad").val("");
         $("#Precio").val("");
     }

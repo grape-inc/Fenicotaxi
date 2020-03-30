@@ -52,7 +52,6 @@ class IngresoController extends Controller
             $producto = $request->get('ID_Producto');
             $cantidad = $request->get('Cantidad');
             $precio = $request->get('Precio');
-            dd($request);
             $cont = 0;
 
             while($cont < count($producto)){

@@ -31,13 +31,12 @@ function agregar() {
         $('#TablaDetalle').append(Fila);
 
     } else {
-        alert("Error al ingresar el detalle del ingreso, revise los datos del articulo")
+        alert("Error al ingresar el detalle de la factura, revise los datos del articulo")
     }
 
 }
 
 function limpiar() {
-    $("#ID_Producto").val("");
     $("#Cantidad").val("");
     $("#Precio").val("");
 }

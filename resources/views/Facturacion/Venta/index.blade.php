@@ -27,13 +27,10 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>Codigo Factura</th>
-                                        <th>Divisa</th>
                                         <th>Cliente</th>
                                         <th>Vendedor</th>
                                         <th>Tipo Factura</th>
-                                        <th>Descuento</th>
                                         <th>Total Facturado</th>
-                                        <th>Numero de Jornada</th>
                                         <th>Fecha Creacion</th>
                                         <th>Fecha Actualizacion</th>
                                         <th>Editar</th>
@@ -44,15 +41,16 @@
                                 @foreach($facturaventa as $fv)
                                     <tr>
                                         <td>{{ $fv->Codigo_Factura }}</td>
-                                        <td>{{ $fv->Nombre_Divisa }}</td>
                                         <td>{{ $fv->Nombre_Cliente }}</td>
                                         <td>{{ $fv->Nombre_Empleado }}</td>
-                                        <td>{{ $fv->Es_Credito }}</td>
-                                        <td>{{ $fv->Total_Facturado }}</td>
-                                        <td>{{ $fv->ID_Jornada }}</td>
+                                        @if ($fv-> Es_Credito)
+                                            <td>Credito</td>
+                                        @else
+                                            <td>Contado</td>
+                                        @endif
+                                        <td>{{ $fv->Total_Facturado }} C$</td>
                                         <td>{{ $fv->Fecha_Realizacion }}</td>
                                         <td>{{ $fv->Fecha_Actualizacion }}</td>
-                                        <td>{{ $fv->Descuento }}</td>
                                         <td> <a href="{{ URL::route('Venta.edit', $fv->ID_Factura)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
                                         <td> <button type="button" onclick="EliminarArqueo({{ $fv->ID_Factura}},'{{URL::route('Venta.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
                                     </tr>

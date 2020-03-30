@@ -7,6 +7,7 @@ use App\FacturaVenta;
 use App\FacturaVentaDetalle;
 use App\Arqueo;
 use DB;
+use App\Http\Requests\FacturaFormRequest;
 use Illuminate\Support\Carbon;
 
 class FacturaVentaController extends Controller
@@ -46,8 +47,19 @@ class FacturaVentaController extends Controller
         }
 
     }
-    public function store(Request $request){
+    public function store(FacturaFormRequest $request){
         try {
+            $request->validate([
+                'ID_Cliente' => 'required',
+                'Codigo_Factura' => 'required|numeric',
+                'ID_Divisa' => 'required',
+                'ID_Empleado' => 'required',
+                'Descuento' => 'required',
+                'ID_Producto' => 'required',
+                'Cantidad' => 'required',
+                'Precio' => 'required',
+                'Total_Facturado' => 'required|numeric|min:0'
+            ]);
             DB::beginTransaction();
             $facturaventa=new FacturaVenta;
             $facturaventa->Codigo_Factura=$request->get('Codigo_Factura');
@@ -70,11 +82,9 @@ class FacturaVentaController extends Controller
             $facturaventa->Fecha_Actualizacion = $mytime->toDateTimeString();
             $facturaventa->save();
 
-            dd($request);
             $producto = $request->get('ID_Producto');
             $cantidad = $request->get('Cantidad');
             $cont = 0;
-
             while($cont < count($producto)){
                 $detalle = new FacturaVentaDetalle();
                 $detalle->ID_Factura= $facturaventa->ID_Factura;
@@ -86,9 +96,9 @@ class FacturaVentaController extends Controller
 
             DB::commit();
 
-           }catch(\Exception $e)
+           }
+           catch(\Exception $e)
            {
-              dd($e);
               DB::rollback();
            }
 
@@ -96,10 +106,17 @@ class FacturaVentaController extends Controller
 
     }
 
-    public function valoresCalculo(){
-        $msg = "This is a simple message.";
-        return response()->json(array('msg'=> $msg), 200);
-
+    public function edit($id){
+        $Factura = FacturaVenta::find($id);
+        $empleado = DB::table('Empleado')->get();
+        $cliente = DB::table('Cliente')->get();
+        $divisa = DB::table('Divisa')->get();
+        $Detalle = FacturaVenta::where('ID_Factura', $id);
+        $producto = DB::table('Producto as prod')
+        ->select(DB::Raw('CONCAT(prod.Cod_Producto," / ",prod.Nombre_Producto) as producto'),'prod.ID_Producto')
+        ->where('prod.Existencias_Minimas','>','0')
+        ->get();
+        return view('Facturacion.Venta.edit',["Factura"=> $Factura,"empleado"=>$empleado,"producto"=>$producto,"cliente"=>$cliente,"divisa" =>$divisa,"Detalle"=> $Detalle]);
     }
 
     public function update(){
