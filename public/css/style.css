@@ -13457,3 +13457,12 @@ a > i{
 #TablaDetalle > tbody > tr > td > input {
   height:50px;
 }
+
+.carousel-item{
+  height: 450px;
+  border-radius: 10px;
+}
+.carousel-item img{
+  height: 450px;
+  border-radius: 10px;
+}
