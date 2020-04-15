@@ -239,9 +239,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row justify-content-center">
-                                <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Editar Producto<i class="mdi mdi-file-check btn-icon-append"></i></button>
-                            </div>
                     </div>
                 </div>
 
@@ -250,7 +247,7 @@
             <div id="divrepuesto" class="col-md-12 grid-margin stretch-card rectificadorgrandiv quitardiv">
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
-                    <div class="card-body">
+                        <div class="card-body">
                         <h4 class="card-title">Formulario de repuestos</h4>
                         <p class="card-description">Completa los campos opcionales de un repuesto</p>
 
@@ -317,8 +314,13 @@
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="row justify-content-center boton_fixeado">
+            <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Editar Producto<i class="mdi mdi-file-check btn-icon-append"></i></button>
         </div>
         {{ Form::close() }}
     </div>

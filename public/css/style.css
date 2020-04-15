@@ -13474,3 +13474,8 @@ a > i{
   margin-bottom: .5rem;
   display: inline-block;
 }
+
+.boton_fixeado {
+  width: 100%;
+  margin-bottom: 50px;
+}
