@@ -13466,3 +13466,11 @@ a > i{
   height: 450px;
   border-radius: 10px;
 }
+
+.link {
+  font-size: 0.875rem;
+  line-height: 1;
+  vertical-align: top;
+  margin-bottom: .5rem;
+  display: inline-block;
+}

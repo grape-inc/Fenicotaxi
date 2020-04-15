@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @push('scripts-vista')
-    <script type="text/javascript" src="{{ URL::asset ('js/Eventos/ProductoAñadirEditar.js') }}"></script>    
+    <script type="text/javascript" src="{{ URL::asset ('js/Eventos/ProductoAñadirEditar.js') }}"></script>
     <script>
         $('#ID_UnidadMedida').val({{$Producto->ID_UnidadMedida}});
         $('#ID_Divisa').val({{$Producto->ID_Divisa}});
@@ -20,7 +20,7 @@
             </span> Productos </h3>
             <a href="{{ URL::route('Productos.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
         </div>
-        {{Form::open(array('url' => URL::route('Productos.update',$Producto->ID_Producto), 'method' => 'put', 'files' => true))}}        
+        {{Form::open(array('url' => URL::route('Productos.update',$Producto->ID_Producto), 'method' => 'put', 'files' => true))}}
             <div class="row">
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
@@ -36,17 +36,17 @@
                                         @else
                                              <img alt="ImagenProducto" class="img-thumbnail" id="ImagenProducto" class="ImagenTamañoTabla" src="{{{asset('images/dummy.jpg')}}}"/>
                                         @endif
-                                    </div>  
+                                    </div>
                                     <div class="row justify-content-center">
                                         <!--<button class="btn btn-gradient-dark btn-icon-text text-center"> Cambiar Imagen<i class="mdi mdi-file-image btn-icon-append"></i></button>-->
                                         {{Form::label('Imagen', 'Cambiar Imagen',['class' => 'btn btn-gradient-dark btn-icon-text text-center','files' => true])}}
-                                        <input type="file" class="Imagen" id="Imagen" name="Imagen" accept="image/png,image/jpg,image/jpeg" onchange="document.getElementById('ImagenProducto').src = window.URL.createObjectURL(this.files[0])" />                                        
+                                        <input type="file" class="Imagen" id="Imagen" name="Imagen" accept="image/png,image/jpg,image/jpeg" onchange="document.getElementById('ImagenProducto').src = window.URL.createObjectURL(this.files[0])" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         {{Form::label('ID_Producto', 'Identificador')}}
-                                        <div class="input-group">                            
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi-sim-alert"></i>
@@ -58,7 +58,7 @@
 
                                     <div class="form-group">
                                         {{Form::label('Cod_Producto', 'Codigo del producto')}}
-                                        <div class="input-group">                                
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi-alert-box"></i>
@@ -74,7 +74,7 @@
 
                                     <div class="form-group">
                                         {{Form::label('Nombre_Producto', 'Nombre del producto')}}
-                                        <div class="input-group">                                
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi mdi-animation"></i>
@@ -90,7 +90,7 @@
 
                                     <div class="form-group">
                                         {{Form::label('Descripcion_Producto', 'Descripción del producto')}}
-                                        <div class="input-group">                                
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi-altimeter"></i>
@@ -102,7 +102,7 @@
                                         @error('Descripcion_Producto')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
-                                    </div>   
+                                    </div>
 
                                     <div class="form-group">
                                         {{Form::label('ID_Divisa', 'Moneda por defecto')}}
@@ -145,7 +145,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         {{Form::label('Existencias', 'Existencias del producto')}}
-                                        <div class="input-group">                                
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi mdi-apps"></i>
@@ -161,7 +161,7 @@
 
                                     <div class="form-group">
                                         {{Form::label('Existencias_Minimas', 'Existencias Minima')}}
-                                        <div class="input-group">                                
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi mdi-apps"></i>
@@ -174,10 +174,10 @@
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         {{Form::label('Precio_Venta', 'Precio de venta')}}
-                                        <div class="input-group">                                
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi mdi-diamond"></i>
@@ -192,7 +192,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        {{Form::label('ID_Categoria', 'Categoria del producto')}}
+                                        <a target="_blank" class="link" href="{{ URL::route('Categorias.create')}}">Categoría del producto</a>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
@@ -211,7 +211,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        {{Form::label('ID_Proveedor', 'Proveedor')}}
+                                        <a target="_blank" class="link" href="{{ URL::route('Proveedores.create')}}">Proveedor del producto</a>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
@@ -228,35 +228,35 @@
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                    
+
                                     <div class="form-group rectificadorcheck">
                                         <div class="form-check form-check-flat form-check-primary">
                                             <label class="form-check-label">
                                             {{Form::checkbox('Es_Repuesto', 'Es Repuesto', $Producto->Es_Repuesto, ['class' => 'form-check-input','id'=> 'Es_Repuesto'])}}
                                                 ¿Es un repuesto?
-                                            </label>                                            
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
                                 <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Editar Producto<i class="mdi mdi-file-check btn-icon-append"></i></button>
-                            </div>        
+                            </div>
                     </div>
-                </div>        
-                
-            </div>  
-            
+                </div>
+
+            </div>
+
             <div id="divrepuesto" class="col-md-12 grid-margin stretch-card rectificadorgrandiv quitardiv">
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Formulario de repuestos</h4>
-                        <p class="card-description">Completa los campos opcionales de un repuesto</p>                                                                        
-                            
+                        <p class="card-description">Completa los campos opcionales de un repuesto</p>
+
                             <div class="form-group">
                                 {{Form::label('Año', 'Año')}}
-                                <div class="input-group">                                
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
                                             <i class="mdi mdi-message-processing"></i>
@@ -269,10 +269,10 @@
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            
+
                             <div class="form-group">
                                 {{Form::label('Modelo', 'Modelo')}}
-                                <div class="input-group">                                
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
                                             <i class="mdi mdi-memory"></i>
@@ -288,7 +288,7 @@
 
                             <div class="form-group">
                                 {{Form::label('Origen', 'Origen')}}
-                                <div class="input-group">                                
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
                                             <i class="mdi mdi-math-compass"></i>
@@ -304,7 +304,7 @@
 
                             <div class="form-group">
                                 {{Form::label('Marca', 'Marca')}}
-                                <div class="input-group">                                
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
                                             <i class="mdi mdi-multiplication-box"></i>
@@ -316,9 +316,9 @@
                                 @error('Marca')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                            </div>                        
+                            </div>
                 </div>
-            </div>      
+            </div>
         </div>
         {{ Form::close() }}
     </div>
