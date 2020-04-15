@@ -259,7 +259,7 @@
                                             <i class="mdi mdi-message-processing"></i>
                                         </button>
                                     </div>
-                                    {{ Form::text('Año',$Producto->Año,array('id'=>'Año','class'=>'form-control','placeholder'=>'Ingresa el año del producto'))}}
+                                    {{ Form::number('Año',$Producto->Año,array('id'=>'Año','max'=>date('Y'),'class'=>'form-control','placeholder'=>'Ingresa el año del producto'))}}
                                 </div>
 
                                 @error('Año')

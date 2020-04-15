@@ -1,6 +1,11 @@
 @extends('layouts.layout')
 @push('scripts-vista')
     <script type="text/javascript" src="{{ URL::asset ('js/Eventos/ProductoAñadirEditar.js') }}"></script>
+    <script>
+        if ($('#Es_Repuesto').is(':checked')) {
+            $('#divrepuesto').removeClass('quitardiv');
+        }
+    </script>
 @endpush
 @section('content')
     <div class="content-wrapper">
@@ -244,7 +249,7 @@
                                             <i class="mdi mdi-message-processing"></i>
                                         </button>
                                     </div>
-                                    {{ Form::text('Año','',array('id'=>'Año','class'=>'form-control','placeholder'=>'Ingresa el año del producto'))}}
+                                    {{ Form::number('Año','',array('id'=>'Año','max'=>date('Y'),'class'=>'form-control','placeholder'=>'Ingresa el año del producto'))}}
                                 </div>
 
                                 @error('Año')
