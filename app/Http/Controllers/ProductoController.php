@@ -153,4 +153,16 @@ class ProductoController extends Controller
         return route('Productos.index', ['Eliminado' => $Eliminado]);
     }
 
+    public function ajax_producto(){
+        $Categorias =  CategoriaProducto::all();
+        $Proveedores =  Proveedor::all();
+        $Divisas =  Divisa::all();
+        $UnidadMedidas =  UnidadMedida::all();
+        return response()->json([
+            'Categorias' => $Categorias,
+            'Proveedores' => $Proveedores,
+            'Divisas' => $Divisas,
+            'UnidadMedida' => $UnidadMedidas,
+        ]);
+    }
 }

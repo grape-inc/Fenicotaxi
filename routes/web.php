@@ -35,3 +35,4 @@ Route::resource('Welcome','WelcomeController');
 
 //Peticiones ajax
 Route::get('valoresCalculo','FacturaVentaController@valoresCalculo');
+Route::get('info_productos','ProductoController@ajax_producto');

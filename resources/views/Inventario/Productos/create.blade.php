@@ -14,7 +14,10 @@
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-format-list-bulleted"></i>
             </span> Productos </h3>
-            <a href="{{ URL::route('Productos.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
+            <div class="col-xs-4">
+                <button id="ActualizarDatos" class="btn btn-info btn-icon-text"><i class="mdi mdi mdi-refresh "></i> Actualizar Datos</button>
+                <a href="{{ URL::route('Productos.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
+            </div>
         </div>
         {{Form::open(array('url' => URL::route('Productos.store'), 'method' => 'post', 'files' => true))}}
             <div class="row">
@@ -103,7 +106,7 @@
                                                     <i class="mdi mdi-diamond"></i>
                                                 </button>
                                             </div>
-                                            <select name="ID_Divisa" class="selectpicker form-control" data-live-search="true">
+                                            <select id="ID_Divisa" name="ID_Divisa" class="selectpicker form-control" data-live-search="true">
                                                 @foreach ($Divisas as $CT)
                                                     <option value="{{ $CT->ID_Divisa}}">{{$CT->Nombre_Divisa}}</option>
                                                 @endforeach
@@ -122,7 +125,7 @@
                                                     <i class="mdi mdi-ruler"></i>
                                                 </button>
                                             </div>
-                                            <select name="ID_UnidadMedida" class="selectpicker form-control" data-live-search="true">
+                                            <select id="ID_UnidadMedida" name="ID_UnidadMedida" class="selectpicker form-control" data-live-search="true">
                                                 @foreach ($Unidades as $U)
                                                     <option value="{{ $U->ID_Unidad}}">{{$U->Nombre_Unidad}}</option>
                                                 @endforeach
@@ -191,7 +194,7 @@
                                                     <i class="mdi mdi-dice-3"></i>
                                                 </button>
                                             </div>
-                                            <select name="ID_Categoria" class="selectpicker form-control" data-live-search="true">
+                                            <select id="ID_Categoria" name="ID_Categoria" class="selectpicker form-control" data-live-search="true">
                                                 @foreach ($Categorias as $CT)
                                                     <option value="{{ $CT->ID_Categoria}}">{{$CT->Nombre_Categoria}}</option>
                                                 @endforeach
@@ -210,7 +213,7 @@
                                                     <i class="mdi mdi-domain"></i>
                                                 </button>
                                             </div>
-                                            <select name="ID_Proveedor" class="selectpicker form-control" data-live-search="true">
+                                            <select id="ID_Proveedor" name="ID_Proveedor" class="selectpicker form-control" data-live-search="true">
                                                 @foreach ($Proveedores as $PR)
                                                     <option value="{{ $PR->ID_Proveedor}}">{{$PR->Nombre_Proveedor}}</option>
                                                 @endforeach
