@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     $('#ActualizarDatos').click(function(event){
         $.ajax({
-         url: "../../info_productos",
+         url: "../../../info_productos",
          type: "get"
         })
         .done(function(datos) {

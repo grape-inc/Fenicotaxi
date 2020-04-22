@@ -8,7 +8,8 @@
             </span> Empleados </h3>
             <a href="{{ URL::route('Empleado.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
         </div>
-        {{Form::open(array('url' => URL::route('Empleado.store'), 'method' => 'post', 'files' => true))}}        
+        @include('flash::message')
+        {{Form::open(array('url' => URL::route('Empleado.store'), 'method' => 'post', 'files' => true))}}
             <div class="row">
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
@@ -20,8 +21,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <img id="ImagenEmpleado" name="Imagen" src="{{{asset('images/dummy.jpg')}}}" style="height:300px;" alt="ImagenProducto" class="img-thumbnail">
-                                    </div>  
-                                    <div class="row justify-content-center">                                        
+                                    </div>
+                                    <div class="row justify-content-center">
                                         {{Form::label('Imagen', 'Cambiar Imagen',['class' => 'btn btn-gradient-dark btn-icon-text text-center','files' => true])}}
                                         <input type="file" class="Imagen" id="Imagen" name="Imagen" accept="image/png,image/jpg,image/jpeg" onchange="document.getElementById('ImagenEmpleado').src = window.URL.createObjectURL(this.files[0])" />
                                     </div>
@@ -29,7 +30,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         {{Form::label('ID_Empleado', 'Identificador')}}
-                                        <div class="input-group">                            
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi-sim-alert"></i>
@@ -41,7 +42,7 @@
 
                                     <div class="form-group">
                                         {{Form::label('Nombre_Empleado', 'Nombre del empleado')}}
-                                        <div class="input-group">                                
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi-account-box"></i>
@@ -57,7 +58,7 @@
 
                                     <div class="form-group">
                                         {{Form::label('Apellido_Empleado', 'Apellido del empleado')}}
-                                        <div class="input-group">                                
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi-account-box"></i>
@@ -70,10 +71,10 @@
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         {{Form::label('Fecha_Nacimiento', 'Fecha de nacimiento')}}
-                                        <div class="input-group">                                
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi-apps-box"></i>
@@ -91,7 +92,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         {{Form::label('Cedula', 'Cedula')}}
-                                        <div class="input-group">                                
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi-file-document-box"></i>
@@ -106,7 +107,7 @@
                                     </div>
                                     <div class="form-group">
                                         {{Form::label('Correo', 'Correo')}}
-                                        <div class="input-group">                                
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi-gmail"></i>

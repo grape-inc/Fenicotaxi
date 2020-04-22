@@ -40,7 +40,7 @@ class EmpleadoController extends Controller
             'Nombre_Empleado' => 'required|max:100',
             'Apellido_Empleado' => 'required',
             'Fecha_Nacimiento' => 'required',
-            'Cedula' => 'required',
+            'Cedula' => 'required|regex:/([0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][A-Z]$)/',
             'Correo' => 'required',
             'ID_Cargo' => 'required',
             'ID_Rol' => 'required',
@@ -56,6 +56,12 @@ class EmpleadoController extends Controller
         $Empleado->ID_Cargo=$Request->get('ID_Cargo');
         $Empleado->ID_Rol=$Request->get('ID_Rol');
         $Empleado->Imagen=$Base;
+
+        if ((date("Y") - date('Y', strtotime($Empleado->Fecha_Nacimiento))) < 18) {
+            flash('El empleado debe tener al menos 18 años de edad.')->error();
+            return redirect()->back()->withInput();
+        }
+
         $Empleado->save();
         return redirect()->action('EmpleadoController@index');
     }
@@ -83,7 +89,7 @@ class EmpleadoController extends Controller
             'Nombre_Empleado' => 'required|max:100',
             'Apellido_Empleado' => 'required',
             'Fecha_Nacimiento' => 'required',
-            'Cedula' => 'required',
+            'Cedula' => 'required|regex:/([0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][A-Z]$)/',
             'Correo' => 'required',
             'ID_Cargo' => 'required',
             'ID_Rol' => 'required',
@@ -98,6 +104,11 @@ class EmpleadoController extends Controller
         $Empleado->Correo=$Request->get('Correo');
         $Empleado->ID_Cargo=$Request->get('ID_Cargo');
         $Empleado->ID_Rol=$Request->get('ID_Rol');
+        if ((date("Y") - date('Y', strtotime($Empleado->Fecha_Nacimiento))) < 18) {
+            flash('El empleado debe tener al menos 18 años de edad.')->error();
+            return redirect()->back()->withInput();
+        }
+
         if ($Base != ""){
             $Empleado->Imagen=$Base;
         }
