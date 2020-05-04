@@ -6,8 +6,8 @@ function ConfigurarTablas() {
     $('#TablaEmpleados').DataTable({
         dom: 'Bfrtip',
         "autoWidth": true,
-        buttons: [            
-            {                
+        buttons: [
+            {
                 extend: 'excel',
                 text: 'Exportar a excel',
                 title: "Fenicotaxi",
@@ -26,6 +26,7 @@ function ConfigurarTablas() {
                 orientation: 'landscape',
                 className: 'btn btn-success btn-fw btn-rounded rectificadortablaboton',
                 text: 'Exportar a pdf',
+                download: 'open',
                 title: "Fenicotaxi",
                 messageTop: 'Reporte de empleados',
                 exportOptions: {
@@ -77,4 +78,3 @@ function EliminarEmpleado(ID, URL) {
         }
     })
 }
-

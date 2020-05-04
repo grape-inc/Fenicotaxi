@@ -6,8 +6,8 @@ function ConfigurarTablas() {
     $('#TablaUsuarios').DataTable({
         dom: 'Bfrtip',
         "autoWidth": true,
-        buttons: [            
-            {                
+        buttons: [
+            {
                 extend: 'excel',
                 text: 'Exportar a excel',
                 title: "Fenicotaxi",
@@ -27,6 +27,7 @@ function ConfigurarTablas() {
                 className: 'btn btn-success btn-fw btn-rounded rectificadortablaboton',
                 text: 'Exportar a pdf',
                 title: "Fenicotaxi",
+                download: 'open',
                 messageTop: 'Reporte de usuarios',
                 exportOptions: {
                     columns: [ 0,1,2]
@@ -77,4 +78,3 @@ function EliminarUsuario(ID, URL) {
         }
     })
 }
-

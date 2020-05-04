@@ -29,6 +29,7 @@ function ConfigurarTablas() {
                 className: 'btn btn-success btn-fw btn-rounded rectificadortablaboton',
                 text: 'Exportar a pdf',
                 title: "Fenicotaxi",
+                download: 'open',
                 messageTop: 'Reporte de Ingresos',
                 exportOptions: {
                     columns: [0, 2, 3, 4, 5]

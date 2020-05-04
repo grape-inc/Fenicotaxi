@@ -28,6 +28,7 @@ function ConfigurarTablas() {
                 text: 'Exportar a pdf',
                 title: "Fenicotaxi",
                 messageTop: 'Reporte de productos',
+                download: 'open',
                 exportOptions: {
                     columns: [ 0,2,3,4,5,6,7,8,9]
                 },

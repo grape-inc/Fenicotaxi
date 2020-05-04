@@ -4,6 +4,8 @@ $(document).ready(function () {
 
 function ConfigurarTablas() {
     $('#TablaVenta').DataTable({
+        dom: 'Bfrtip',
+        "autoWidth": true,
         buttons: [
             {
                 extend: 'excel',
@@ -16,7 +18,7 @@ function ConfigurarTablas() {
                     Source.setAttribute('name','Facturas de venta');
                 },
                 exportOptions: {
-                    columns: [ 0,1,2,3,4,5,6,7,8,9,10]
+                    columns: [ 0,1,2,3,4,5,6]
                 },
             },
             {
@@ -24,10 +26,11 @@ function ConfigurarTablas() {
                 orientation: 'landscape',
                 text: 'Exportar a pdf',
                 title: "Fenicotaxi",
+                download: 'open',
                 messageTop: 'Reporte de facturas de venta',
                 className: 'btn btn-success btn-fw btn-rounded rectificadortablaboton',
                 exportOptions: {
-                    columns: [ 0,1,2,3,4,5,6,7,8,9,10]
+                    columns: [ 0,1,2,3,4,5,6]
                 },
             },
         ],
