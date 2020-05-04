@@ -7,6 +7,31 @@ $(document).ready(function () {
     $('#Descuento').change(function(){
         EvaluarTotales();
     });
+
+    $('#ID_Producto').change(function(event){
+        ActualizarPrecio();
+    });
+
+    $('#ActualizarDatos').click(function(event){
+        $.ajax({
+         url: "../../../info_factura",
+         type: "get"
+        })
+        .done(function(datos) {
+            $('#ID_Cliente').html("");
+            $('#ID_Empleado').html("");
+
+            $.each(datos.Clientes, function(indice, opcion) {
+                $('#ID_Cliente').append($('<option/>').attr("value", opcion.ID_Cliente).text(opcion.Nombre_Cliente + " "+ opcion.Apellido_Cliente));
+            });
+            $.each(datos.Empleados, function(indice, opcion) {
+                $('#ID_Empleado').append($('<option/>').attr("value", opcion.ID_Empleado).text(opcion.Nombre_Empleado + " "+ opcion.Apellido_Empleado));
+            });
+            $('#ID_Cliente').trigger('change');
+            $('#ID_Empleado').trigger('change');
+            $('.selectpicker').selectpicker('refresh');
+        });
+    });
 });
 
 var cont = 0;
@@ -62,4 +87,18 @@ function EvaluarTotales() {
     var TotalConDescuento = Suma - (Suma * (Descuento / 100) );
     $('#SubTotal').val(Suma);
     $('#Total').val(TotalConDescuento);
+}
+
+function ActualizarPrecio() {
+    $.ajax({
+        url: "../../../precio_producto/"+ $('#ID_Producto').val(),
+        type: 'GET',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function (Resultado) {
+            $('#Precio').val(Resultado.Producto.Precio_Venta)
+            $('#Cantidad').val("1");
+        }
+    });
 }

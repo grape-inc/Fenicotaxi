@@ -10,27 +10,31 @@
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-format-list-bulleted"></i>
         </span> Venta</h3>
-        <a type="button" href="{{ URL::route('Venta.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
+        <div class="col-xs-4">
+            <button id="ActualizarDatos" class="btn btn-info btn-icon-text"><i class="mdi mdi mdi-refresh "></i> Actualizar Datos</button>
+            <a href="{{ URL::route('Venta.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
+        </div>
     </div>
     <div class="row">
     {{ Form::open(array('url' => URL::route('Venta.store'), 'method' => 'post'))}}
         @csrf
+        @include('flash::message')
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
-              <div class="card-body">
+                 <div class="card-body">
                 <h4 class="card-title">Formulario de creación de Facturas</h4>
                 <p class="card-description">Completa los campos para generar factura</p>
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="form-group">
-                                {{Form::label('ID_Cliente', 'Cliente')}}
+                                <a target="_blank" class="link" href="{{ URL::route('Cliente.create')}}">Cliente</a>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
                                             <i class="mdi mdi-upload-network-outline"></i>
                                         </button>
                                     </div>
-                                    <select name="ID_Cliente" class="selectpicker form-control" title="Escoja el cliente..." data-live-search="true">
+                                    <select id="ID_Cliente" name="ID_Cliente" class="selectpicker form-control" title="Escoja el cliente..." data-live-search="true">
                                         @foreach ($cliente as $client)
                                     <option value="{{ $client->ID_Cliente}}">{{$client->Nombre_Cliente}} {{ $client->Apellido_Cliente}}</option>
                                         @endforeach
@@ -47,7 +51,7 @@
                                             <i class="mdi mdi-upload-network-outline"></i>
                                         </button>
                                     </div>
-                                        <input type="text" class="form-control" name="Codigo_Factura" placeholder="Ingrese el codigo de la factura">
+                                        <input value="{{ $CF[0]->CodigoFactura + 1  }}" type="text" class="form-control" name="Codigo_Factura" placeholder="Ingrese el codigo de la factura">
                                 </div>
                             </div>
                         </div>
@@ -80,7 +84,7 @@
                                             <i class="mdi mdi-account-box"></i>
                                         </button>
                                     </div>
-                                    <select name="ID_Empleado" class="selectpicker form-control" title="Escoja el empleado..." data-live-search="true">
+                                    <select id="ID_Empleado" name="ID_Empleado" class="selectpicker form-control" title="Escoja el empleado..." data-live-search="true">
                                         @foreach ($empleado as $emp)
                                             <option value="{{ $emp->ID_Empleado}}">{{$emp->Nombre_Empleado}} {{$emp->Apellido_Empleado}}</option>
                                         @endforeach

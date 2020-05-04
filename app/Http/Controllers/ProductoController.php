@@ -165,4 +165,11 @@ class ProductoController extends Controller
             'UnidadMedida' => $UnidadMedidas,
         ]);
     }
+
+    public function precio_producto($ID){
+        $Producto = Producto::findOrFail($ID);
+        return response()->json([
+            'Producto' => $Producto
+        ]);
+    }
 }

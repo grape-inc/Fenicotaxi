@@ -28,7 +28,7 @@ class ClienteController extends Controller
     }
     public function edit($id){
         $clientes = Cliente::find($id);
-        return view('Facturacion.cliente.edit',['cliente'=> $clientes]);
+        return view('Facturacion.Cliente.edit',['cliente'=> $clientes]);
     }
     public function update(ClientesFormRequest $request,$ID){
         $clientes = Cliente::findOrFail($ID);

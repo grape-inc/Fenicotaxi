@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\FacturaVenta;
 use App\FacturaVentaDetalle;
+use App\Cliente;
+use App\Empleado;
 use App\Arqueo;
 use DB;
 use App\Http\Requests\FacturaFormRequest;
@@ -28,6 +30,10 @@ class FacturaVentaController extends Controller
         $empleado = DB::table('Empleado')->get();
         $cliente = DB::table('Cliente')->get();
         $divisa = DB::table('Divisa')->get();
+        $CodigoFactura = DB::table('Factura_Venta')
+        ->select(DB::raw("COALESCE(max(codigo_factura),0) as CodigoFactura"))
+        ->get();
+
         $producto = DB::table('Producto as prod')
         ->select(DB::Raw('CONCAT(prod.Cod_Producto," / ",prod.Nombre_Producto) as producto'),'prod.ID_Producto')
         ->where('prod.Existencias_Minimas','>','0')
@@ -40,7 +46,7 @@ class FacturaVentaController extends Controller
         $as = count($jornada);
 
         if ( $as == 1){
-            return view('Facturacion.Venta.create',["empleado"=>$empleado,"producto"=>$producto,"cliente"=>$cliente,"divisa" =>$divisa]);
+            return view('Facturacion.Venta.create',["empleado"=>$empleado,"producto"=>$producto,"cliente"=>$cliente,"divisa" =>$divisa,"CF"=>$CodigoFactura]);
         }else{
             flash('Necesita abrir caja para poder facturar')->error();
             return redirect()->action('FacturaVentaController@index');
@@ -60,6 +66,12 @@ class FacturaVentaController extends Controller
                 'Precio' => 'required',
                 'Total_Facturado' => 'required|numeric|min:0'
             ]);
+            $CodigoFactura = FacturaVenta::where("Codigo_Factura", $request->get('Codigo_Factura'))->get();
+
+            if(count($CodigoFactura) > 0 ){
+                flash('El numero de factura ya existe.')->error();
+                return redirect()->back()->withInput($request->input());
+            }
             DB::beginTransaction();
             $facturaventa=new FacturaVenta;
             $facturaventa->Codigo_Factura=$request->get('Codigo_Factura');
@@ -133,5 +145,14 @@ class FacturaVentaController extends Controller
             $Eliminado = false;
         }
         return route('Venta.index', ['Eliminado' => $Eliminado]);
+    }
+
+    public function ajax_factura(){
+        $Clientes =  DB::table('Cliente')->select('ID_Cliente', 'Nombre_Cliente',"Apellido_Cliente")->get();
+        $Empleados = DB::table('Empleado')->select('ID_Empleado', 'Nombre_Empleado',"Apellido_Empleado")->get();
+        return response()->json([
+            'Clientes' => $Clientes,
+            'Empleados' => $Empleados
+        ]);
     }
 }

@@ -13483,3 +13483,7 @@ a > i{
 img {
   object-fit: contain;
 }
+
+#imagethumbnail {
+  object-fit: cover !important;
+}

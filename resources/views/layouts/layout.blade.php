@@ -33,7 +33,7 @@
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
                   @if(session('Imagen') != "")
-                    <img src ="data:image/png;base64,{{{session('Imagen')}}}"  alt="ImagenProducto" class="img-thumbnail">
+                    <img id="imagethumbnail" src ="data:image/png;base64,{{{session('Imagen')}}}"  alt="ImagenProducto" class="img-thumbnail">
                   @else
                     <img src="{{{asset('images/dummy.jpg')}}}"/>
                   @endif
