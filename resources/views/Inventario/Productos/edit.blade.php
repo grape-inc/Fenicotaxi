@@ -109,7 +109,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        {{Form::label('ID_Divisa', 'Moneda por defecto')}}
+                                        {{Form::label('ID_Divisa', 'Divisa Precio')}}
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">

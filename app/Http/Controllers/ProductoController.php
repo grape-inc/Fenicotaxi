@@ -20,17 +20,20 @@ class ProductoController extends Controller
           $Productos = DB::table('Producto')
             ->join('Categoria_Producto', 'Producto.id_categoria', '=', 'Categoria_Producto.id_categoria')
             ->join('Proveedor', 'Producto.id_proveedor', '=', 'Proveedor.id_proveedor')
+            ->join('Divisa', 'Producto.ID_Divisa', '=', 'Divisa.ID_Divisa')
             ->whereColumn('Existencias', '>=', 'Existencias_Minimas')->get();
         }
         else if ($Request->Tipo_Existencia == 2){
             $Productos = DB::table('Producto')
             ->join('Categoria_Producto', 'Producto.id_categoria', '=', 'Categoria_Producto.id_categoria')
             ->join('Proveedor', 'Producto.id_proveedor', '=', 'Proveedor.id_proveedor')
+            ->join('Divisa', 'Producto.ID_Divisa', '=', 'Divisa.ID_Divisa')
             ->whereColumn('Existencias', '<', 'Existencias_Minimas')->get();
         }
         else {
             $Productos = DB::table('Producto')
             ->join('Categoria_Producto', 'Producto.id_categoria', '=', 'Categoria_Producto.id_categoria')
+            ->join('Divisa', 'Producto.ID_Divisa', '=', 'Divisa.ID_Divisa')
             ->join('Proveedor', 'Producto.id_proveedor', '=', 'Proveedor.id_proveedor')->get();
         }
         return view('Inventario.Productos.index') ->with('Productos',$Productos);

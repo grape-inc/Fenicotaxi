@@ -70,7 +70,7 @@
                                         @endif
                                         <td>{{ $CF->Existencias }}</td>
                                         <td>{{ $CF->Existencias_Minimas }}</td>
-                                        <td>{{ $CF->Precio_Venta }} C$</td>
+                                        <td>{{ $CF->Precio_Venta }} {{ $CF->Simbolo_Divisa }}</td>
                                         <td>{{ $CF->Nombre_Categoria }}</td>
                                         <td>{{ $CF->Nombre_Proveedor }}</td>
                                         <td> <a href="{{ URL::route('Productos.edit', $CF->ID_Producto)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>

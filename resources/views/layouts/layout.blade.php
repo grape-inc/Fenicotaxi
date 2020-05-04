@@ -35,7 +35,7 @@
                   @if(session('Imagen') != "")
                     <img id="imagethumbnail" src ="data:image/png;base64,{{{session('Imagen')}}}"  alt="ImagenProducto" class="img-thumbnail">
                   @else
-                    <img src="{{{asset('images/dummy.jpg')}}}"/>
+                    <img id="imagethumbnail" src="{{{asset('images/dummy.jpg')}}}"/>
                   @endif
                   <span class="availability-status online"></span>
                 </div>
