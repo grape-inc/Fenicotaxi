@@ -23,6 +23,11 @@
             <a href="{{ URL::route('Productos.create')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend"></i>Añadir Producto</a>
         </div>
         <div class="row">
+            <div class="col-lg-12 grid-margin">
+                <a href="{{ URL::route('Productos.index',"Tipo_Existencia=1")}}" class="btn btn-success btn-icon-text"><i class="mdi mdi-apps "></i> Existenias Suficientes </a>
+                <a href="{{ URL::route('Productos.index',"Tipo_Existencia=2")}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi mdi-alert-octagon"></i> Existencias Insuficientes </a>
+                <a href="{{ URL::route('Productos.index')}}" class="btn btn-primary btn-icon-text"><i class="mdi mdi mdi-jira"></i> Sin Filtros </a>
+            </div>
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -36,6 +41,7 @@
                                         <th>Codigo de producto</th>
                                         <th>Nombre de producto</th>
                                         <th>Descripción de producto</th>
+                                        <th>Estado Existencias</th>
                                         <th>Existencias</th>
                                         <th>Minima Existencia</th>
                                         <th>Precio de venta</th>
@@ -57,6 +63,11 @@
                                         <td>{{ $CF->Cod_Producto }}</td>
                                         <td>{{ $CF->Nombre_Producto }}</td>
                                         <td>{{ $CF->Descripcion_Producto }}</td>
+                                        @if ($CF->Existencias >= $CF->Existencias_Minimas)
+                                            <td><span class="badge badge-success">Suficientes</span></td>
+                                        @else
+                                            <td><span class="badge badge-danger">Insuficientes</span></td>
+                                        @endif
                                         <td>{{ $CF->Existencias }}</td>
                                         <td>{{ $CF->Existencias_Minimas }}</td>
                                         <td>{{ $CF->Precio_Venta }} C$</td>

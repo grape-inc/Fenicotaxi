@@ -16,10 +16,23 @@ use DB;
 class ProductoController extends Controller
 {
     public function index(Request $Request){
-        $Productos = DB::table('Producto')
+        if($Request->Tipo_Existencia == 1){
+          $Productos = DB::table('Producto')
             ->join('Categoria_Producto', 'Producto.id_categoria', '=', 'Categoria_Producto.id_categoria')
             ->join('Proveedor', 'Producto.id_proveedor', '=', 'Proveedor.id_proveedor')
-            ->get();
+            ->whereColumn('Existencias', '>=', 'Existencias_Minimas')->get();
+        }
+        else if ($Request->Tipo_Existencia == 2){
+            $Productos = DB::table('Producto')
+            ->join('Categoria_Producto', 'Producto.id_categoria', '=', 'Categoria_Producto.id_categoria')
+            ->join('Proveedor', 'Producto.id_proveedor', '=', 'Proveedor.id_proveedor')
+            ->whereColumn('Existencias', '<', 'Existencias_Minimas')->get();
+        }
+        else {
+            $Productos = DB::table('Producto')
+            ->join('Categoria_Producto', 'Producto.id_categoria', '=', 'Categoria_Producto.id_categoria')
+            ->join('Proveedor', 'Producto.id_proveedor', '=', 'Proveedor.id_proveedor')->get();
+        }
         return view('Inventario.Productos.index') ->with('Productos',$Productos);
     }
 
