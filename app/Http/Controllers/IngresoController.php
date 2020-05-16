@@ -11,11 +11,11 @@ use App\IngresoDetalle;
 class IngresoController extends Controller
 {
     public function index(){
-        $ingresos= DB::table('Ingreso as i')
+        $ingresos = DB::table('Ingreso as i')
+        ->join('Ingreso_Detalle as ide','i.ID_Ingreso','=','ide.ID_Ingreso')
         ->join('Proveedor as p','i.ID_Proveedor','=','p.ID_Proveedor')
         ->join('Empleado as e','i.ID_Empleado','=','e.ID_Empleado')
-        ->join('Ingreso_Detalle as ide','i.Codigo_Ingreso','=','ide.Codigo_Ingreso')
-        ->select('i.ID_Ingreso','i.Impuesto','i.Total','i.Fecha_Realizacion','p.Nombre_Proveedor','e.Nombre_Empleado','ide.Cantidad')
+        ->select('i.ID_Ingreso','i.Impuesto','i.Total','i.Fecha_Realizacion','p.Nombre_Proveedor','e.Nombre_Empleado')
         ->get();
         return view('inventario.Ingresos.index',["ingresos"=>$ingresos]);
     }
@@ -56,10 +56,10 @@ class IngresoController extends Controller
 
             while($cont < count($producto)){
                 $detalle = new IngresoDetalle();
-                $detalle->Codigo_Ingreso = $ingreso->Codigo_Ingreso;
+                $detalle->ID_Ingreso = $ingreso->ID_Ingreso;
                 $detalle->ID_Producto = $producto[$cont];
-                $detalle->Cantidad= $cantidad[$cont];
-                $detalle->Precio= $precio[$cont];
+                $detalle->Cantidad = $cantidad[$cont];
+                $detalle->Precio = $precio[$cont];
                 $detalle->save();
                 $cont=$cont+1;
             }

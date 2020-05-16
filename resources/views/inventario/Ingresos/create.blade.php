@@ -164,7 +164,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    {{Form::label('Precio', 'Precio')}}
+                                    {{Form::label('Precio de compra', 'Precio')}}
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <button class="btn btn-sm btn-primary" type="button">
