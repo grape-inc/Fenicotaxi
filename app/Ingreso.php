@@ -15,6 +15,7 @@ class Ingreso extends Model
         'Fecha_Realizacion',
         'Impuesto',
         'Total',
-        'Codigo_Ingreso'
+        'Codigo_Ingreso',
+        'ID_Divisa'
     ];
 }

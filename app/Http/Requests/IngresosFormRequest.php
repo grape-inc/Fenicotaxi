@@ -31,7 +31,8 @@ class IngresosFormRequest extends FormRequest
             'Codigo_Ingreso' => 'required|numeric|min:0',
             'ID_Producto' => 'required',
             'Cantidad' => 'required',
-            'Precio' => 'required'
+            'Precio' => 'required',
+            'ID_Divisa' => 'required'
         ];
     }
 
@@ -45,7 +46,8 @@ class IngresosFormRequest extends FormRequest
             'Cantidad.required' => 'Es necesario que agregue la cantidad',
             'Precio.required' => 'Es necesario que agregue el precio',
             'Codigo_Ingreso.required' => 'Es necesario introducir un codigo',
-            'Codigo_Ingreso.numeric' => 'La secuencia del codigo debe ser numerica'
+            'Codigo_Ingreso.numeric' => 'La secuencia del codigo debe ser numerica',
+            'ID_Divisa.required' => 'Debe ingresesar un tipo de moneda'
         ];
     }
 }

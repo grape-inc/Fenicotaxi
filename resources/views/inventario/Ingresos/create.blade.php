@@ -111,6 +111,26 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{Form::label('ID_Divisa', 'Tipo de divisa')}}
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-sm btn-primary" type="button">
+                                                <i class="mdi mdi-cash-register"></i>
+                                            </button>
+                                        </div>
+                                        <select name="ID_Divisa" class="selectpicker form-control" title="Escoja la divisa..." data-live-search="true">
+                                            @foreach ($divisa as $div)
+                                                <option value="{{ $div->ID_Divisa}}">{{$div->Nombre_Divisa}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('ID_Divisa')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -164,7 +184,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    {{Form::label('Precio de compra', 'Precio')}}
+                                    {{Form::label('Precio', 'Precio de Compra')}}
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <button class="btn btn-sm btn-primary" type="button">
