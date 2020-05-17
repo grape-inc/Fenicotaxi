@@ -180,14 +180,14 @@
                                     </div>
 
                                     <div class="form-group">
-                                        {{Form::label('Precio_Venta', 'Precio de venta')}}
+                                        {{Form::label('Precio_Venta', 'Precio de compra')}}
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi mdi-diamond"></i>
                                                 </button>
                                             </div>
-                                            {{ Form::number('Precio_Venta',$Producto->Precio_Venta,array('id'=>'Precio_Venta','class'=>'form-control','placeholder'=>'Precio de venta del producto','step'=>'0.01'))}}
+                                            {{ Form::number('Precio_Venta',$Producto->Precio_Venta,array('id'=>'Precio_Venta','class'=>'form-control','placeholder'=>'Precio de compra del producto','step'=>'0.01'))}}
                                         </div>
 
                                         @error('Precio_Venta')

@@ -80,6 +80,20 @@
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        {{Form::label('Direccion', 'Dirección del cliente')}}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-sm btn-primary" type="button">
+                                    <i class="mdi mdi-crosshairs-gps "></i>
+                                </button>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Ingresa la dirección del cliente" name="Direccion" value = "{{$cliente->Direccion}}">
+                        </div>
+                        @error('Direccion')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
                     <div class="row justify-content-center">
                         <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Actualizar Cliente<i class="mdi mdi-file-check btn-icon-append"></i></button>
                     </div>

@@ -23,6 +23,7 @@ class ClienteController extends Controller
         $clientes->Correo = $request->input('Correo');
         $clientes->Fecha_Realizacion = date('Y-m-d H:i:s');
         $clientes->Fecha_Ingreso = date('Y-m-d H:i:s');
+        $clientes->Direccion = $request->input('Direccion');
         $clientes->save();
         return redirect()->action('ClienteController@index');
     }
@@ -37,6 +38,7 @@ class ClienteController extends Controller
         $clientes->Cedula = $request->get('Cedula');
         $clientes->Correo = $request->get('Correo');
         $clientes->Fecha_Realizacion = date('Y-m-d H:i:s');
+        $clientes->Direccion = $request->input('Direccion');
         $clientes->update();
         return redirect()->action('ClienteController@index');
     }

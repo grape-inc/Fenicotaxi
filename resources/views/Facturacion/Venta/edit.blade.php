@@ -19,7 +19,10 @@
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-format-list-bulleted"></i>
         </span> Venta</h3>
-        <a type="button" href="{{ URL::route('Venta.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
+        <div class="col-xs-4">
+            <a href="../../../factura_pdf?id={{$Factura->ID_Factura}}" class="btn btn-info btn-icon-text"><i class="mdi mdi-file-pdf-box "></i> Descargar PDF </a>
+            <a href="{{ URL::route('Venta.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
+        </div>
     </div>
     <div class="row">
     {{ Form::open(array('url' => URL::route('Venta.update', $Factura->ID_Factura), 'method' => 'put'))}}
@@ -151,6 +154,56 @@
                                     </div>
                                         <input value="{{ $Factura->Total_Facturado }}" id="Total" type="text" class="form-control" name="Total_Facturado" placeholder="Total facturado" readonly>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{Form::label('IVA', 'IVA')}}
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-sm btn-primary" type="button">
+                                            <i class="mdi mdi-upload-network-outline"></i>
+                                        </button>
+                                    </div>
+                                        <input value="{{ $Factura->IVA }}" id="IVA" type="text" class="form-control" name="IVA" placeholder="IVA" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Detalle de Productos</h4>
+                    <div class="row">
+                        {{-- Tabla de productos agregados --}}
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table id="TablaDetalle" class="table table-hover table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Nombre Producto</th>
+                                            <th>Cantidad</th>
+                                            <th>Precio</th>
+                                            <th>Observación</th>
+                                            <th>Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    {{-- Cuerpo de la tabla --}}
+                                    <tbody>
+                                     @foreach($FacturaVentaDetalle as $fd)
+                                      <tr>
+                                        <td>{{ $fd->Nombre_Producto }}</td>
+                                        <td>{{ $fd->Cantidad }}</td>
+                                        <td>{{ $fd->Precio}}</td>
+                                        <td>{{ $fd->Observacion }}</td>
+                                        <td>{{ $fd->Precio * $fd->Cantidad }}</td>
+                                      </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

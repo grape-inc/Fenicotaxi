@@ -21,6 +21,7 @@ class FacturaVenta extends Model
         'Fecha_Actualizacion',
         'ID_Cliente',
         'Monto_Restante',
-        'ID_Jornada'
+        'ID_Jornada',
+        'Observacion'
     ];
 }

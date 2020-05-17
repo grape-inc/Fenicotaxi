@@ -13,8 +13,9 @@
     <hr width="100px" style ="position:absolute;left:550px;top:285px;">
     <h1 style ="position:absolute;left:10px;top:290px;font-size:18px;">Dirección: {{ $Direccion }}</h1>
     <hr width="560px" style ="position:absolute;left:95px;top:325px;">
-    <label style="display: inline-block;position:absolute;left:485px;top:345px;font-size:18px;"><input style="margin-top: 5px;" checked="{{ $Contado }}" type="checkbox"> Contado</label><br>
-    <label style="display: inline-block;position:absolute;left:575px;top:345px;font-size:18px;"><input style="margin-top: 5px;" checked="{{ $Credito }}" type="checkbox"> Credito</label><br>
+    <label style="display: inline-block;position:absolute;left:485px;top:345px;font-size:18px;
+    "><input style="margin-top: 5px;" type="checkbox" {{$Contado}}> Contado</label><br>
+    <label style="display: inline-block;position:absolute;left:575px;top:345px;font-size:18px;"><input style="margin-top: 5px;" type="checkbox" {{$Credito}}> Credito</label><br>
     <table style="position:absolute;left:10px;top:385px;  border-collapse: collapse;border-radius: 5px; ">
         <thead style="border: 2px solid black;border-radius: 5px;">
             <tr>
@@ -27,10 +28,10 @@
         <tbody style="border: 2px solid black;heigth:300px;">
             @foreach($FacturaDetalle as $Dt)
                 <tr>
-                    <td style="border: 2px solid black;">{{ $Dt->Cantidad }}</td>
-                    <td style="border: 2px solid black;">{{ $Dt->Descripción }}</td>
-                    <td style="border: 2px solid black;">{{ $Dt->Precio_Venta }}</td>
-                    <td style="border: 2px solid black;">{{ $Dt->Total }} C$</td>
+                    <td style="border: 2px solid black;text-align:center;">{{ $Dt->Cantidad }}</td>
+                    <td style="border: 2px solid black;">{{ $Dt->Observacion }}</td>
+                    <td style="border: 2px solid black;text-align:center;">{{ $Dt->Precio }}</td>
+                    <td style="border: 2px solid black;text-align:center;">{{ $Dt->Precio * $Dt->Cantidad }}</td>
                 </tr>
              @endforeach
         </tbody>

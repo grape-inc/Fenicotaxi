@@ -1,6 +1,28 @@
 @extends('layouts.layout')
 @push('scripts-vista')
     <script type="text/javascript" src="{{ URL::asset ('js/Eventos/FacturaVentasTabla.js') }}"></script>
+    @if (Request()->ID)
+        <script>
+            $.ajax ({
+                url: '../../../factura_pdf',
+                method: 'GET',
+                data:{id: {{Request()->ID}}},
+                xhrFields: {
+                    responseType: 'blob'
+                },
+            success: function (data) {
+                var a = document.createElement('a');
+                var url = window.URL.createObjectURL(data);
+                a.href = url;
+                a.download = 'Factura.pdf';
+                document.body.append(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+                }
+            });
+        </script>
+    @endif
     @if (Request()->Eliminado)
         <script>
             Swal.fire('¡Excelente!','Eliminaste el registro correctamente.','success');

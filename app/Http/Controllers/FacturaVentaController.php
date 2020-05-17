@@ -8,6 +8,7 @@ use App\FacturaVentaDetalle;
 use App\Cliente;
 use App\Empleado;
 use App\Arqueo;
+use App\Divisa;
 use DB;
 use App\Http\Requests\FacturaFormRequest;
 use Illuminate\Support\Carbon;
@@ -19,7 +20,6 @@ class FacturaVentaController extends Controller
         ->join('Cliente as c','v.ID_Cliente','=','c.ID_Cliente')
         ->join('Divisa as d','v.ID_Divisa','=','d.ID_Divisa')
         ->join('Empleado as e','v.ID_Empleado','=','e.ID_Empleado')
-        ->join('Factura_Venta_Detalle as fd','v.ID_Factura','=','fd.ID_Factura')
         ->select('v.ID_Factura','v.Codigo_Factura','v.Es_Credito','v.Descuento','v.Total_Facturado','e.Nombre_Empleado'
         ,'v.Fecha_Realizacion','v.Fecha_Actualizacion','c.Nombre_Cliente','v.ID_Jornada','v.Monto_Restante','d.Nombre_Divisa')
         ->get();
@@ -77,8 +77,11 @@ class FacturaVentaController extends Controller
             $facturaventa->Codigo_Factura=$request->get('Codigo_Factura');
             $facturaventa->ID_Divisa=$request->get('ID_Divisa');
 
-            $facturaventa->Es_Credito= true;
-            if ($request->get('Descuento') == Null){
+            $facturaventa->Es_Credito= $request->get('Es_Credito');
+            if ($request->get('Es_Credito') == "on"){
+                $facturaventa->Es_Credito=true;
+            }
+            else {
                 $facturaventa->Es_Credito=false;
             }
 
@@ -88,6 +91,8 @@ class FacturaVentaController extends Controller
             $facturaventa->ID_Empleado=$request->get('ID_Empleado');
             $facturaventa->ID_Cliente=$request->get('ID_Cliente');
             $facturaventa->ID_Divisa=$request->get('ID_Divisa');
+            $facturaventa->IVA=$request->get('IVA');
+            $facturaventa->Observacion=$request->get('Descripcion_Factura');
 
             $mytime = Carbon::now('America/Managua');
             $facturaventa->Fecha_Realizacion = $mytime->toDateTimeString();
@@ -96,12 +101,16 @@ class FacturaVentaController extends Controller
 
             $producto = $request->get('ID_Producto');
             $cantidad = $request->get('Cantidad');
+            $precio = $request->get('Precio');
+            $descripcion = $request->get('Descripcion');
             $cont = 0;
             while($cont < count($producto)){
                 $detalle = new FacturaVentaDetalle();
                 $detalle->ID_Factura= $facturaventa->ID_Factura;
                 $detalle->ID_Producto= $producto[$cont];
                 $detalle->Cantidad= $cantidad[$cont];
+                $detalle->Precio= $precio[$cont];
+                $detalle->Observacion= $descripcion[$cont];
                 $detalle->save();
                 $cont=$cont+1;
             }
@@ -111,10 +120,10 @@ class FacturaVentaController extends Controller
            }
            catch(\Exception $e)
            {
+              dd($e);
               DB::rollback();
            }
-
-           return redirect()->action('FacturaVentaController@index');
+           return redirect()->action('FacturaVentaController@index', ["ID"=>$facturaventa->ID_Factura]);
 
     }
 
@@ -128,11 +137,10 @@ class FacturaVentaController extends Controller
         ->select(DB::Raw('CONCAT(prod.Cod_Producto," / ",prod.Nombre_Producto) as producto'),'prod.ID_Producto')
         ->where('prod.Existencias_Minimas','>','0')
         ->get();
-        return view('Facturacion.Venta.edit',["Factura"=> $Factura,"empleado"=>$empleado,"producto"=>$producto,"cliente"=>$cliente,"divisa" =>$divisa,"Detalle"=> $Detalle]);
-    }
-
-    public function update(){
-
+        $FacturaDetalle = DB::table('Factura_Venta_Detalle as FV')
+        ->join('Producto as P','FV.ID_Producto','=','P.ID_Producto')
+        ->where('FV.ID_Factura',$id)->get();
+        return view('Facturacion.Venta.edit',["Factura"=> $Factura,"empleado"=>$empleado,"producto"=>$producto,"cliente"=>$cliente,"divisa" =>$divisa,"Detalle"=> $Detalle,"FacturaVentaDetalle"=>$FacturaDetalle]);
     }
 
     public function destroy($id){
@@ -154,5 +162,37 @@ class FacturaVentaController extends Controller
             'Clientes' => $Clientes,
             'Empleados' => $Empleados
         ]);
+    }
+
+    public function pdf_factura(Request $request) {
+        $Factura =FacturaVenta::find($request->id);
+        $Cliente = Cliente::find($Factura->ID_Cliente);
+        $FacturaDetalle =FacturaVentaDetalle::where('ID_Factura', $request->id)->get();
+        if($Factura->Es_Credito == 1) {
+            $Contado = "checked";
+            $Credito = "";
+        }
+        else{
+            $Credito = "checked";
+            $Contado = "";
+        }
+        $Datos =
+        [
+        'Numero' => $Factura->Codigo_Factura,
+        'NombreCliente' => $Cliente->Nombre_Cliente.' '.$Cliente->Apellido_Cliente,
+        'Fecha' =>  \Carbon\Carbon::parse($Factura->Fecha_Realizacion)->format('d/m/y'),
+        'Direccion' => $Cliente->Direccion,
+        'Contado' => $Contado,
+        'Credito' => $Credito,
+        'FacturaDetalle' => $FacturaDetalle,
+        'Observacion' => $Factura->Observacion,
+        'Subtotal' => $Factura->SubTotal.' '.Divisa::find($Factura->ID_Divisa)->Simbolo_Divisa,
+        'IVA' => $Factura->IVA.' '.Divisa::find($Factura->ID_Divisa)->Simbolo_Divisa,
+        'Total' => $Factura->Total_Facturado.' '.Divisa::find($Factura->ID_Divisa)->Simbolo_Divisa,
+        ];
+
+        $pdf = \PDF::loadView('factura', $Datos);
+
+        return $pdf->download('Factura.pdf');
     }
 }

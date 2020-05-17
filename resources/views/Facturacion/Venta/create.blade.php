@@ -95,6 +95,19 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{Form::label('Descripcion_Factura', 'Observación')}}
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-sm btn-primary" type="button">
+                                            <i class="mdi mdi-message "></i>
+                                        </button>
+                                    </div>
+                                        <input type="text" class="form-control" name="Descripcion_Factura" placeholder="Ingrese una observación para la factura.">
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 {{Form::label('Es_Credito', 'Tipo Factura')}}
@@ -146,6 +159,19 @@
                                         </button>
                                     </div>
                                         <input id="Total" type="text" class="form-control" name="Total_Facturado" placeholder="Total facturado" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{Form::label('IVA', 'IVA')}}
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-sm btn-primary" type="button">
+                                            <i class="mdi mdi-upload-network-outline"></i>
+                                        </button>
+                                    </div>
+                                        <input id="IVA" type="text" class="form-control" name="IVA" placeholder="IVA" readonly>
                                 </div>
                             </div>
                         </div>
@@ -234,6 +260,7 @@
                                                 <th>Nombre Producto</th>
                                                 <th>Cantidad</th>
                                                 <th>Precio</th>
+                                                <th>Observación</th>
                                                 <th>Subtotal</th>
                                             </tr>
                                         </thead>

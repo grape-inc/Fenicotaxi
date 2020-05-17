@@ -18,6 +18,7 @@ class Cliente extends Model
         'Cedula',
         'Correo',
         'Fecha_Ingreso',
-        'Fecha_Realizacion'
+        'Fecha_Realizacion',
+        'Direccion'
     ];
 }

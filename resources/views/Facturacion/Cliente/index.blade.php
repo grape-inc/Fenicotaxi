@@ -37,8 +37,9 @@
                                         <th>Apellido</th>
                                         <th>Cedula</th>
                                         <th>Correo</th>
+                                        <th>Dirección</th>
                                         <th>Fecha Ingreso</th>
-                                        <th>Fecha Realizacion</th>
+                                        <th>Fecha Actualización</th>
                                         <th>Editar</th>
                                         <th>Eliminar</th>
                                     </tr>
@@ -51,6 +52,7 @@
                                         <td>{{ $cliente->Apellido_Cliente }}</td>
                                         <td>{{ $cliente->Cedula }}</td>
                                         <td>{{ $cliente->Correo }}</td>
+                                        <td>{{ $cliente->Direccion }}</td>
                                         <td>{{ $cliente->Fecha_Ingreso }}</td>
                                         <td>{{ $cliente->Fecha_Realizacion }}</td>
                                         <td> <a href="{{ URL::route('Cliente.edit', $cliente->ID_Cliente)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>

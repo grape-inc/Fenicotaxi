@@ -39,26 +39,31 @@ total = 0;
 subtotal = [];
 
 function agregar() {
-    ID_Producto = $("#ID_Producto").val();
-    producto = $("#ID_Producto option:selected").text();
-    Cantidad = $("#Cantidad").val();
-    Impuesto = $("#Impuesto").val();
-    Precio = $("#Precio").val();
-    Total = $("Total")
+    if($('#ID_Producto').val() != "") {
+        ID_Producto = $("#ID_Producto").val();
+        producto = $("#ID_Producto option:selected").text();
+        Cantidad = $("#Cantidad").val();
+        Impuesto = $("#Impuesto").val();
+        Precio = $("#Precio").val();
+        Total = $("Total");
+        Descripcion = "";
 
-    if (ID_Producto != "" && Cantidad != "" && Cantidad > 0 && Precio != "") {
-        subtotal[cont] = (Cantidad * Precio);
-        total = total + subtotal[cont];
-        var Fila = '<tr class="selected" id="Fila' + cont + '"><td><button type="button" class="btn btn-warning" onclick="eliminar(' + cont + ');">X</button></td><td><input type="hidden" name="ID_Producto[]" value="' + ID_Producto + '">' + producto + '</td><td><input type="number" name="Cantidad[]" value="' + Cantidad + '"></td><td><input type="number" name="Precio[]" value="' + Precio + '"></td><td>' + subtotal[cont] + '</td></tr>';
-        cont++;
-        limpiar();
-        evaluar();
-        $('#TablaDetalle').append(Fila);
+        if (ID_Producto != "" && Cantidad != "" && Cantidad > 0 && Precio != "") {
+            subtotal[cont] = (Cantidad * Precio);
+            total = total + subtotal[cont];
+                var Fila = '<tr id="Fila' + cont + '"><td><button type="button" class="btn btn-warning" onclick="eliminar(' + cont + ');">X</button></td><td><input type="hidden" name="ID_Producto[]" value="' + ID_Producto + '">' + producto + '</td><td><input style="width: 100px;" type="number" name="Cantidad[]" onchange="EvaluarTotales()" class="Cantidad" value="' + Cantidad + '" readonly ></td><td><input type="number" style="width: 140px;" name="Precio[]" onchange="EvaluarTotales()" value="' + Precio + '" readonly></td><td><input type="text" name="Descripcion[]" value="' + Descripcion + '"></td><td>' + subtotal[cont] + '</td></tr>';
+            cont++;
+            limpiar();
+            evaluar();
+            $('#TablaDetalle').append(Fila);
+            EvaluarTotales();
+            $('#ID_Producto').val("").trigger("change")
 
-    } else {
-        alert("Error al ingresar el detalle de la factura, revise los datos del articulo")
+        } else {
+            alert("Error al ingresar el detalle de la factura, revise los datos del articulo")
+        }
+        EvaluarTotales();
     }
-
 }
 
 function limpiar() {
@@ -75,17 +80,24 @@ function eliminar(index) {
     $("#total").html("S/. " + total);
     $("#Fila" + index).remove();
     evaluar();
+    EvaluarTotales();
 }
 
 function EvaluarTotales() {
     var Suma = 0;
     $('#TablaDetalle > tbody > tr').each(function(Index, Fila ) {
-        TotalProducto = parseFloat(Fila.childNodes[4].innerHTML);
+        PrecioProducto = parseFloat($(Fila.childNodes[3].innerHTML)[0].value);
+        CantidadProducto = parseFloat($(Fila.childNodes[2].innerHTML)[0].value);
+        Fila.childNodes[5].innerHTML =PrecioProducto * CantidadProducto;
+        TotalProducto = parseFloat(Fila.childNodes[5].innerHTML);
         Suma = Suma + TotalProducto;
     });
     var Descuento = $('#Descuento').val();;
     var TotalConDescuento = Suma - (Suma * (Descuento / 100) );
+    var IVA = TotalConDescuento * 0.15;
+    TotalConDescuento = IVA + TotalConDescuento;
     $('#SubTotal').val(Suma);
+    $('#IVA').val(IVA);
     $('#Total').val(TotalConDescuento);
 }
 

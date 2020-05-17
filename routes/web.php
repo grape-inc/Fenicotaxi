@@ -38,3 +38,4 @@ Route::get('valoresCalculo','FacturaVentaController@valoresCalculo');
 Route::get('info_productos','ProductoController@ajax_producto');
 Route::get('precio_producto/{Producto}','ProductoController@precio_producto');
 Route::get('info_factura','FacturaVentaController@ajax_factura');
+Route::get('factura_pdf','FacturaVentaController@pdf_factura');
