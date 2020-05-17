@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AddDefaultAdminCargo::class);
         $this->call(AddDefaulAdmin::class);
         $this->call(AddDefaultCurrency::class);
+        $this->call(AddDefaultTipoPago::class);
     }
 }

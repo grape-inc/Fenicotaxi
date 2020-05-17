@@ -28,7 +28,7 @@ class CategoriaProductoController extends Controller
     }
 
     public function edit($ID){
-        return view("inventario.categorias.edit ",["Categoria"=>CategoriaProducto::findOrFail($ID)]);
+        return view("Inventario.Categorias.edit",["Categoria"=>CategoriaProducto::findOrFail($ID)]);
     }
 
     public function update(CategoriaProductoFormRequest $Request, $ID){

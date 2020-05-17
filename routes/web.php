@@ -31,6 +31,7 @@ Route::resource('Inventario/UnidadesDeMedida','UnidadesDeMedidaController');
 Route::resource('Nomina/Cargo','CargoController');
 Route::resource('Facturacion/Arqueo','ArqueoController');
 Route::resource('Facturacion/Venta','FacturaVentaController');
+Route::resource('Facturacion/TipoPago','TipoPagoController');
 Route::resource('Welcome','WelcomeController');
 
 //Peticiones ajax
