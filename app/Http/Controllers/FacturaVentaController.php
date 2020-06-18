@@ -30,6 +30,8 @@ class FacturaVentaController extends Controller
         $empleado = DB::table('Empleado')->get();
         $cliente = DB::table('Cliente')->get();
         $divisa = DB::table('Divisa')->get();
+        $pagos = DB::table('tipo_pago')->get();
+        $tasa_Cambio = $divisa[0]->Equivalencia_Cordoba;
         $CodigoFactura = DB::table('Factura_Venta')
         ->select(DB::raw("COALESCE(max(codigo_factura),0) as CodigoFactura"))
         ->get();
@@ -46,7 +48,7 @@ class FacturaVentaController extends Controller
         $as = count($jornada);
 
         if ( $as == 1){
-            return view('Facturacion.Venta.create',["empleado"=>$empleado,"producto"=>$producto,"cliente"=>$cliente,"divisa" =>$divisa,"CF"=>$CodigoFactura]);
+            return view('Facturacion.Venta.create',["empleado"=>$empleado,"producto"=>$producto,"cliente"=>$cliente,"divisa" =>$divisa,"CF"=>$CodigoFactura, 'pagos'=>$pagos,'tasa_Cambio'=>$tasa_Cambio]);
         }else{
             flash('Necesita abrir caja para poder facturar')->error();
             return redirect()->action('FacturaVentaController@index');

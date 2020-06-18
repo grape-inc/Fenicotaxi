@@ -36,9 +36,9 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         @if($Producto->Imagen != "")
-                                            <img alt="ImagenProducto" class="img-thumbnail" id="ImagenProducto" name="Imagen" src ="data:image/png;base64,{{$Producto->Imagen}}" style="height:300px;" alt="ImagenProducto" class="img-thumbnail">
+                                            <img alt="ImagenProducto" class="img-thumbnail mx-auto d-block" id="ImagenProducto" name="Imagen" src ="data:image/png;base64,{{$Producto->Imagen}}" style="height:300px;" alt="ImagenProducto" class="img-thumbnail">
                                         @else
-                                             <img alt="ImagenProducto" class="img-thumbnail" id="ImagenProducto" class="ImagenTamañoTabla" src="{{{asset('images/dummy.jpg')}}}"/>
+                                             <img alt="ImagenProducto" class="img-thumbnail mx-auto d-block" id="ImagenProducto" class="ImagenTamañoTabla" src="{{{asset('images/dummy.jpg')}}}"/>
                                         @endif
                                     </div>
                                     <div class="row justify-content-center">
@@ -180,14 +180,14 @@
                                     </div>
 
                                     <div class="form-group">
-                                        {{Form::label('Precio_Venta', 'Precio de compra')}}
+                                        {{Form::label('Precio_Venta', 'Precio de venta')}}
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi mdi-diamond"></i>
                                                 </button>
                                             </div>
-                                            {{ Form::number('Precio_Venta',$Producto->Precio_Venta,array('id'=>'Precio_Venta','class'=>'form-control','placeholder'=>'Precio de compra del producto','step'=>'0.01'))}}
+                                            {{ Form::number('Precio_Venta',$Producto->Precio_Venta,array('id'=>'Precio_Venta','class'=>'form-control','placeholder'=>'Precio de venta del producto','step'=>'0.01'))}}
                                         </div>
 
                                         @error('Precio_Venta')

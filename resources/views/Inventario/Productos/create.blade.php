@@ -30,7 +30,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <img id="ImagenProducto" name="Imagen" src="{{{asset('images/dummy.jpg')}}}" style="height:300px;" alt="ImagenProducto" class="img-thumbnail">
+                                        <img id="ImagenProducto" name="Imagen" src="{{{asset('images/dummy.jpg')}}}" style="height:300px;" alt="ImagenProducto" class="img-thumbnail mx-auto d-block">
                                     </div>
                                     <div class="row justify-content-center">
                                         {{Form::label('Imagen', 'Cambiar Imagen',['class' => 'btn btn-gradient-dark btn-icon-text text-center','files' => true])}}
@@ -171,14 +171,14 @@
                                     </div>
 
                                     <div class="form-group">
-                                        {{Form::label('Precio_Venta', 'Precio de compra')}}
+                                        {{Form::label('Precio_Venta', 'Precio de venta')}}
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" type="button">
                                                     <i class="mdi mdi mdi-diamond"></i>
                                                 </button>
                                             </div>
-                                            {{ Form::number('Precio_Venta','',array('id'=>'Precio_Venta','class'=>'form-control','placeholder'=>'Precio de compra del producto','step'=>'0.01'))}}
+                                            {{ Form::number('Precio_Venta','',array('id'=>'Precio_Venta','class'=>'form-control','placeholder'=>'Precio de venta del producto','step'=>'0.01'))}}
                                         </div>
 
                                         @error('Precio_Venta')

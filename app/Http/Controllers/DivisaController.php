@@ -38,11 +38,6 @@ class DivisaController extends Controller
         $Divisa->Equivalencia_Cordoba=$DS->saleRateUSD;
         $Divisa->update();
 
-        #Actalizar la divisa de euros
-        $Divisa = Divisa::findOrFail(2);
-        $Divisa->Equivalencia_Cordoba=$DS->saleRateEUR;
-        $Divisa->update();
-
         return redirect()->action('DivisaController@index',['Actualizado'=>true]);
     }
 }

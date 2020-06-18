@@ -27,9 +27,9 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         @if($Empleado->Imagen != "")
-                                            <img alt="ImagenEmpleado" class="img-thumbnail" id="ImagenEmpleado" name="Imagen" src ="data:image/png;base64,{{$Empleado->Imagen}}" style="height:300px;" class="img-thumbnail">
+                                            <img alt="ImagenEmpleado" class="img-thumbnail mx-auto d-block" id="ImagenEmpleado" name="Imagen" src ="data:image/png;base64,{{$Empleado->Imagen}}" style="height:300px;" class="img-thumbnail">
                                         @else
-                                            <img alt="ImagenEmpleado" class="img-thumbnail" id="ImagenEmpleado" class="ImagenTamañoTabla" src="{{{asset('images/dummy.jpg')}}}"/>
+                                            <img alt="ImagenEmpleado" class="img-thumbnail mx-auto d-block" id="ImagenEmpleado" class="ImagenTamañoTabla" src="{{{asset('images/dummy.jpg')}}}"/>
                                         @endif
                                     </div>
                                     <div class="row justify-content-center">

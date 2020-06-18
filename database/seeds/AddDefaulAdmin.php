@@ -18,7 +18,7 @@ class AddDefaulAdmin extends Seeder
             'ID_Empleado' => '1',
             'Nombre_Empleado' => 'Admin',
             'Apellido_Empleado' => 'Admin',
-            'Fecha_Nacimiento' => '2020-01-01',
+            'Fecha_Nacimiento' => '1997-01-01',
             'Cedula' => '000-000000-0000A',
             'Fecha_Ingreso' => '2020-01-01',
             'Usuario' => 'Admin',
