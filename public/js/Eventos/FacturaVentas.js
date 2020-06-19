@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var Divisa_previa = null;
     $('#Agregar').click(function () {
         agregar();
         EvaluarTotales();
@@ -6,15 +7,20 @@ $(document).ready(function () {
 
     $('#Agregar_Pago').click(function () {
         agregar_pago();
-        //EvaluarTotales();
+    });
+    $('#ID_Divisa').change(function(event){
+       EvaluarTotales(true,Divisa_previa);
+       Divisa_previa = $('#ID_Divisa').val();
     });
 
     $('#Es_Credito').change(function(event){
         if(this.checked) {
           $('#pagos_contado').hide();
+          $('#total_pendiente').hide();
         }
         else {
             $('#pagos_contado').show();
+            $('#total_pendiente').show();
         }
     });
 
@@ -65,7 +71,7 @@ function agregar() {
         if (ID_Producto != "" && Cantidad != "" && Cantidad > 0 && Precio != "") {
             subtotal[cont] = (Cantidad * Precio);
             total = total + subtotal[cont];
-                var Fila = '<tr id="Fila' + cont + '"><td><button type="button" class="btn btn-warning" onclick="eliminar(' + cont + ');">X</button></td><td><input type="hidden" name="ID_Producto[]" value="' + ID_Producto + '">' + producto + '</td><td><input style="width: 100px;" type="number" name="Cantidad[]" onchange="EvaluarTotales()" class="Cantidad" value="' + Cantidad + '" readonly ></td><td><input type="number" style="width: 140px;" name="Precio[]" onchange="EvaluarTotales()" value="' + Precio + '" readonly></td><td><input type="text" name="Descripcion[]" value="' + Descripcion + '"></td><td>' + subtotal[cont] + ' ' +$("#ID_Divisa option:selected").text() +'</td></tr>';
+                var Fila = '<tr id="Fila' + cont + '"><td><button type="button" class="btn btn-warning" onclick="eliminar(' + cont + ');">X</button></td><td><input type="hidden" name="ID_Producto[]" value="' + ID_Producto + '">' + producto + '</td><td><input style="width: 100px;" type="number" name="Cantidad[]" onchange="EvaluarTotales()" class="Cantidad" value="' + Cantidad + '" readonly ></td><td><input type="number" style="width: 140px;" name="Precio[]" onchange="EvaluarTotales()" value="' + Precio + '" readonly></td><td><input type="hidden" name="ID_Moneda[]" value="' + $("#ID_Divisa").val() + '">' + $("#ID_Divisa option:selected").text() + '</td><td><input type="text" name="Descripcion[]" value="' + Descripcion + '"></td><td>' + subtotal[cont] + ' ' +$("#ID_Divisa option:selected").text() +'</td></tr>';
             cont++;
             limpiar();
             evaluar();
@@ -97,6 +103,10 @@ function agregar_pago() {
             alert("Error al ingresar el detalle de pago, revise bien los datos.")
         }
         EvaluarTotales();
+        $('#ID_Pago').val("");
+        $('#ID_Divisa_Pago').val("");
+        $('#Monto_Pago').val("");
+        $('.selectpicker').selectpicker('refresh');
     }
 }
 
@@ -119,24 +129,44 @@ function eliminar(index) {
 
 function eliminarpago(index) {
     $("#FilaPago" + index).remove();
+    EvaluarTotalesPago();
 }
 
-function EvaluarTotales() {
+function EvaluarTotales(CambioDivisa,Divisa_Anterior) {
     var Suma = 0;
     $('#TablaDetalle > tbody > tr').each(function(Index, Fila ) {
-        PrecioProducto = parseFloat($(Fila.childNodes[3].innerHTML)[0].value);
+        if (CambioDivisa == null) {
+            PrecioProducto = parseFloat($(Fila.childNodes[3].innerHTML)[0].value);
+        }
+        else if (CambioDivisa == true) {
+            PrecioProducto = conversion_divisa(Divisa_Anterior,parseFloat($(Fila.childNodes[3].innerHTML)[0].value))
+            Fila.childNodes[3].innerHTML = '<input type="number" style="width: 140px;" name="Precio[]" onchange="EvaluarTotales()" value="'+PrecioProducto+'" readonly="">';
+            Fila.childNodes[4].innerHTML = $("#ID_Divisa option:selected").text();
+        }
         CantidadProducto = parseFloat($(Fila.childNodes[2].innerHTML)[0].value);
-        Fila.childNodes[5].innerHTML =(PrecioProducto * CantidadProducto) + ' ' +$("#ID_Divisa option:selected").text();
-        TotalProducto = parseFloat(Fila.childNodes[5].innerHTML);
+        Fila.childNodes[6].innerHTML =(PrecioProducto * CantidadProducto) + ' ' +$("#ID_Divisa option:selected").text();
+        TotalProducto = parseFloat(Fila.childNodes[6].innerHTML);
         Suma = Suma + TotalProducto;
     });
     var Descuento = $('#Descuento').val();;
     var TotalConDescuento = Suma - (Suma * (Descuento / 100) );
     var IVA = TotalConDescuento * 0.15;
-    TotalConDescuento = IVA + TotalConDescuento;
-    $('#SubTotal').val(Suma);
-    $('#IVA').val(IVA);
+    TotalConDescuento = (IVA + TotalConDescuento).toFixed(2);
+    $('#SubTotal').val(Suma.toFixed(2));
+    $('#IVA').val(IVA.toFixed(2));
     $('#Total').val(TotalConDescuento);
+    $('#total_factura').text("Total Facturado : "+TotalConDescuento + " "+ $("#ID_Divisa option:selected").text());
+    EvaluarTotalesPago();
+}
+
+function EvaluarTotalesPago() {
+    var Suma = 0;
+    $('#TablaDetallePagos > tbody > tr').each(function(Index, Fila ) {
+        Pago = new Number(conversion_divisa($(Fila.childNodes[2].innerHTML)[0].value,parseFloat($(Fila.childNodes[3].innerHTML)[0].value)))
+        Suma = Suma + Pago;
+    });
+    TotalPendiente = (parseFloat($('#Total').val()) - Suma).toFixed(2);
+    $('#total_pendiente').text("Monto Pendiente: "+TotalPendiente + " "+ $("#ID_Divisa option:selected").text());
 }
 
 function ActualizarPrecio() {

@@ -23,6 +23,7 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="form-group">
+                                    <input type="hidden" id="tasa_cambio" value="{{ $tasa_Cambio }}">
                                     {{Form::label('ID_Proveedor', 'Proveedor')}}
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -120,7 +121,7 @@
                                                 <i class="mdi mdi-cash-register"></i>
                                             </button>
                                         </div>
-                                        <select name="ID_Divisa" class="selectpicker form-control" title="Escoja la divisa..." data-live-search="true">
+                                        <select id="ID_Divisa" name="ID_Divisa" class="selectpicker form-control" title="Escoja la divisa..." data-live-search="true">
                                             @foreach ($divisa as $div)
                                                 <option value="{{ $div->ID_Divisa}}">{{$div->Nombre_Divisa}}</option>
                                             @endforeach
@@ -219,6 +220,7 @@
                                                 <th>Nombre Producto</th>
                                                 <th>Cantidad</th>
                                                 <th>Precio</th>
+                                                <th>Moneda</th>
                                                 <th>Subtotal</th>
                                             </tr>
                                         </thead>

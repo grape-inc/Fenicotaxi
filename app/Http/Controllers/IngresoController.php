@@ -24,11 +24,12 @@ class IngresoController extends Controller
         $empleado = DB::table('Empleado')->get();
         $proveedor = DB::table('Proveedor')->get();
         $divisa = DB::table('Divisa')->get();
+        $tasa_Cambio = $divisa[0]->Equivalencia_Cordoba;
         $producto = DB::table('Producto as prod')
         ->select(DB::Raw('CONCAT(prod.Cod_Producto," / ",prod.Nombre_Producto) as producto'),'prod.ID_Producto')
         ->where('prod.Existencias_Minimas','>','0')
         ->get();
-        return view('inventario.Ingresos.create',["empleado"=>$empleado,"producto"=>$producto,"proveedor"=>$proveedor,"divisa" =>$divisa]);
+        return view('inventario.Ingresos.create',["empleado"=>$empleado,"producto"=>$producto,"proveedor"=>$proveedor,"divisa" =>$divisa,'tasa_Cambio'=>$tasa_Cambio]);
     }
 
     public function store(IngresosFormRequest $request){

@@ -261,6 +261,7 @@
                                             <th>Nombre Producto</th>
                                             <th>Cantidad</th>
                                             <th>Precio</th>
+                                            <th>Moneda</th>
                                             <th>Observación</th>
                                             <th>Subtotal</th>
                                         </tr>
@@ -372,7 +373,15 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center mt-4">
+        <div style="float:right">
+            <div style="margin-left:-400px;" class="row">
+                <span style="font-size: 20px;font-weight: bold;" id="total_factura">Total Facturado : 0</span>
+            </div>
+            <div style="margin-left:-400px;" class="row mt-2">
+                <span style="font-size: 20px;font-weight: bold;" id="total_pendiente">Monto Pendiente : 0</span>
+            </div>
+        </div>
+        <div style="clear: right;" class="row justify-content-center mt-4">
             <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Generar Venta <i class="mdi mdi-file-check btn-icon-append"></i></button>
         </div>
     </div>
