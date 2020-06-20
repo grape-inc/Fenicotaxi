@@ -29,10 +29,11 @@
         </script>
     @endif
 @endpush
+
 @section('content')
-    <div class="content-wrapper">
-        <div class="page-header">
-            <h3 class="page-title">
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-format-list-bulleted"></i>
             </span> Facturas </h3>
@@ -40,6 +41,7 @@
             <a href="{{route('Venta.create')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend"></i>Realizar Venta</a>
         </div>
         <div class="row">
+            @include('partials.filter')
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
