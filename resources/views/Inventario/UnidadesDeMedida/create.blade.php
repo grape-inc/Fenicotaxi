@@ -18,7 +18,7 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             {{Form::label('ID_Unidad', 'Identificador')}}
-                            <div class="input-group">                            
+                            <div class="input-group">
                                 <div class="input-group-prepend">
                                     <button class="btn btn-sm btn-primary" type="button">
                                         <i class="mdi mdi-sim-alert"></i>
@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-group">
                             {{Form::label('Nombre_Unidad', 'Nombre de la unidad de medida')}}
-                            <div class="input-group">                                
+                            <div class="input-group">
                                 <div class="input-group-prepend">
                                     <button class="btn btn-sm btn-primary" type="button">
                                         <i class="mdi mdi-ticket"></i>
@@ -41,7 +41,7 @@
                             @error('Nombre_Unidad')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
-                        </div>                        
+                        </div>
                         <div class="row justify-content-center">
                             <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Crear Unidad de medida<i class="mdi mdi-file-check btn-icon-append"></i></button>
                         </div>

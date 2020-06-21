@@ -24,16 +24,31 @@ class NominaController extends Controller
         $Detalle= DB::table('NominaDetalle AS ND')
         ->join('Empleado AS E','ND.ID_Empleado','=','E.ID_Empleado')
         ->get();
+        $TotalINSS = DB::table('NominaDetalle AS ND')
+        ->where("ID_Nomina",$ID)
+        ->sum("INSS_Laboral");
         return view ('nomina.Nomina.edit',[
             'Nomina' => $Nomina,
-            'Detalle' => $Detalle
+            'Detalle' => $Detalle,
+            'INSS_SUMA' => $TotalINSS
         ]);
     }
 
     public function create(Request $Request){
+        $Empleado= DB::table('Empleado AS E')
+        ->join('Cargo AS C','E.ID_Cargo','=','C.ID_Cargo')
+        ->get();
+        return view ('nomina.Nomina.create',[
+            'Empleados' => $Empleado
+        ]);
+    }
+
+    public function store(Request $Request){
         setlocale(LC_ALL, 'es_NI', 'ni', 'ES');
         $Now = Carbon::now();
-        $Empleados = Empleado::All();
+        $Empleados = $Request->get('ID_Empleado');
+        $Salarios = $Request->get('Salario');
+        $Horas = $Request->get('Horas');
         try {
             DB::beginTransaction();
             $Nomina=new Nomina();
@@ -48,17 +63,14 @@ class NominaController extends Controller
             $Total_Nomina = 0;
             while($ContadorEmpleado < count($Empleados))
             {
-                $SalarioBrutoEmpleado = Cargo::find($Empleados[$ContadorEmpleado]->ID_Cargo)->Salario_Cargo;
-                $HorasLaboradas = DB::table('Empleado_Hora_Laborada')
-                 ->whereBetween('Fecha_Registro', array($Now->startOfMonth()->format('Y-m-d'), $Now->endOfMonth()->format('Y-m-d')))
-                 ->where('ID_Empleado',$Empleados[$ContadorEmpleado]->ID_Empleado)
-                 ->sum('Horas_Laboradas');
-                $SalarioNeto = (($SalarioBrutoEmpleado / 30) / 8) * $HorasLaboradas;
-                $InssLaboral = $SalarioBrutoEmpleado * 0.0625;
+                $SalarioBrutoEmpleado = $Salarios[$ContadorEmpleado];
+                $HorasLaboradas = $Horas[$ContadorEmpleado];
+                $SalarioNeto = (($SalarioBrutoEmpleado / 160)) * $HorasLaboradas;
+                $InssLaboral = $SalarioNeto * 0.07;
                 $IR = NominaController::CalcularIR($SalarioBrutoEmpleado);
                 $Detalle = new NominaDetalle();
                 $Detalle->ID_Nomina = $Nomina->ID_Nomina;
-                $Detalle->ID_Empleado = $Empleados[$ContadorEmpleado]->ID_Empleado;
+                $Detalle->ID_Empleado = $Empleados[$ContadorEmpleado];
                 $Detalle->Salario_Bruto = $SalarioBrutoEmpleado;
                 $Detalle->INSS_Laboral = $InssLaboral;
                 $Detalle->IR_Laboral = $IR;

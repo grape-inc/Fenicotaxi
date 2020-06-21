@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                {{Form::label('Total_Nomina', 'Total en Nomina')}}
+                                {{Form::label('Total_Nomina', 'Total (Sin Deducciones)')}}
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" type="button">
@@ -65,6 +65,17 @@
                                         </button>
                                     </div>
                                     {{ Form::text('Total_Nomina',$Nomina->Total_Nomina,array('id'=>'Total_Nomina','class'=>'form-control','readonly'=>true))}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {{Form::label('Total_INSS', 'Total (INSS)')}}
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-sm btn-primary" type="button">
+                                            <i class="mdi mdi-diamond"></i>
+                                        </button>
+                                    </div>
+                                    {{ Form::text('Total_INSS',$INSS_SUMA,array('id'=>'Total_Nomina','class'=>'form-control','readonly'=>true))}}
                                 </div>
                             </div>
                         </div>
