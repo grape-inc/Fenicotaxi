@@ -197,12 +197,12 @@ class FacturaVentaController extends Controller
         $Cliente = Cliente::find($Factura->ID_Cliente);
         $FacturaDetalle =FacturaVentaDetalle::where('ID_Factura', $request->id)->get();
         if($Factura->Es_Credito == 1) {
-            $Contado = "checked";
-            $Credito = "";
+            $Contado = "";
+            $Credito = "checked";
         }
         else{
-            $Credito = "checked";
-            $Contado = "";
+            $Credito = "";
+            $Contado = "checked";
         }
         $Datos =
         [
