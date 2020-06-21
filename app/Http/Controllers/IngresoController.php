@@ -15,7 +15,7 @@ class IngresoController extends Controller
         ->join('Proveedor as p','i.ID_Proveedor','=','p.ID_Proveedor')
         ->join('Empleado as e','i.ID_Empleado','=','e.ID_Empleado')
         ->join('Divisa as d','i.ID_Divisa','=','d.ID_Divisa')
-        ->select('i.ID_Ingreso','i.Impuesto','i.Total','i.Fecha_Realizacion','p.Nombre_Proveedor','e.Nombre_Empleado','d.Nombre_Divisa')
+        ->select('i.ID_Ingreso','i.Impuesto','i.Total','i.Fecha_Realizacion','i.Codigo_Ingreso','p.Nombre_Proveedor','e.Nombre_Empleado','d.Nombre_Divisa','d.Simbolo_Divisa')
         ->get();
         return view('inventario.Ingresos.index',["ingresos"=>$ingresos]);
     }

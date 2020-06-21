@@ -72,7 +72,7 @@
                                         @else
                                             <td>Contado</td>
                                         @endif
-                                        <td>{{ $fv->Total_Facturado }} C$</td>
+                                        <td>{{ $fv->Total_Facturado }} {{ $fv->Simbolo_Divisa }}</td>
                                         <td>{{ $fv->Fecha_Realizacion }}</td>
                                         <td>{{ $fv->Fecha_Actualizacion }}</td>
                                         <td> <a href="{{ URL::route('Venta.edit', $fv->ID_Factura)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>

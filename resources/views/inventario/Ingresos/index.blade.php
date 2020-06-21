@@ -22,6 +22,7 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>Numero Ingreso</th>
+                                        <th>Codigo Ingreso</th>
                                         <th>Proveedor</th>
                                         <th>Vendedor</th>
                                         <th>Divisa</th>
@@ -34,12 +35,13 @@
                                 @foreach($ingresos as $ingreso)
                                     <tr>
                                         <td>{{ $ingreso->ID_Ingreso }}</td>
+                                        <td>{{ $ingreso->Codigo_Ingreso }}</td>
                                         <td>{{ $ingreso->Nombre_Proveedor }}</td>
                                         <td>{{ $ingreso->Nombre_Empleado }}</td>
                                         <td>{{ $ingreso->Nombre_Divisa }}</td>
                                         <td>{{ $ingreso->Fecha_Realizacion }}</td>
                                         <td>{{ ($ingreso->Impuesto) * 100 }}%</td>
-                                        <td>{{ $ingreso->Total }} C$</td>
+                                        <td>{{ $ingreso->Total }} {{ $ingreso->Simbolo_Divisa }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

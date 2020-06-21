@@ -102,7 +102,20 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{Form::label('Descripcion_Factura', 'Observación')}}
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-sm btn-primary" type="button">
+                                            <i class="mdi mdi-message "></i>
+                                        </button>
+                                    </div>
+                                        <input value="{{ $Factura->Observacion}}" type="text" class="form-control" name="Descripcion_Factura" placeholder="Ingrese una observación para la factura.">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
                             <div class="form-group">
                                 {{Form::label('Es_Credito', 'Tipo Factura')}}
                                 <div class="input-group">
@@ -210,6 +223,41 @@
                 </div>
             </div>
         </div>
+        @if($Factura->Es_Credito == false)
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Detalle de Pago</h4>
+                        <div class="row">
+                            {{-- Tabla de pago agregados --}}
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table id="TablaDetallePagos" class="table table-hover table-bordered">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>Tipo de Pago</th>
+                                                <th>Moneda</th>
+                                                <th>Monto</th>
+                                            </tr>
+                                        </thead>
+                                        {{-- Cuerpo de la tabla --}}
+                                        <tbody>
+                                        @foreach($FacturaPago as $fp)
+                                        <tr>
+                                            <td>{{ $fp->Tipo_Pago }}</td>
+                                            <td>{{ $fp->Nombre_Divisa }}</td>
+                                            <td>{{ $fp->monto}}</td>
+                                        </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
     {{ Form::close() }}
 </div>

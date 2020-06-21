@@ -52,6 +52,14 @@ $(document).ready(function () {
             $('.selectpicker').selectpicker('refresh');
         });
     });
+
+    $("form").submit(function(e){
+        var total_pendiente = parseFloat($('#total_pendiente').text().split(":")[1])
+        if (total_pendiente != 0 && $('#Es_Credito').is(':checked') == false) {
+            Swal.fire('¡Error!','Aun no se ha pagado la totalidad de la factura.','error');
+          e.preventDefault();
+        }
+    });
 });
 
 var cont = 0;
@@ -95,7 +103,7 @@ function agregar_pago() {
         Monto = $("#Monto_Pago").val();
 
         if (ID_Pago != "" && ID_Divisa != "" && Monto > 0) {
-                var Fila = '<tr id="FilaPago' + cont + '"><td><button type="button" class="btn btn-warning" onclick="eliminarpago(' + cont + ');">X</button></td><td><input type="hidden" name="ID_Pago[]" value="' + ID_Pago + '">' + Nombre_Pago + '</td><td><input type="hidden" name="ID_Divisa[]" value="' + ID_Divisa + '">' + Nombre_Divisa + '</td><td><input type="number" style="width: 140px;" name="Monto[]" value="' + Monto + '" readonly></td></tr>';
+                var Fila = '<tr id="FilaPago' + cont + '"><td><button type="button" class="btn btn-warning" onclick="eliminarpago(' + cont + ');">X</button></td><td><input type="hidden" name="ID_Pago_Factura[]" value="' + ID_Pago + '">' + Nombre_Pago + '</td><td><input type="hidden" name="ID_Divisa_Pago[]" value="' + ID_Divisa + '">' + Nombre_Divisa + '</td><td><input type="number" style="width: 140px;" name="Monto[]" value="' + Monto + '" readonly></td></tr>';
             cont++;
             $('#TablaDetallePagos').append(Fila);
 
@@ -144,18 +152,18 @@ function EvaluarTotales(CambioDivisa,Divisa_Anterior) {
             Fila.childNodes[4].innerHTML = $("#ID_Divisa option:selected").text();
         }
         CantidadProducto = parseFloat($(Fila.childNodes[2].innerHTML)[0].value);
-        Fila.childNodes[6].innerHTML =(PrecioProducto * CantidadProducto) + ' ' +$("#ID_Divisa option:selected").text();
+        Fila.childNodes[6].innerHTML =redondear((PrecioProducto * CantidadProducto),2) + ' ' +$("#ID_Divisa option:selected").text();
         TotalProducto = parseFloat(Fila.childNodes[6].innerHTML);
         Suma = Suma + TotalProducto;
     });
     var Descuento = $('#Descuento').val();;
     var TotalConDescuento = Suma - (Suma * (Descuento / 100) );
     var IVA = TotalConDescuento * 0.15;
-    TotalConDescuento = (IVA + TotalConDescuento).toFixed(2);
-    $('#SubTotal').val(Suma.toFixed(2));
-    $('#IVA').val(IVA.toFixed(2));
-    $('#Total').val(TotalConDescuento);
-    $('#total_factura').text("Total Facturado : "+TotalConDescuento + " "+ $("#ID_Divisa option:selected").text());
+    TotalConDescuento = (IVA + TotalConDescuento);
+    $('#SubTotal').val(redondear(Suma,2));
+    $('#IVA').val(redondear(IVA,2));
+    $('#Total').val(redondear(TotalConDescuento,2));
+    $('#total_factura').text("Total Facturado : "+redondear(TotalConDescuento,2) + " "+ $("#ID_Divisa option:selected").text());
     EvaluarTotalesPago();
 }
 
@@ -171,8 +179,8 @@ function EvaluarTotalesPago() {
 
 function ActualizarPrecio() {
     $.ajax({
-        url: "../../../precio_producto/"+ $('#ID_Producto').val(),
         type: 'GET',
+        url: "../../../precio_producto/"+ $('#ID_Producto').val(),
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
@@ -187,10 +195,10 @@ function conversion_divisa(moneda_destino,monto) {
     tasa_cambio = $('#tasa_cambio').val();
     if(moneda_origen != ""){
         if (moneda_origen == 1 && moneda_destino == 2) {
-            return (monto / tasa_cambio).toFixed(2);
+            return (monto / tasa_cambio);
         }
         else if (moneda_origen == 2 && moneda_destino == 1) {
-            return (monto * tasa_cambio).toFixed(2);
+            return (monto * tasa_cambio);
         }
         else {
             return monto;
@@ -202,4 +210,10 @@ function conversion_divisa(moneda_destino,monto) {
         $('#ID_Producto').val("").trigger("change")
         throw "NOORIGINMONEY"
     }
+}
+
+
+function redondear(numero, precision) {
+    var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (precision || -1) + '})?');
+    return numero.toString().match(re)[0];
 }
