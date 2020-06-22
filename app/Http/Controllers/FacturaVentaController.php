@@ -22,7 +22,6 @@ class FacturaVentaController extends Controller
         $cliente_filtro = $request->get('ID_Cliente');
         $desde = $request->get('desde');
         $hasta = $request->get('hasta');
-
         $facturaventa = DB::table('Factura_Venta as v')
         ->join('Cliente as c','v.ID_Cliente','=','c.ID_Cliente')
         ->join('Divisa as d','v.ID_Divisa','=','d.ID_Divisa')
@@ -31,11 +30,16 @@ class FacturaVentaController extends Controller
         ,'v.Fecha_Realizacion','v.Fecha_Actualizacion','c.Nombre_Cliente','v.ID_Jornada','v.Monto_Restante','d.Nombre_Divisa','d.Simbolo_Divisa');
 
         if( $cliente_filtro !== null ){
-            $facturaventa = $facturaventa->where('c.ID_Cliente', $cliente_filtro)
-                            ->whereBetween('v.Fecha_Realizacion', [$desde, $hasta])
-                            ->get();
+            $facturaventa = $facturaventa->where('c.ID_Cliente', $cliente_filtro)->get();
         }
-         else {
+         else if ($cliente_filtro == null && $desde !== null && $hasta !== null){
+            $facturaventa = $facturaventa->whereBetween('v.Fecha_Realizacion', [$desde, $hasta])->get();
+         }
+         else if($cliente_filtro !== null && $desde !== null && $hasta !== null){
+            $facturaventa = $facturaventa->where('c.ID_Cliente', $cliente_filtro)
+                                         ->whereBetween('v.Fecha_Realizacion', [$desde, $hasta])->get();
+         }
+         else{
             $facturaventa = $facturaventa->get();
         }
 
