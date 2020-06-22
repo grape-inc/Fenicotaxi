@@ -40,6 +40,9 @@
                                     <option value="{{ $client->ID_Cliente}}">{{$client->Nombre_Cliente}} {{ $client->Apellido_Cliente}}</option>
                                         @endforeach
                                     </select>
+                                @error('ID_Cliente')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                                 </div>
                             </div>
                         </div>
@@ -71,7 +74,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                @error('Saldo_Inicial')
+                                @error('ID_Divisa')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -91,10 +94,10 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                @error('ID_Empleado')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
                             </div>
+                            @error('ID_Empleado')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">

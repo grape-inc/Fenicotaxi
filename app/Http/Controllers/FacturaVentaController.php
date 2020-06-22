@@ -17,15 +17,29 @@ use Illuminate\Support\Carbon;
 
 class FacturaVentaController extends Controller
 {
-    public function index(){
-        $facturaventa= DB::table('Factura_Venta as v')
+    public function index(Request $request){
+        $cliente = DB::table('Cliente')->get();
+        $cliente_filtro = $request->get('ID_Cliente');
+        $desde = $request->get('desde');
+        $hasta = $request->get('hasta');
+
+        $facturaventa = DB::table('Factura_Venta as v')
         ->join('Cliente as c','v.ID_Cliente','=','c.ID_Cliente')
         ->join('Divisa as d','v.ID_Divisa','=','d.ID_Divisa')
         ->join('Empleado as e','v.ID_Empleado','=','e.ID_Empleado')
         ->select('v.ID_Factura','v.Codigo_Factura','v.Es_Credito','v.Descuento','v.Total_Facturado','e.Nombre_Empleado'
-        ,'v.Fecha_Realizacion','v.Fecha_Actualizacion','c.Nombre_Cliente','v.ID_Jornada','v.Monto_Restante','d.Nombre_Divisa','d.Simbolo_Divisa')
-        ->get();
-        return view('Facturacion.Venta.index',["facturaventa"=>$facturaventa]);
+        ,'v.Fecha_Realizacion','v.Fecha_Actualizacion','c.Nombre_Cliente','v.ID_Jornada','v.Monto_Restante','d.Nombre_Divisa','d.Simbolo_Divisa');
+
+        if( $cliente_filtro !== null ){
+            $facturaventa = $facturaventa->where('c.ID_Cliente', $cliente_filtro)
+                            ->whereBetween('v.Fecha_Realizacion', [$desde, $hasta])
+                            ->get();
+        }
+         else {
+            $facturaventa = $facturaventa->get();
+        }
+
+        return view('Facturacion.Venta.index',["facturaventa"=>$facturaventa, "cliente"=>$cliente]);
     }
 
     public function create(){
@@ -43,20 +57,20 @@ class FacturaVentaController extends Controller
         ->where('prod.Existencias_Minimas','>','0')
         ->get();
 
-        $fecha_hoy = date('Y-m-d');;
+        $fecha_hoy = date('Y-m-d');
         $jornada = DB::table('ArqueoCaja')
         ->where('Fecha_Caja','=',$fecha_hoy,'AND','Jornada_Abierta','=','1')
         ->get();
-        $as = count($jornada);
+        $jornada_abierta = count($jornada);
 
-        if ( $as == 1){
+        if ( $jornada_abierta == 1){
             return view('Facturacion.Venta.create',["empleado"=>$empleado,"producto"=>$producto,"cliente"=>$cliente,"divisa" =>$divisa,"CF"=>$CodigoFactura, 'pagos'=>$pagos,'tasa_Cambio'=>$tasa_Cambio]);
         }else{
             flash('Necesita abrir caja para poder facturar')->error();
             return redirect()->action('FacturaVentaController@index');
         }
-
     }
+
     public function store(FacturaFormRequest $request){
         try {
             $request->validate([
