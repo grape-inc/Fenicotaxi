@@ -41,23 +41,37 @@ class ArqueoController extends Controller
     }
 
     public function update(ArqueoFormRequest $Request, $ID){
+        $empleado = DB::table('Empleado')->get();
+
         $Arqueo = Arqueo::findOrFail($ID);
         $Arqueo->Saldo_Inicial=$Request->input('Saldo_Inicial');
-        $Arqueo->Saldo_Final=$Request->input('Saldo_Final');
+        $Arqueo->Saldo_Final=floatval($Request->input('Saldo_Final'));
         $Arqueo->Jornada_Abierta=0;
         $Arqueo->B10=$Request->input('B10');
         $Arqueo->B20=$Request->input('B20');
         $Arqueo->B50=$Request->input('B50');
         $Arqueo->B100=$Request->input('B100');
+        $Arqueo->B200=$Request->input('B200');
         $Arqueo->B500=$Request->input('B500');
         $Arqueo->B1000=$Request->input('B1000');
         $Arqueo->M025=$Request->input('M025');
         $Arqueo->M050=$Request->input('M050');
         $Arqueo->M1=$Request->input('M1');
         $Arqueo->M5=$Request->input('M5');
-        $Arqueo->Fecha_Actualizacion= date('Y-m-d H:i:s');
-        $Arqueo->update();
-        return redirect()->action('ArqueoController@index');
+        $Arqueo->Fecha_Actualizacion = date('Y-m-d H:i:s');
+
+        $total_facturas = $this->obtenerTotalFacturas($Arqueo->Fecha_Jornada);
+        $total_arqueo = $this->calcularTotalArqueo($Arqueo);
+
+        if ($total_facturas == $total_arqueo && $total_arqueo == $Arqueo->Saldo_Final) {
+            $Arqueo->update();
+            flash('Arqueo realizado correctamente')->success();
+            return redirect()->action('ArqueoController@index');
+        }else {
+            flash('Arqueo realizado correctamente')->error();
+            return view("Facturacion.Arqueo.edit ",["arqueo"=>Arqueo::findOrFail($ID),"empleado"=>$empleado]);
+        }
+
     }
     public function destroy($ID){
         $Eliminado = true;
@@ -68,5 +82,35 @@ class ArqueoController extends Controller
             $Eliminado = false;
         }
         return route('Arqueo.index', ['Eliminado' => $Eliminado]);
+    }
+
+    private function obtenerTotalFacturas($Fecha_Jornada) {
+        $total_factura = round(floatval(DB::table('Factura_Venta as v')
+                                            ->where('v.Fecha_Realizacion', $Fecha_Jornada)
+                                            ->sum('v.Total_Facturado')), 2);
+
+        return $total_factura;
+    }
+
+    private function calcularTotalArqueo($Arqueo){
+
+        $billetes_10 = $Arqueo->B10 * 10;
+        $billetes_20 = $Arqueo->B20 * 20;
+        $billetes_50 = $Arqueo->B50 * 50;
+        $billetes_100 = $Arqueo->B100 * 100;
+        $billetes_200 = $Arqueo->B200 * 200;
+        $billetes_500 = $Arqueo->B500 * 500;
+        $billetes_1000 = $Arqueo->B1000 * 1000;
+        $moneda_025 = $Arqueo->M025 * 0.25;
+        $moneda_050 = $Arqueo->M050 * 0.50;
+        $moneda_1 = $Arqueo->M1 * 1;
+        $moneda_5 = $Arqueo->M5 * 5;
+
+        $cantidad = [$billetes_10, $billetes_20, $billetes_50, $billetes_100,
+                     $billetes_500, $billetes_200, $billetes_1000, $moneda_025,
+                     $moneda_050, $moneda_1, $moneda_5];
+
+        $total_arqueo = array_sum($cantidad);
+        return $total_arqueo;
     }
 }

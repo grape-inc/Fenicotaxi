@@ -6,6 +6,7 @@
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
             <i class="mdi mdi-format-list-bulleted"></i>
         </span> Arqueo </h3>
+        @include('flash::message')
         @if (count($errors)>0)
         <div class="alert alert-danger">
             <ul>
