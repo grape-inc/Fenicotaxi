@@ -40,6 +40,18 @@ class ArqueoFormRequest extends FormRequest
             'M050' => 'nullable|numeric|min:0',
             'M1' => 'nullable|numeric|min:0',
             'M5' => 'nullable|numeric|min:0',
+            'BD1' => 'nullable|numeric|min:0',
+            'BD2' => 'nullable|numeric|min:0',
+            'BD5' => 'nullable|numeric|min:0',
+            'BD10' => 'nullable|numeric|min:0',
+            'BD20' => 'nullable|numeric|min:0',
+            'BD50' => 'nullable|numeric|min:0',
+            'BD100' => 'nullable|numeric|min:0',
+            'B200' => 'nullable|numeric|min:0',
+            'B500' => 'nullable|numeric|min:0',
+            'B1000' => 'nullable|numeric|min:0',
+            'M025' => 'nullable|numeric|min:0',
+            'M050' => 'nullable|numeric|min:0',
         ];
     }
 

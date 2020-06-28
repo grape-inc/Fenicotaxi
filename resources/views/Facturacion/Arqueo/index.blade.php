@@ -63,7 +63,11 @@
                                         <td>{{ $arq->Saldo_Final }} C$</td>
                                         <td>{{ $arq->Nombre_Empleado }}</td>
                                         <td>{{ $arq->Fecha_Jornada }}</td>
-                                        <td>{{ $arq->Jornada_Abierta }}</td>
+                                        @if ($arq->Jornada_Abierta == 0)
+                                            <td><span class="badge badge-success">Cerrada</span></td>
+                                        @else
+                                            <td><span class="badge badge-danger">Abierta</span></td>
+                                        @endif
                                         <td>{{ $arq->B10 }}</td>
                                         <td>{{ $arq->B20 }}</td>
                                         <td>{{ $arq->B50 }}</td>

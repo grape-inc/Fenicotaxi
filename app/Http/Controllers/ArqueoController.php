@@ -67,12 +67,13 @@ class ArqueoController extends Controller
             $Arqueo->update();
             flash('Arqueo realizado correctamente')->success();
             return redirect()->action('ArqueoController@index');
-        }else {
-            flash('Arqueo realizado correctamente')->error();
+        } else {
+            flash('El total de arqueo no coincide con las facturas realizadas el dia de hoy')->error();
             return view("Facturacion.Arqueo.edit ",["arqueo"=>Arqueo::findOrFail($ID),"empleado"=>$empleado]);
         }
 
     }
+
     public function destroy($ID){
         $Eliminado = true;
         try {
@@ -81,6 +82,7 @@ class ArqueoController extends Controller
         } catch (\Exception $E) {
             $Eliminado = false;
         }
+
         return route('Arqueo.index', ['Eliminado' => $Eliminado]);
     }
 
