@@ -47,11 +47,9 @@ class ArqueoFormRequest extends FormRequest
             'BD20' => 'nullable|numeric|min:0',
             'BD50' => 'nullable|numeric|min:0',
             'BD100' => 'nullable|numeric|min:0',
-            'B200' => 'nullable|numeric|min:0',
-            'B500' => 'nullable|numeric|min:0',
-            'B1000' => 'nullable|numeric|min:0',
-            'M025' => 'nullable|numeric|min:0',
-            'M050' => 'nullable|numeric|min:0',
+            'Saldo_Final_Dolar' => 'nullable|numeric|min:0',
+            'Centavos_Cordobas' => 'nullable|numeric|min:0',
+            'Centavos_Dolares' => 'nullable|numeric|min:0'
         ];
     }
 

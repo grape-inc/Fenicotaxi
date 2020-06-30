@@ -171,4 +171,21 @@
         </div>
     </div>
 
+    {{--- Tercera Columna---}}
+    <div class="col-md-2">
+        <div class="form-group">
+            {{Form::label('Centavos_Dolares', 'Centavos Dolares')}}
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <button class="btn btn-sm btn-primary" type="button">
+                        <i class="mdi mdi-cash"></i>
+                    </button>
+                </div>
+                    <input type="number" step="0.01" class="form-control" placeholder="Monto" name="Centavos_Dolares" value = "{{$arqueo->Centavos_Dolares}}">
+            </div>
+            @error('Centavos_Dolares')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
+        </div>
+    </div>
 </div>

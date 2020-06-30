@@ -109,6 +109,20 @@
           <p class="text-danger">{{ $message }}</p>
       @enderror
       </div>
+      <div class="form-group">
+            {{Form::label('Centavos_Cordobas', 'Centavos Cordobas')}}
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <button class="btn btn-sm btn-primary" type="button">
+                        <i class="mdi mdi-cash"></i>
+                    </button>
+                </div>
+                    <input type="number" step="0.01" class="form-control" placeholder="Monto" name="Centavos_Cordobas" value = "{{$arqueo->Centavos_Cordobas}}">
+            </div>
+            @error('Centavos_Cordobas')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
+        </div>
   </div>
 
     <div class="col-md-2">

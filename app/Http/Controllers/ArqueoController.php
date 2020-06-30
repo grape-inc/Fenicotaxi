@@ -60,18 +60,34 @@ class ArqueoController extends Controller
         $Arqueo->M5=$Request->input('M5');
         $Arqueo->Fecha_Actualizacion = date('Y-m-d H:i:s');
 
-        $total_facturas = $this->obtenerTotalFacturas($Arqueo->Fecha_Jornada);
-        $total_arqueo = $this->calcularTotalArqueo($Arqueo);
+        $Arqueo->BD1=$Request->input('BD1');
+        $Arqueo->BD2=$Request->input('BD2');
+        $Arqueo->BD5=$Request->input('BD5');
+        $Arqueo->BD10=$Request->input('BD10');
+        $Arqueo->BD20=$Request->input('BD20');
+        $Arqueo->BD50=$Request->input('BD50');
+        $Arqueo->BD100=$Request->input('BD100');
+        $Arqueo->Saldo_Final_Dolar=$Request->input('Saldo_Final_Dolar');
+        $Arqueo->Centavos_Dolar=$Request->input('Centavos_Dolares');
+        $Arqueo->Centavos_Cordobas=$Request->input('Centavos_Cordobas');
 
-        if ($total_facturas == $total_arqueo && $total_arqueo == $Arqueo->Saldo_Final) {
+        //Total de facturas por dia
+        $total_facturas_cordobas = $this->obtenerTotalFacturasCordobas($Arqueo->Fecha_Jornada);
+        $total_facturas_dolares = $this->obtenerTotalFacturasDolares($Arqueo->Fecha_Jornada);
+        // Totales Arqueo
+        $total_arqueo_cordobas = $this->calcularTotalArqueoCordobas($Arqueo);
+        $total_arqueo_dolares = $this->calcularTotalArqueoDolares($Arqueo);
+
+        if (($total_facturas_cordobas == $total_arqueo_cordobas && $total_arqueo_cordobas == $Arqueo->Saldo_Final) &&
+            ($total_facturas_dolares == $total_arqueo_dolares && $total_arqueo_dolares == $Arqueo->Saldo_Final_Dolar)) {
+
             $Arqueo->update();
             flash('Arqueo realizado correctamente')->success();
             return redirect()->action('ArqueoController@index');
         } else {
-            flash('El total de arqueo no coincide con las facturas realizadas el dia de hoy')->error();
+            flash('El total de arqueo no coincide con las facturas realizadas el dia de hoy, verifique los datos ingresados')->error();
             return view("Facturacion.Arqueo.edit ",["arqueo"=>Arqueo::findOrFail($ID),"empleado"=>$empleado]);
         }
-
     }
 
     public function destroy($ID){
@@ -86,15 +102,27 @@ class ArqueoController extends Controller
         return route('Arqueo.index', ['Eliminado' => $Eliminado]);
     }
 
-    private function obtenerTotalFacturas($Fecha_Jornada) {
-        $total_factura = round(floatval(DB::table('Factura_Venta as v')
+    private function obtenerTotalFacturasCordobas($Fecha_Jornada) {
+        $total_facturas_cordobas = round(floatval(DB::table('Factura_Venta as v')
                                             ->where('v.Fecha_Realizacion', $Fecha_Jornada)
+                                            ->where('v.ID_Divisa', 2)
+                                            ->where('v.Es_Credito', 0)
                                             ->sum('v.Total_Facturado')), 2);
 
-        return $total_factura;
+        return $total_facturas_cordobas;
     }
 
-    private function calcularTotalArqueo($Arqueo){
+    private function obtenerTotalFacturasDolares($Fecha_Jornada) {
+        $total_facturas_dolares = round(floatval(DB::table('Factura_Venta as v')
+                                            ->where('v.Fecha_Realizacion', $Fecha_Jornada)
+                                            ->where('v.ID_Divisa', 1)
+                                            ->where('v.Es_Credito', 0)
+                                            ->sum('v.Total_Facturado')), 2);
+
+        return $total_facturas_dolares;
+    }
+
+    private function calcularTotalArqueoCordobas($Arqueo){
 
         $billetes_10 = $Arqueo->B10 * 10;
         $billetes_20 = $Arqueo->B20 * 20;
@@ -107,12 +135,31 @@ class ArqueoController extends Controller
         $moneda_050 = $Arqueo->M050 * 0.50;
         $moneda_1 = $Arqueo->M1 * 1;
         $moneda_5 = $Arqueo->M5 * 5;
+        $centavos = $Arqueo->Centavos_Cordobas / 100;
 
         $cantidad = [$billetes_10, $billetes_20, $billetes_50, $billetes_100,
                      $billetes_500, $billetes_200, $billetes_1000, $moneda_025,
-                     $moneda_050, $moneda_1, $moneda_5];
+                     $moneda_050, $moneda_1, $moneda_5, $centavos];
 
         $total_arqueo = array_sum($cantidad);
         return $total_arqueo;
+    }
+
+    private function calcularTotalArqueoDolares($Arqueo){
+
+        $billetes_1 = $Arqueo->BD1 * 1;
+        $billetes_2 = $Arqueo->BD2 * 2;
+        $billetes_5 = $Arqueo->BD5 * 5;
+        $billetes_10 = $Arqueo->BD10 * 10;
+        $billetes_20 = $Arqueo->BD20 * 20;
+        $billetes_50 = $Arqueo->BD50 * 50;
+        $billetes_100 = $Arqueo->BD100 * 100;
+        $centavos = $Arqueo->Centavos_Dolar / 100;
+        $cantidad = [$billetes_1, $billetes_2, $billetes_5, $billetes_10,
+                     $billetes_20, $billetes_50, $billetes_100, $centavos];
+
+        $total_arqueo_dolares = array_sum($cantidad);
+
+        return $total_arqueo_dolares;
     }
 }
