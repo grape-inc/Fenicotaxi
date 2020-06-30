@@ -104,20 +104,22 @@ class ArqueoController extends Controller
 
     private function obtenerTotalFacturasCordobas($Fecha_Jornada) {
         $total_facturas_cordobas = round(floatval(DB::table('Factura_Venta as v')
+                                            ->join('factura_venta_pago as fp','v.ID_Factura','=','fp.factura_venta_id')
                                             ->where('v.Fecha_Realizacion', $Fecha_Jornada)
-                                            ->where('v.ID_Divisa', 2)
                                             ->where('v.Es_Credito', 0)
-                                            ->sum('v.Total_Facturado')), 2);
+                                            ->where('fp.tipo_divisa_id', 2)
+                                            ->sum('fp.monto')), 2);
 
         return $total_facturas_cordobas;
     }
 
     private function obtenerTotalFacturasDolares($Fecha_Jornada) {
         $total_facturas_dolares = round(floatval(DB::table('Factura_Venta as v')
+                                            ->join('factura_venta_pago as fp','v.ID_Factura','=','fp.factura_venta_id')
                                             ->where('v.Fecha_Realizacion', $Fecha_Jornada)
-                                            ->where('v.ID_Divisa', 1)
                                             ->where('v.Es_Credito', 0)
-                                            ->sum('v.Total_Facturado')), 2);
+                                            ->where('fp.tipo_divisa_id', 1)
+                                            ->sum('fp.monto')), 2);
 
         return $total_facturas_dolares;
     }
