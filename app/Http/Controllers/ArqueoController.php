@@ -37,7 +37,14 @@ class ArqueoController extends Controller
 
     public function edit($ID){
         $empleado = DB::table('Empleado')->get();
-        return view("Facturacion.Arqueo.edit ",["arqueo"=>Arqueo::findOrFail($ID),"empleado"=>$empleado]);
+        $Arqueo =Arqueo::findOrFail($ID);
+        if ($Arqueo->Jornada_Abierta == 0 ) {
+            flash('El arqueo no puede ser editado, la jornada ya esta cerrada')->error();
+            return redirect()->action('ArqueoController@index');
+        }
+        else {
+            return view("Facturacion.Arqueo.edit ",["arqueo"=>$Arqueo,"empleado"=>$empleado]);
+        }
     }
 
     public function update(ArqueoFormRequest $Request, $ID){
@@ -91,10 +98,16 @@ class ArqueoController extends Controller
     }
 
     public function destroy($ID){
-        $Eliminado = true;
         try {
             $Arqueo=Arqueo::findOrFail($ID);
-            $Arqueo->where('ID_Jornada',$ID)->delete();
+            if ($Arqueo->Jornada_Abierta == 0 ) {
+                flash('El arqueo no puede ser eliminado, la jornada ya esta cerrada')->error();
+                return route('Arqueo.index', ['Eliminado' => $Eliminado]);
+                $Eliminado = false;
+            }else {
+                $Eliminado = true;
+                $Arqueo->where('ID_Jornada',$ID)->delete();
+            }
         } catch (\Exception $E) {
             $Eliminado = false;
         }

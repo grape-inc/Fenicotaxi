@@ -4,8 +4,8 @@ $(document).ready(function () {
 
 function ConfigurarTablas() {
     $('#TablaArqueo').DataTable({
-        buttons: [            
-            {                
+        buttons: [
+            {
                 extend: 'excel',
                 text: 'Exportar a excel',
                 title: "Fenicotaxi",

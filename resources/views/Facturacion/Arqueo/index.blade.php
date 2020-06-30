@@ -8,7 +8,7 @@
             </script>
         @else
             <script>
-                Swal.fire('¡Error!','No se puede eliminar el arqueo, Intenta eliminar todas las referencias a este y vuelve a intentarlo.','error');
+                Swal.fire('¡Error!','No se puede eliminar el arqueo','error');
             </script>
         @endif
     @endisset
