@@ -3,6 +3,7 @@
     <script>
         $('#ID_Cargo').val({{$Empleado->ID_Cargo}});
         $('#ID_Rol').val({{$Empleado->ID_Rol}});
+        $('#Cedula').mask('000-000000-00000');
     </script>
 @endpush
 @section('content')
@@ -108,7 +109,7 @@
                                                     <i class="mdi mdi-file-document-box"></i>
                                                 </button>
                                             </div>
-                                            {{ Form::text('Cedula',$Empleado->Cedula,array('id'=>'Cedula','class'=>'form-control','placeholder'=>'Ingresa la cedula'))}}
+                                            {{ Form::text('Cedula',$Empleado->Cedula,array('id'=>'Cedula','class'=>'form-control','placeholder'=>'000-0000X-000X'))}}
                                         </div>
 
                                         @error('Cedula')

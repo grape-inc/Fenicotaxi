@@ -1,5 +1,10 @@
 @extends('layouts.layout')
-@section('content')
+@push('scripts-vista')
+    <script>
+        $('#Cedula').mask('000-000000-00000');
+    </script>
+@endpush
+@section('content')    
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
@@ -98,7 +103,7 @@
                                                     <i class="mdi mdi-file-document-box"></i>
                                                 </button>
                                             </div>
-                                            {{ Form::text('Cedula','',array('id'=>'Cedula','class'=>'form-control','placeholder'=>'Ingresa la cedula'))}}
+                                            {{ Form::text('Cedula','',array('id'=>'Cedula','class'=>'form-control','placeholder'=>'000-0000X-000X'))}}
                                         </div>
 
                                         @error('Cedula')

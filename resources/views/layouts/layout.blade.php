@@ -146,6 +146,7 @@
     <script src="{{{asset('js/Plugins/sweetalert.js')}}}"></script>
     <script src="{{{asset('js/Plugins/misc.js')}}}"></script>
     <script src="{{{asset('js/Plugins/hoverable-collapse.js')}}}"></script>
+    <script src="{{{asset('js/Plugins/jquery.mask.js')}}}"></script>
     @stack('scripts-vista')
   </body>
 </html>

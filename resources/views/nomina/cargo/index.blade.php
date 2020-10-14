@@ -44,7 +44,7 @@
                                     <tr>
                                         <td>{{$cargo->ID_Cargo }}</td>
                                         <td>{{$cargo->Nombre_Cargo }}</td>
-                                        <td>{{$cargo->Salario_Cargo }} C$</td>
+                                        <td>C$ {{$cargo->Salario_Cargo }}</td>
                                         <td> <a href="{{ URL::route('Cargo.edit',$cargo->ID_Cargo)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
                                         <td> <button type="button" onclick="EliminarCargo({{ $cargo->ID_Cargo}},'{{URL::route('Cargo.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
                                     </tr>
