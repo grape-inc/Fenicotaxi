@@ -15,7 +15,7 @@
             <a href="{{ URL::route('Venta.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="overflow-x:scroll;">
     {{ Form::open(array('url' => URL::route('Venta.store'), 'method' => 'post'))}}
         @csrf
         @include('flash::message')
@@ -191,7 +191,7 @@
                         <div class="col-xl-12">
                             <h4 class="card-title">Productos</h4>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 {{Form::label('ID_ProductoLabel', 'Nombre del Producto')}}
                                 <div class="input-group">
@@ -211,7 +211,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 {{Form::label('CantidadLabel', 'Cantidad')}}
                                 <div class="input-group">
@@ -227,7 +227,20 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                {{Form::label('Existencias', 'Existencias')}}
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-sm btn-primary" type="button">
+                                            <i class="mdi mdi-account-box"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control" id="Existencias"  placeholder="Existencias del producto" disabled>
+                                </div>                               
+                            </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
                                 {{Form::label('Precio', 'Precio')}}
                                 <div class="input-group">
@@ -263,6 +276,7 @@
                                             <th>ID Producto</th>
                                             <th>Nombre Producto</th>
                                             <th>Cantidad</th>
+                                            <th>Existencias Actuales</th>
                                             <th>Precio</th>
                                             <th>Moneda</th>
                                             <th>Observación</th>
