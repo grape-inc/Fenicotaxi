@@ -9,8 +9,7 @@ use App\Empleado;
 
 class LoginController extends Controller
 {
-    public function index(Request $Request){
-        Session::flush();
+    public function index(Request $Request){        
         return view('Login.index');
     }
 
@@ -39,5 +38,9 @@ class LoginController extends Controller
             return redirect()->back();
         }
     }
-
+    
+    public function matar_sesion(Request $Request){
+        Session::flush();
+        return view('Login.index');
+    }
 }
