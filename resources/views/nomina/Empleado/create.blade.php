@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @push('scripts-vista')
     <script>
-        $('#Cedula').mask('000-000000-00000');
+        $('#Cedula').mask('000-000000-0000/[A-Za-z]/');
     </script>
 @endpush
 @section('content')    

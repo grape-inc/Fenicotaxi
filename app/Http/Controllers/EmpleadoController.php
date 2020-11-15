@@ -103,7 +103,7 @@ class EmpleadoController extends Controller
         $Empleado->Fecha_Ingreso=Carbon::now();
         $Empleado->Correo=$Request->get('Correo');
         $Empleado->ID_Cargo=$Request->get('ID_Cargo');
-        $Empleado->ID_Rol=$Request->get('ID_Rol');
+        $Empleado->ID_Rol=$Request->get('ID_Rol');        
         if ((date("Y") - date('Y', strtotime($Empleado->Fecha_Nacimiento))) < 18) {
             flash('El empleado debe tener al menos 18 años de edad.')->error();
             return redirect()->back()->withInput();

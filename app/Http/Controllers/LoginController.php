@@ -26,6 +26,7 @@ class LoginController extends Controller
             Session::put('Nombre', $Usuario->Nombre_Empleado);
             Session::put('Apellido', $Usuario->Apellido_Empleado);
             Session::put('Imagen', $Usuario->Imagen);
+            Session::put('Rol', $Usuario->ID_Rol);
             if(Hash::check($Request->Password, $Usuario->Password))
                 return redirect()->action('WelcomeController@index');
             else{
@@ -40,7 +41,7 @@ class LoginController extends Controller
     }
     
     public function matar_sesion(Request $Request){
-        Session::flush();
-        return view('Login.index');
+        Session::flush();        
+        return redirect('Login');
     }
 }

@@ -58,53 +58,59 @@
         </div>
       </nav>
       <div class="container-fluid page-body-wrapper">
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">        
           <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#inventario" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Inventario</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-clipboard-text menu-icon"></i>
-              </a>
-              <div class="collapse" id="inventario">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Productos.index')}}">Productos</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Proveedores.index')}}">Proveedores</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Categorias.index')}}">Categorias</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('UnidadesDeMedida.index')}}">Unidades de medida</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Ingresos.index')}}">Ingresos</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#facturacion" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Facturacion</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-point-of-sale menu-icon"></i>
-              </a>
-              <div class="collapse" id="facturacion">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Cliente.index')}}">Clientes</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('TipoPago.index')}}">Tipos de Pago</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Venta.index')}}">Ventas</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Arqueo.index')}}">Arqueo</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#nomina" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Nomina</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-point-of-sale menu-icon"></i>
-              </a>
-              <div class="collapse" id="nomina">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Cargo.index')}}">Cargos</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Empleado.index')}}">Empleados</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Nomina.index')}}">Generar Nomina</a></li>
-                </ul>
-              </div>
-            </li>
+            @if (session('Rol') == 1 || session('Rol') == 3 ) 
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#inventario" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Inventario</span>
+                  <i class="menu-arrow"></i>
+                  <i class="mdi mdi-clipboard-text menu-icon"></i>
+                </a>
+                <div class="collapse" id="inventario">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Productos.index')}}">Productos</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Proveedores.index')}}">Proveedores</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Categorias.index')}}">Categorias</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('UnidadesDeMedida.index')}}">Unidades de medida</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Ingresos.index')}}">Ingresos</a></li>
+                  </ul>
+                </div>
+              </li>
+            @endif
+            @if (session('Rol') == 2 || session('Rol') == 1 )
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#facturacion" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Facturacion</span>
+                  <i class="menu-arrow"></i>
+                  <i class="mdi mdi-point-of-sale menu-icon"></i>
+                </a>
+                <div class="collapse" id="facturacion">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Cliente.index')}}">Clientes</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('TipoPago.index')}}">Tipos de Pago</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Venta.index')}}">Ventas</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Arqueo.index')}}">Arqueo</a></li>
+                  </ul>
+                </div>
+              </li>
+            @endif
+            @if (session('Rol') == 1) 
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#nomina" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-title">Nomina</span>
+                  <i class="menu-arrow"></i>
+                  <i class="mdi mdi-point-of-sale menu-icon"></i>
+                </a>
+                <div class="collapse" id="nomina">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Cargo.index')}}">Cargos</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Empleado.index')}}">Empleados</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Nomina.index')}}">Generar Nomina</a></li>
+                  </ul>
+                </div>
+              </li>
+            
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#configuracion" aria-expanded="false" aria-controls="nomina">
                 <span class="menu-title">Configuración</span>
@@ -119,6 +125,12 @@
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Rol.index')}}">Roles</a></li>
                 </ul>
               </div>
+          
+          
+          
+          
+             </li>
+          @endif
           </ul>
         </nav>
         <!-- Contenido -->

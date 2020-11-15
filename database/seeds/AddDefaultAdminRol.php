@@ -16,6 +16,16 @@ class AddDefaultAdminRol extends Seeder
             'ID_Rol' => '1',
             'Nombre_Rol' => 'Admin'
         ]);
+        
+        DB::table('Rol')->insert([
+            'ID_Rol' => '2',
+            'Nombre_Rol' => 'Cajero'
+        ]);
+
+        DB::table('Rol')->insert([
+            'ID_Rol' => '3',
+            'Nombre_Rol' => 'Bodega'
+        ]);
 
         DB::table('Tipo_Factura')->insert([
             'ID_TipoFactura' => '1',

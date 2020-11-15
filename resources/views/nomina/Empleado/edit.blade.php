@@ -3,7 +3,7 @@
     <script>
         $('#ID_Cargo').val({{$Empleado->ID_Cargo}});
         $('#ID_Rol').val({{$Empleado->ID_Rol}});
-        $('#Cedula').mask('000-000000-00000');
+        $('#Cedula').mask('000-000000-0000A');
     </script>
 @endpush
 @section('content')
@@ -158,7 +158,7 @@
                                                     <i class="mdi mdi-diamond"></i>
                                                 </button>
                                             </div>
-                                            <select name="ID_Rol" class="selectpicker form-control" data-live-search="true">
+                                            <select id="ID_Rol" name="ID_Rol" class="selectpicker form-control" data-live-search="true">
                                                 @foreach ($Roles as $R)
                                                     <option value="{{ $R->ID_Rol}}">{{$R->Nombre_Rol}}</option>
                                                 @endforeach
