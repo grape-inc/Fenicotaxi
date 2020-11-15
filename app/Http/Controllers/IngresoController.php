@@ -77,4 +77,17 @@ class IngresoController extends Controller
            return redirect()->action('IngresoController@index');
 
     }
+
+    public function edit($id){
+        $Ingreso = Ingreso::find($id);
+        $empleado = DB::table('Empleado')->get();
+        $proveedor = DB::table('Proveedor')->get();        
+        $divisa = DB::table('Divisa')->get();                
+        $ingreso_detalle = DB::table('ingreso_detalle as in')
+        ->join('ingreso as ino','in.ID_Ingreso','=','ino.ID_Ingreso')
+        ->join('Producto as P','in.ID_Producto','=','P.ID_Producto')
+        ->join('divisa as di','ino.ID_Divisa','=','di.ID_Divisa')
+        ->where('in.ID_Ingreso',$id)->get();        
+        return view('inventario.Ingresos.edit',["Ingreso"=> $Ingreso,"empleado"=>$empleado,"divisa" =>$divisa,"Proveedor"=> $proveedor,"Detalle"=> $ingreso_detalle]);
+    }
 }

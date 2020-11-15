@@ -29,6 +29,7 @@
                                         <th>Fecha Realizacion</th>
                                         <th>Porcentaje de impuesto</th>
                                         <th>Total</th>
+                                        <th>Ver</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,6 +43,7 @@
                                         <td>{{ $ingreso->Fecha_Realizacion }}</td>
                                         <td>{{ ($ingreso->Impuesto) * 100 }}%</td>
                                         <td>{{ $ingreso->Total }} {{ $ingreso->Simbolo_Divisa }}</td>
+                                        <td> <a href="{{ URL::route('Ingresos.edit', $ingreso->ID_Ingreso)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
