@@ -3,7 +3,11 @@
     <script>
         $('#ID_Cargo').val({{$Empleado->ID_Cargo}});
         $('#ID_Rol').val({{$Empleado->ID_Rol}});
-        $('#Cedula').mask('000-000000-0000A');
+        $('#Cedula').mask('000-000000-0000A',
+            { 'translation': {
+                A: {pattern: /[A-Za-z]/}
+            }
+        });
     </script>
 @endpush
 @section('content')

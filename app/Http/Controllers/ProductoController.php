@@ -88,7 +88,8 @@ class ProductoController extends Controller
             'ID_Categoria' => 'required',
             'ID_Proveedor' => 'required',
             'ID_Divisa' => 'required',
-            'ID_UnidadMedida' => 'required'
+            'ID_UnidadMedida' => 'required',
+            'Imagen' => 'max:300'
         ]);
         $Producto = new Producto();
         $Producto->Cod_Producto=$Request->get('Cod_Producto');
@@ -133,7 +134,8 @@ class ProductoController extends Controller
             'ID_Categoria' => 'required',
             'ID_Proveedor' => 'required',
             'ID_Divisa' => 'required',
-            'ID_UnidadMedida' => 'required'
+            'ID_UnidadMedida' => 'required',
+            'Imagen' => 'max:300'
         ]);
         $Producto = Producto::findOrFail($ID);
         $Producto->Cod_Producto=$Request->get('Cod_Producto');

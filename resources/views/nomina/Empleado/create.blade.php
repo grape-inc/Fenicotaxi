@@ -1,10 +1,14 @@
 @extends('layouts.layout')
 @push('scripts-vista')
     <script>
-        $('#Cedula').mask('000-000000-0000/[A-Za-z]/');
+        $('#Cedula').mask('000-000000-0000A',
+            { 'translation': {
+                A: {pattern: /[A-Za-z]/}
+            }
+        });
     </script>
 @endpush
-@section('content')    
+@section('content')
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
