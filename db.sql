@@ -479,7 +479,6 @@ USE `fenicotaxi`;
 DELIMITER $$
 USE `fenicotaxi`$$
 CREATE
-DEFINER=`admin`@`%`
 TRIGGER `fenicotaxi`.`tr_DeleteStockVenta`
 AFTER DELETE ON `fenicotaxi`.`factura_venta_detalle`
 FOR EACH ROW
@@ -490,7 +489,6 @@ END$$
 
 USE `fenicotaxi`$$
 CREATE
-DEFINER=`admin`@`%`
 TRIGGER `fenicotaxi`.`tr_updStockVenta`
 AFTER INSERT ON `fenicotaxi`.`factura_venta_detalle`
 FOR EACH ROW
@@ -501,7 +499,6 @@ END$$
 
 USE `fenicotaxi`$$
 CREATE
-DEFINER=`admin`@`%`
 TRIGGER `fenicotaxi`.`tr_updStockIngreso`
 AFTER INSERT ON `fenicotaxi`.`ingreso_detalle`
 FOR EACH ROW
