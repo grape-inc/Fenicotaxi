@@ -1,4 +1,13 @@
 @extends('layouts.layout')
+@push('scripts-vista')
+    <script>
+        $('#Cedula').mask('000-000000-0000A',
+            { 'translation': {
+                A: {pattern: /[A-Za-z]/}
+            }
+        });
+    </script>
+@endpush
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
@@ -51,6 +60,9 @@
                             </div>
                                 <input type="text" class="form-control" placeholder="Ingresa apellido del cliente" name="Apellido_Cliente" value = "{{$cliente->Apellido_Cliente}}">
                         </div>
+                        @error('Apellido_Cliente')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="form-group">
                         {{Form::label('Cedula', 'Cedula del cliente')}}
@@ -60,7 +72,7 @@
                                     <i class="mdi mdi-account-badge-horizontal"></i>
                                 </button>
                             </div>
-                                <input type="text" class="form-control" placeholder="Ingresa cedula del cliente" name="Cedula" value = "{{$cliente->Cedula}}">
+                                <input id="Cedula" type="text" class="form-control" placeholder="Ingresa cedula del cliente" name="Cedula" value = "{{$cliente->Cedula}}">
                         </div>
                         @error('Cedula')
                             <p class="text-danger">{{ $message }}</p>

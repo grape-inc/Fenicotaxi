@@ -67,7 +67,7 @@ class NominaController extends Controller
                 $HorasLaboradas = $Horas[$ContadorEmpleado];
                 $SalarioNeto = (($SalarioBrutoEmpleado / 160)) * $HorasLaboradas;
                 $InssLaboral = $SalarioNeto * 0.07;
-                $IR = NominaController::CalcularIR($SalarioBrutoEmpleado);
+                $IR = NominaController::CalcularIR($SalarioBrutoEmpleado, $InssLaboral);
                 $Detalle = new NominaDetalle();
                 $Detalle->ID_Nomina = $Nomina->ID_Nomina;
                 $Detalle->ID_Empleado = $Empleados[$ContadorEmpleado];
@@ -113,24 +113,57 @@ class NominaController extends Controller
         return route('Nomina.index', ['Eliminado' => $Eliminado]);
     }
 
-    public function CalcularIR($SalarioNeto)
+    public function CalcularIR($SalarioNeto, $InssLaboral)
     {
-        $SalarioAnual = $SalarioNeto * 12;
-        if ($SalarioAnual <= 100000) {
-            $DeduccionIR = 0;
+        $SalarioAnual = (($SalarioNeto - $InssLaboral) * 12);
+        $SobreExceso = 0;
+        $PorcentajeAplicar = 0;
+        $ImpuestoBase = 0;
+        $SinSobreExceso = 0;
+        $PorcentajeAplicado = 0;
+        $ImpuestoBase = 0;
+        $IRMes = 0;
+        if ($SalarioAnual >= 0 && $SalarioAnual <= 100000) {
+            $SobreExceso = 0;
+            $PorcentajeAplicar = 0;
+            $ImpuestoBase = 0;
+            $SinSobreExceso = ($SalarioAnual - $SobreExceso) ;
+            $PorcentajeAplicado = ($SinSobreExceso * $PorcentajeAplicar) ;
+            $ImpuestoBase = ($PorcentajeAplicado + $ImpuestoBase) ;
+            $IRMes = ($ImpuestoBase / 12);
+        } else if ($SalarioAnual > 100000 && $SalarioAnual <= 200000) {
+            $SobreExceso = 100000;
+            $PorcentajeAplicar = (15 / 100) ;
+            $ImpuestoBase = 0;
+            $SinSobreExceso = ($SalarioAnual - $SobreExceso) ;
+            $PorcentajeAplicado = ($SinSobreExceso * $PorcentajeAplicar) ;
+            $ImpuestoBase = ($PorcentajeAplicado + $ImpuestoBase) ;
+            $IRMes = ($ImpuestoBase / 12);
+        } else if ($SalarioAnual > 200000 && $SalarioAnual <= 350000) {
+            $SobreExceso = 200000;
+            $PorcentajeAplicar = (20 / 100) ;
+            $ImpuestoBase = 15000;
+            $SinSobreExceso = ($SalarioAnual - $SobreExceso) ;
+            $PorcentajeAplicado = ($SinSobreExceso * $PorcentajeAplicar) ;
+            $ImpuestoBase = ($PorcentajeAplicado + $ImpuestoBase) ;
+            $IRMes = ($ImpuestoBase / 12);
+        } else if ($SalarioAnual > 350000 && $SalarioAnual <= 500000) {
+            $SobreExceso = 350000;
+            $PorcentajeAplicar = (25 / 100) ;
+            $ImpuestoBase = 45000;
+            $SinSobreExceso = ($SalarioAnual - $SobreExceso) ;
+            $PorcentajeAplicado = ($SinSobreExceso * $PorcentajeAplicar) ;
+            $ImpuestoBase = ($PorcentajeAplicado + $ImpuestoBase) ;
+            $IRMes = ($ImpuestoBase / 12);
+        } else if ($SalarioAnual > 500000) {
+            $SobreExceso = 500000;
+            $PorcentajeAplicar = (30 / 100) ;
+            $ImpuestoBase = 82500;
+            $SinSobreExceso = ($SalarioAnual - $SobreExceso) ;
+            $PorcentajeAplicado = ($SinSobreExceso * $PorcentajeAplicar) ;
+            $ImpuestoBase = ($PorcentajeAplicado + $ImpuestoBase) ;
+            $IRMes = ($ImpuestoBase / 12);
         }
-        else if ($SalarioAnual >= 100000 && $SalarioAnual <= 200000) {
-            $DeduccionIR = ($SalarioNeto * 0.15);
-        }
-        else if ($SalarioAnual >= 200000 && $SalarioAnual <= 350000) {
-            $DeduccionIR = ($SalarioNeto * 0.2);
-        }
-        else if ($SalarioAnual >= 350000 && $SalarioAnual <= 500000) {
-            $DeduccionIR = ($SalarioNeto * 0.25);
-        }
-        else {
-            $DeduccionIR = ($SalarioNeto * 0.3);
-        }
-        return $DeduccionIR;
+        return $IRMes;
     }
 }

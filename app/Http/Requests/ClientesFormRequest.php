@@ -27,7 +27,8 @@ class ClientesFormRequest extends FormRequest
             'Nombre_Cliente' => 'required|max:100',
             'Apellido_Cliente' => 'required|max:100',
             'Cedula' => 'required|max:20',
-            'Correo' => 'email|max:100'
+            'Correo' => 'email|max:100',
+            'Direccion' => 'required|max:140'
         ];
     }
 
