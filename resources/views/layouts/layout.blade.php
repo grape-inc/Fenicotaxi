@@ -58,9 +58,9 @@
         </div>
       </nav>
       <div class="container-fluid page-body-wrapper">
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">        
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
-            @if (session('Rol') == 1 || session('Rol') == 3 ) 
+            @if (session('Rol') == 1 || session('Rol') == 3 )
               <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#inventario" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Inventario</span>
@@ -95,7 +95,7 @@
                 </div>
               </li>
             @endif
-            @if (session('Rol') == 1) 
+            @if (session('Rol') == 1)
               <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#nomina" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Nomina</span>
@@ -110,7 +110,7 @@
                   </ul>
                 </div>
               </li>
-            
+
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#configuracion" aria-expanded="false" aria-controls="nomina">
                 <span class="menu-title">Configuración</span>
@@ -125,10 +125,10 @@
                   <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Rol.index')}}">Roles</a></li>
                 </ul>
               </div>
-          
-          
-          
-          
+
+
+
+
              </li>
           @endif
           </ul>
@@ -138,7 +138,6 @@
         @yield('content')
        <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Hecho por Oscar Rivera y Renner Poveda.</span>
               <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2020. Todos los derechos reservados.</span>
             </div>
           </footer>
