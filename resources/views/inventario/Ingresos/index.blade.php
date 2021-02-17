@@ -21,7 +21,6 @@
                             <table id="TablaIngreso" class="table table-hover table-bordered">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th>Numero Ingreso</th>
                                         <th>Codigo Ingreso</th>
                                         <th>Proveedor</th>
                                         <th>Vendedor</th>
@@ -29,13 +28,12 @@
                                         <th>Fecha Realizacion</th>
                                         <th>Porcentaje de impuesto</th>
                                         <th>Total</th>
-                                        <th>Ver</th>
+                                        <th>Editar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($ingresos as $ingreso)
                                     <tr>
-                                        <td>{{ $ingreso->ID_Ingreso }}</td>
                                         <td>{{ $ingreso->Codigo_Ingreso }}</td>
                                         <td>{{ $ingreso->Nombre_Proveedor }}</td>
                                         <td>{{ $ingreso->Nombre_Empleado }}</td>
