@@ -20,7 +20,15 @@ class ArqueoController extends Controller
 
     public function create(Request $request){
         $empleado = DB::table('Empleado')->get();
-        return view ('Facturacion.Arqueo.create',["empleado"=>$empleado]);
+        $caja_abierta = Arqueo::where('Jornada_Abierta', true );
+
+        if (empty($caja_abierta)) {
+            return view ('Facturacion.Arqueo.create',["empleado"=>$empleado]);
+        } else {
+            flash('Ya existe un arqueo vigente, no puede crear otro arqueo sin cerrar el vigente')->error();
+            return redirect()->action('ArqueoController@index');
+        }
+
     }
 
     public function store(ArqueoFormRequest $Request){
@@ -29,7 +37,7 @@ class ArqueoController extends Controller
         $Arqueo->ID_Empleado=$Request->input('ID_Empleado');
         $Arqueo->Fecha_Jornada= date('Y-m-d H:i:s');
         $Arqueo->Fecha_Caja = date('Y-m-d');
-        $Arqueo->Jornada_Abierta= true;
+        $Arqueo->Jornada_Abierta = true;
         $Arqueo->Fecha_Actualizacion= date('Y-m-d H:i:s');
         $Arqueo->save();
         return redirect()->action('ArqueoController@index');
@@ -37,7 +45,7 @@ class ArqueoController extends Controller
 
     public function edit($ID){
         $empleado = DB::table('Empleado')->get();
-        $Arqueo =Arqueo::findOrFail($ID);
+        $Arqueo = Arqueo::findOrFail($ID);
         if ($Arqueo->Jornada_Abierta == 0 ) {
             flash('El arqueo no puede ser editado, la jornada ya esta cerrada')->error();
             return redirect()->action('ArqueoController@index');
