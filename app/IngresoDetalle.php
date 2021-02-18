@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class IngresoDetalle extends Model
 {
+    protected $guarded = [];
     protected $table = 'Ingreso_Detalle';
     protected $primaryKey = 'ID';
     public $timestamps = false;
@@ -15,4 +16,21 @@ class IngresoDetalle extends Model
         'Cantidad',
         'Precio'
     ];
+
+    public function ingreso()
+    {
+        return $this->belongsTo(Ingreso::class, 'ID_Ingreso', 'ID_Ingreso');
+    }
+
+    public function producto()
+    {
+        return $this->belongsTo(Producto::class, 'ID_Producto', 'ID_Producto');
+    }
+
+    public function subtotal()
+    {
+        $precio = $this->Precio;
+        $cantidad = $this->Cantidad;
+        return $cantidad * $precio;
+    }
 }

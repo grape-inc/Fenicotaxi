@@ -89,19 +89,7 @@ class IngresoController extends Controller
         $empleado = Empleado::all();
         $proveedor = Proveedor::all();
         $divisa = Divisa::all();
-        $ingreso_detalle = DB::table('ingreso_detalle as in')
-            ->join('ingreso as ino', 'in.ID_Ingreso', '=', 'ino.ID_Ingreso')
-            ->join('Producto as P', 'in.ID_Producto', '=', 'P.ID_Producto')
-            ->join('divisa as di', 'ino.ID_Divisa', '=', 'di.ID_Divisa')
-            ->select(DB::Raw('CONCAT(P.Cod_Producto," / ", P.Nombre_Producto) as producto'),
-                    'P.ID_Producto',
-                    'in.ID_Ingreso',
-                    'di.ID_Divisa',
-                    'di.Nombre_Divisa',
-                    'in.Cantidad',
-                    'in.Precio')
-
-            ->where('in.ID_Ingreso', $id)->get();
+        $detalles = $ingreso->ingreso_detalles;
 
         $producto = DB::table('Producto as prod')
             ->select(DB::Raw('CONCAT(prod.Cod_Producto," / ",prod.Nombre_Producto) as producto'), 'prod.ID_Producto')
@@ -113,7 +101,7 @@ class IngresoController extends Controller
                     "empleado" => $empleado,
                     "divisa" => $divisa,
                     "proveedor" => $proveedor,
-                    "ingreso_detalle" => $ingreso_detalle,
+                    "ingreso_detalle" => $detalles,
                     "producto" => $producto]);
     }
 }

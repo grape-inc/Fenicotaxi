@@ -14,4 +14,11 @@ class Divisa extends Model
         'Nombre_Divisa',
         'Equivalencia_Cordoba'
     ];
+
+    public function displayName()
+    {
+        $nombre = $this->Nombre_Divisa;
+
+        return $nombre;
+    }
 }

@@ -247,14 +247,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($ingreso_detalle as $key => $ingreso)
+                                        @foreach ($ingreso_detalle as $key => $ingreso_detalle)
                                             <tr class="selected" id="{{'Fila'.$key}}">
                                                 <td><button type="button" class="btn btn-warning" onclick="eliminar({{ $key }});">X</button></td>
-                                                <td><input type="hidden" name="ID_Producto[]" value="{{$ingreso->ID_Producto}}">{{$ingreso->producto}}</td>
-                                                <td><input style="text-align: right;" type="number" name="Cantidad[]" value="{{$ingreso->Cantidad}}"></td>
-                                                <td><input style="text-align: right;" type="number" name="Precio[]" value="{{$ingreso->Precio}}"></td>
-                                                <td><input type="hidden" name="ID_Moneda[]" value="{{$ingreso->ID_Divisa}}">{{$ingreso->Nombre_Divisa}}</td>
-                                                <td style="text-align: right;">{{$ingreso->Cantidad * $ingreso->Precio}}</td>
+                                                <td><input type="hidden" name="ID_Producto[]" value="{{$ingreso_detalle->ID_Producto}}">{{$ingreso_detalle->producto->displayName()}}</td>
+                                                <td><input style="text-align: right;" type="number" name="Cantidad[]" value="{{$ingreso_detalle->Cantidad}}"></td>
+                                                <td><input style="text-align: right;" type="number" name="Precio[]" value="{{$ingreso_detalle->Precio}}"></td>
+                                                <td><input type="hidden" name="ID_Moneda[]" value="{{$ingreso->ID_Divisa}}">{{$ingreso->divisa->displayName()}}</td>
+                                                <td style="text-align: right;">{{$ingreso_detalle->subtotal()}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>

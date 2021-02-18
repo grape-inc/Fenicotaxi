@@ -27,4 +27,12 @@ class Producto extends Model
         'Origen',
         'Marca'
     ];
+
+    public function displayName()
+    {
+        $codigo = $this->Cod_Producto;
+        $nombre = $this->Nombre_Producto;
+
+        return $codigo." / ".$nombre;
+    }
 }
