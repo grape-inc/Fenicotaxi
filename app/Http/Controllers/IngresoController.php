@@ -49,6 +49,7 @@ class IngresoController extends Controller
                 'Total' => 'required|numeric',
                 'Codigo_Ingreso' => 'required|numeric',
             ]);
+
             $ingreso = new Ingreso;
             $ingreso->ID_Proveedor = $request->get('ID_Proveedor');
             $ingreso->ID_Empleado = $request->get('ID_Empleado');
@@ -59,20 +60,15 @@ class IngresoController extends Controller
             $ingreso->ID_Divisa = $request->get('ID_Divisa');
             $ingreso->save();
 
-            $producto = $request->get('ID_Producto');
-            $cantidad = $request->get('Cantidad');
-            $precio = $request->get('Precio');
-            $cont = 0;
+            $detalles_a_guardar = [];
+            $detalles = $request->get('ingreso_detalles');
+            foreach ($detalles as $detalle) {
+                array_push($detalles_a_guardar,
+                    new IngresoDetalle($detalle)
+                );
+            };
 
-            while ($cont < count($producto)) {
-                $detalle = new IngresoDetalle();
-                $detalle->ID_Ingreso = $ingreso->ID_Ingreso;
-                $detalle->ID_Producto = $producto[$cont];
-                $detalle->Cantidad = $cantidad[$cont];
-                $detalle->Precio = $precio[$cont];
-                $detalle->save();
-                $cont = $cont + 1;
-            }
+            $ingreso->ingreso_detalles()->saveMany($detalles_a_guardar);
 
             DB::commit();
         } catch (\Exception $e) {
@@ -103,5 +99,12 @@ class IngresoController extends Controller
                     "proveedor" => $proveedor,
                     "ingreso_detalle" => $detalles,
                     "producto" => $producto]);
+    }
+
+    public function update(IngresosFormRequest $request)
+    {
+        $ingreso_id = $request->ID_Ingreso;
+        $ingreso = Ingreso::find($ingreso_id);
+
     }
 }

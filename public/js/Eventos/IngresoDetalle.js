@@ -23,6 +23,11 @@
     subtotal = [];
 
     function agregar() {
+        numero_de_detalles = $('#TablaDetalle > tbody > tr').length;
+        if (numero_de_detalles && cont == 0) {
+            cont = numero_de_detalles;
+        }
+
         ID_Producto = $("#ID_Producto").val();
         producto = $("#ID_Producto option:selected").text();
         Cantidad = new Number($("#Cantidad").val());
@@ -33,7 +38,7 @@
         if (ID_Producto != "" && Cantidad != "" && Cantidad > 0 && Precio != "") {
             subtotal[cont] = (Cantidad * Precio);
             total = total + subtotal[cont];
-            var Fila = '<tr class="selected" id="Fila' + cont + '"><td><button type="button" class="btn btn-warning" onclick="eliminar(' + cont + ');">X</button></td><td><input type="hidden" name="ID_Producto[]" value="' + ID_Producto + '">' + producto + '</td><td><input type="number" name="Cantidad[]" value="' + Cantidad + '" readonly ></td><td><input type="number" name="Precio[]" value="' + Precio + '" readonl></td><td><input type="hidden" name="ID_Moneda[]" value="' + $("#ID_Divisa").val() + '">' + $("#ID_Divisa option:selected").text() + '</td><td>' + subtotal[cont]  + ' ' +$("#ID_Divisa option:selected").text() +'</td></tr>';
+            var Fila = '<tr class="selected" id="Fila' + cont + '"><td><button type="button" class="btn btn-warning" onclick="eliminar(' + cont + ');">X</button></td><td><input type="hidden" name="ingreso_detalles['+ cont +'][ID_Producto]" value="' + ID_Producto + '">' + producto + '</td><td><input type="number" name="ingreso_detalles['+ cont +'][Cantidad]" value="' + Cantidad + '" readonly ></td><td><input type="number" name="ingreso_detalles['+ cont +'][Precio]" value="' + Precio + '" readonl></td><td><input type="hidden" value="' + $("#ID_Divisa").val() + '">' + $("#ID_Divisa option:selected").text() + '</td><td>' + subtotal[cont]  + ' ' +$("#ID_Divisa option:selected").text() +'</td></tr>';
             cont++;
             limpiar();
             evaluar();

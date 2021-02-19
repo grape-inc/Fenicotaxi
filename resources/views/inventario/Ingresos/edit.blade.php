@@ -12,7 +12,7 @@
         </span> Ingreso</h3>
         <a type="button" href="{{ URL::route('Ingresos.index')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-keyboard-backspace"></i> Regresar </a>
     </div>
-{{ Form::open(array('url' => URL::route('Ingresos.update',$ingreso->ID_Ingreso), 'method' => 'put'))}}
+{{ Form::open(array('url' => URL::route('Ingresos.update', $ingreso->ID_Ingreso), 'method' => 'put'))}}
     {{ csrf_field() }}
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
@@ -249,11 +249,12 @@
                                         <tbody>
                                         @foreach ($ingreso_detalle as $key => $ingreso_detalle)
                                             <tr class="selected" id="{{'Fila'.$key}}">
+                                                <input type="hidden" name="ingreso_detalles[{{$key}}][ID]" value="{{$ingreso_detalle->ID}}">
                                                 <td><button type="button" class="btn btn-warning" onclick="eliminar({{ $key }});">X</button></td>
-                                                <td><input type="hidden" name="ID_Producto[]" value="{{$ingreso_detalle->ID_Producto}}">{{$ingreso_detalle->producto->displayName()}}</td>
-                                                <td><input style="text-align: right;" type="number" name="Cantidad[]" value="{{$ingreso_detalle->Cantidad}}"></td>
-                                                <td><input style="text-align: right;" type="number" name="Precio[]" value="{{$ingreso_detalle->Precio}}"></td>
-                                                <td><input type="hidden" name="ID_Moneda[]" value="{{$ingreso->ID_Divisa}}">{{$ingreso->divisa->displayName()}}</td>
+                                                <td><input type="hidden" name="ingreso_detalles[{{$key}}][ID_Producto]" value="{{$ingreso_detalle->ID_Producto}}">{{$ingreso_detalle->producto->displayName()}}</td>
+                                                <td><input style="text-align: right;" type="number" name="ingreso_detalles[{{$key}}][Cantidad]" value="{{$ingreso_detalle->Cantidad}}"></td>
+                                                <td><input style="text-align: right;" type="number" name="ingreso_detalles[{{$key}}][Precio]" value="{{$ingreso_detalle->Precio}}"></td>
+                                                <td><input type="hidden" value="{{$ingreso->ID_Divisa}}">{{$ingreso->divisa->displayName()}}</td>
                                                 <td style="text-align: right;">{{$ingreso_detalle->subtotal()}}</td>
                                             </tr>
                                         @endforeach

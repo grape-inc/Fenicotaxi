@@ -507,6 +507,15 @@ BEGIN
         WHERE Producto.ID_Producto = NEW.ID_Producto;
 END$$
 
+USE `fenicotaxi`$$
+CREATE
+TRIGGER `fenicotaxi`.`tr_updStockIngresoEliminar`
+AFTER DELETE ON `fenicotaxi`.`ingreso_detalle`
+FOR EACH ROW
+BEGIN
+     UPDATE Producto SET Existencias = Existencias - OLD.Cantidad
+        WHERE Producto.ID_Producto = OLD.ID_Producto;
+END$$
 
 DELIMITER ;
 
