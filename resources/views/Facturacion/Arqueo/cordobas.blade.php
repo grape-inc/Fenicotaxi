@@ -50,6 +50,17 @@
               <input type="datetime" class="form-control" readonly name="Fecha_Jornada" value = "{{$arqueo->Fecha_Jornada}}">
           </div>
       </div>
+      <div class="form-group">
+        {{Form::label('Total_Cordobas', 'Total Cordobas')}}
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <button class="btn btn-sm btn-primary" type="button">
+                    <i class="mdi mdi-calendar-range"></i>
+                </button>
+            </div>
+            <input class="form-control" readonly value = "{{$total_cordobas}}">
+        </div>
+    </div>
   </div>
 
   <div class="col-md-2">
