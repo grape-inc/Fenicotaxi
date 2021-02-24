@@ -38,7 +38,7 @@
         if (ID_Producto != "" && Cantidad != "" && Cantidad > 0 && Precio != "") {
             subtotal[cont] = (Cantidad * Precio);
             total = total + subtotal[cont];
-            var Fila = '<tr class="selected" id="Fila' + cont + '"><td><button type="button" class="btn btn-warning" onclick="eliminar(' + cont + ');">X</button></td><td><input type="hidden" name="ingreso_detalles['+ cont +'][ID_Producto]" value="' + ID_Producto + '">' + producto + '</td><td><input type="number" name="ingreso_detalles['+ cont +'][Cantidad]" value="' + Cantidad + '" readonly ></td><td><input type="number" name="ingreso_detalles['+ cont +'][Precio]" value="' + Precio + '" readonl></td><td><input type="hidden" value="' + $("#ID_Divisa").val() + '">' + $("#ID_Divisa option:selected").text() + '</td><td>' + subtotal[cont]  + ' ' +$("#ID_Divisa option:selected").text() +'</td></tr>';
+            var Fila = '<tr class="selected" id="Fila' + cont + '"><td><button type="button" class="btn btn-warning" onclick="eliminar(' + cont + ');">X</button></td><td><input type="hidden" name="ingreso_detalles['+ cont +'][ID_Producto]" value="' + ID_Producto + '">' + producto + '</td><td><input class="Cantidad" type="number" name="ingreso_detalles['+ cont +'][Cantidad]" value="' + Cantidad + '" readonly ></td><td class="PrecioHeader"><input class="Precio" type="number" name="ingreso_detalles['+ cont +'][Precio]" value="' + Precio + '" readonly></td><td class="DivisaHeader"><input class="Divisa" type="hidden" value="' + $("#ID_Divisa").val() + '">' + $("#ID_Divisa option:selected").text() + '</td><td class="SubTotal">' + subtotal[cont]  + ' ' +$("#ID_Divisa option:selected").text() +'</td></tr>';
             cont++;
             limpiar();
             evaluar();
@@ -94,17 +94,17 @@
         var Suma = 0;
         $('#TablaDetalle > tbody > tr').each(function(Index, Fila ) {
             if (CambioDivisa == null) {
-                PrecioProducto = parseFloat($(Fila.childNodes[3].innerHTML)[0].value);
+                PrecioProducto = parseFloat($(Fila).find(".Precio").val());
             }
             else if (CambioDivisa == true) {
                 PrecioProducto = conversion_divisa(Divisa_Anterior,parseFloat($(Fila.childNodes[3].innerHTML)[0].value))
-                Fila.childNodes[3].innerHTML = '<input type="number" style="width: 140px;" name="Precio[]" onchange="EvaluarTotales()" value="'+PrecioProducto+'" readonly="">';
-                Fila.childNodes[4].innerHTML = $("#ID_Divisa option:selected").text();
+                $(Fila).find(".PrecioHeader")[0].innerHTML = '<input class="Precio" type="number" style="width: 140px;" name="Precio[]" onchange="EvaluarTotales()" value="'+PrecioProducto+'" readonly="">';
+                $(Fila).find(".DivisaHeader")[0].innerHTML = '<input class="Divisa" type="hidden" value="' + $("#ID_Divisa").val() + '">' + $("#ID_Divisa option:selected").text() + '';
             }
-            CantidadProducto = parseFloat($(Fila.childNodes[2].innerHTML)[0].value);
-            Fila.childNodes[5].innerHTML =redondear((PrecioProducto * CantidadProducto),2) + ' ' +$("#ID_Divisa option:selected").text();
-            TotalProducto = parseFloat(Fila.childNodes[5].innerHTML);
-            Suma = Suma + TotalProducto;
+            CantidadProducto = parseFloat($(Fila).find(".Cantidad").val());
+            Total = redondear((PrecioProducto * CantidadProducto), 2);
+            $(Fila).find(".SubTotal")[0].innerHTML = Total + ' ' +$("#ID_Divisa option:selected").text();
+            Suma = Suma + parseFloat(Total);
         });
         var SubTotal = Suma;
         var IVA = SubTotal * 0.15;
