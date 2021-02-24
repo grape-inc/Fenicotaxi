@@ -97,7 +97,7 @@
                 PrecioProducto = parseFloat($(Fila).find(".Precio").val());
             }
             else if (CambioDivisa == true) {
-                PrecioProducto = conversion_divisa(Divisa_Anterior,parseFloat($(Fila.childNodes[3].innerHTML)[0].value))
+                PrecioProducto = conversion_divisa(Divisa_Anterior,parseFloat($(Fila).find(".Precio").val()));
                 $(Fila).find(".PrecioHeader")[0].innerHTML = '<input class="Precio" type="number" style="width: 140px;" name="Precio[]" onchange="EvaluarTotales()" value="'+PrecioProducto+'" readonly="">';
                 $(Fila).find(".DivisaHeader")[0].innerHTML = '<input class="Divisa" type="hidden" value="' + $("#ID_Divisa").val() + '">' + $("#ID_Divisa option:selected").text() + '';
             }
