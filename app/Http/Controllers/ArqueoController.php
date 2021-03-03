@@ -134,14 +134,22 @@ class ArqueoController extends Controller
             flash('Arqueo realizado correctamente')->success();
             return redirect()->action('ArqueoController@index');
         } else {
+            $total_facturas_cordobas = $this->obtenerTotalFacturasCordobas($Arqueo->Fecha_Jornada);
+            $total_facturas_dolares = $this->obtenerTotalFacturasDolares($Arqueo->Fecha_Jornada);
             flash('El total de arqueo no coincide con las facturas realizadas el dia de hoy, verifique los datos ingresados')->error();
-            return view("Facturacion.Arqueo.edit ", ["arqueo" => Arqueo::findOrFail($ID), "empleado" => $empleado]);
+            return view("Facturacion.Arqueo.edit ", [
+                "arqueo" => $Arqueo,
+                "empleado" => $empleado,
+                "total_cordobas" => $total_facturas_cordobas,
+                "total_dolares" => $total_facturas_dolares,
+            ]);
         }
     }
 
     public function destroy($ID)
     {
         try {
+            $Eliminado = true;
             $Arqueo = Arqueo::findOrFail($ID);
             if ($Arqueo->Jornada_Abierta == 0) {
                 flash('El arqueo no puede ser eliminado, la jornada ya esta cerrada')->error();
