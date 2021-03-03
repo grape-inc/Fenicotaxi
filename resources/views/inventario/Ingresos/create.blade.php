@@ -231,6 +231,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            @error('ingreso_detalles')
+                                    <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
                         <div class="row justify-content-center mt-4">
                             <button type="submit" class="btn btn-gradient-dark btn-icon-text text-center"> Generar Ingreso <i class="mdi mdi-file-check btn-icon-append"></i></button>
                         </div>

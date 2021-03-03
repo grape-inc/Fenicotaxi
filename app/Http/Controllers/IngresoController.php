@@ -48,8 +48,8 @@ class IngresoController extends Controller
                 'Impuesto' => 'required|numeric',
                 'Total' => 'required|numeric',
                 'Codigo_Ingreso' => 'required|numeric',
+                'ingreso_detalles' => 'required'
             ]);
-
             $ingreso = new Ingreso;
             $ingreso->ID_Proveedor = $request->get('ID_Proveedor');
             $ingreso->ID_Empleado = $request->get('ID_Empleado');

@@ -29,6 +29,7 @@ class IngresosFormRequest extends FormRequest
             'Impuesto' => 'required|numeric',
             'Total' => 'required|numeric|min:0',
             'Codigo_Ingreso' => 'required|numeric|min:0',
+            'ingreso_detalles' => 'required'
         ];
     }
 
