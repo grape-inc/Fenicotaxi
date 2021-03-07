@@ -20,6 +20,7 @@
         @csrf
         @include('flash::message')
         <input type="hidden" id="tasa_cambio" value="{{ $tasa_Cambio }}">
+        <input type="hidden" name="ID_Jornada" id="tasa_cambio" value="{{ $id_jornada }}">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                  <div class="card-body">
@@ -237,7 +238,7 @@
                                         </button>
                                     </div>
                                     <input type="text" class="form-control" id="Existencias"  placeholder="Existencias del producto" disabled>
-                                </div>                               
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-3">

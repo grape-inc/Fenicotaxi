@@ -74,13 +74,11 @@ class FacturaVentaController extends Controller
             ->get();
 
         $fecha_hoy = date('Y-m-d');
-        $jornada = DB::table('ArqueoCaja')
-            ->where('Fecha_Caja', '=', $fecha_hoy, 'AND', 'Jornada_Abierta', '=', '1')
-            ->get();
-        $jornada_abierta = count($jornada);
+        $jornada = Arqueo::where(['Fecha_Caja' => $fecha_hoy, 'Jornada_Abierta' => '1'])->get();
+        $jornada_abierta = $jornada->count();
 
         if ($jornada_abierta == 1) {
-            return view('Facturacion.Venta.create', ["empleado" => $empleado, "producto" => $producto, "cliente" => $cliente, "divisa" => $divisa, "CF" => $CodigoFactura, 'pagos' => $pagos, 'tasa_Cambio' => $tasa_Cambio]);
+            return view('Facturacion.Venta.create', ["empleado" => $empleado, "id_jornada" => $jornada->first()->ID_Jornada, "producto" => $producto, "cliente" => $cliente, "divisa" => $divisa, "CF" => $CodigoFactura, 'pagos' => $pagos, 'tasa_Cambio' => $tasa_Cambio]);
         } else {
             flash('Necesita abrir caja para poder facturar')->error();
             return redirect()->action('FacturaVentaController@index');
@@ -129,6 +127,7 @@ class FacturaVentaController extends Controller
             $mytime = Carbon::now('America/Managua');
             $facturaventa->Fecha_Realizacion = $mytime->toDateTimeString();
             $facturaventa->Fecha_Actualizacion = $mytime->toDateTimeString();
+            $facturaventa->ID_Jornada = $request->get('ID_Jornada');
             $facturaventa->save();
 
             $producto = $request->get('ID_Producto');

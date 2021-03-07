@@ -68,8 +68,8 @@ class ArqueoController extends Controller
     {
         $empleado = DB::table('Empleado')->get();
         $Arqueo = Arqueo::findOrFail($ID);
-        $total_facturas_cordobas = $this->obtenerTotalFacturasCordobas($Arqueo->Fecha_Jornada);
-        $total_facturas_dolares = $this->obtenerTotalFacturasDolares($Arqueo->Fecha_Jornada);
+        $total_facturas_cordobas = $this->obtenerTotalFacturasCordobas($Arqueo->Fecha_Jornada, $Arqueo->ID_Jornada);
+        $total_facturas_dolares = $this->obtenerTotalFacturasDolares($Arqueo->Fecha_Jornada, $Arqueo->ID_Jornada);
 
         if ($Arqueo->Jornada_Abierta == 0) {
             flash('El arqueo no puede ser editado, la jornada ya esta cerrada')->error();
@@ -120,22 +120,22 @@ class ArqueoController extends Controller
         $Arqueo->Centavos_Cordobas = $Request->input('Centavos_Cordobas');
 
         //Total de facturas por dia
-        $total_facturas_cordobas = $this->obtenerTotalFacturasCordobas($Arqueo->Fecha_Jornada);
-        $total_facturas_dolares = $this->obtenerTotalFacturasDolares($Arqueo->Fecha_Jornada);
+        $total_facturas_cordobas = $this->obtenerTotalFacturasCordobas($Arqueo->Fecha_Jornada, $Arqueo->ID_Jornada) + $Arqueo->Saldo_Inicial;
+        $total_facturas_dolares = $this->obtenerTotalFacturasDolares($Arqueo->Fecha_Jornada, $Arqueo->ID_Jornada);
         // Totales Arqueo
         $total_arqueo_cordobas = $this->calcularTotalArqueoCordobas($Arqueo);
         $total_arqueo_dolares = $this->calcularTotalArqueoDolares($Arqueo);
 
-        if (($total_facturas_cordobas == $total_arqueo_cordobas && $total_arqueo_cordobas == $Arqueo->Saldo_Final) &&
-            ($total_facturas_dolares == $total_arqueo_dolares && $total_arqueo_dolares == $Arqueo->Saldo_Final_Dolar)
+        if (($total_facturas_cordobas >= $total_arqueo_cordobas && $total_arqueo_cordobas >= $Arqueo->Saldo_Final) &&
+            ($total_facturas_dolares >= $total_arqueo_dolares && $total_arqueo_dolares >= $Arqueo->Saldo_Final_Dolar)
         ) {
 
             $Arqueo->update();
             flash('Arqueo realizado correctamente')->success();
             return redirect()->action('ArqueoController@index');
         } else {
-            $total_facturas_cordobas = $this->obtenerTotalFacturasCordobas($Arqueo->Fecha_Jornada);
-            $total_facturas_dolares = $this->obtenerTotalFacturasDolares($Arqueo->Fecha_Jornada);
+            $total_facturas_cordobas = $this->obtenerTotalFacturasCordobas($Arqueo->Fecha_Jornada, $Arqueo->ID_Jornada);
+            $total_facturas_dolares = $this->obtenerTotalFacturasDolares($Arqueo->Fecha_Jornada, $Arqueo->ID_Jornada);
             flash('El total de arqueo no coincide con las facturas realizadas el dia de hoy, verifique los datos ingresados')->error();
             return view("Facturacion.Arqueo.edit ", [
                 "arqueo" => $Arqueo,
@@ -166,24 +166,26 @@ class ArqueoController extends Controller
         return route('Arqueo.index', ['Eliminado' => $Eliminado]);
     }
 
-    private function obtenerTotalFacturasCordobas($Fecha_Jornada)
+    private function obtenerTotalFacturasCordobas($Fecha_Jornada, $jornada_id)
     {
         $total_facturas_cordobas = round(floatval(DB::table('Factura_Venta as v')
             ->join('factura_venta_pago as fp', 'v.ID_Factura', '=', 'fp.factura_venta_id')
             ->where('v.Fecha_Realizacion', $Fecha_Jornada)
             ->where('v.Es_Credito', 0)
+            ->where('v.ID_Jornada', $jornada_id)
             ->where('fp.tipo_divisa_id', 2)
             ->sum('fp.monto')), 2);
 
         return $total_facturas_cordobas;
     }
 
-    private function obtenerTotalFacturasDolares($Fecha_Jornada)
+    private function obtenerTotalFacturasDolares($Fecha_Jornada, $jornada_id)
     {
         $total_facturas_dolares = round(floatval(DB::table('Factura_Venta as v')
             ->join('factura_venta_pago as fp', 'v.ID_Factura', '=', 'fp.factura_venta_id')
             ->where('v.Fecha_Realizacion', $Fecha_Jornada)
             ->where('v.Es_Credito', 0)
+            ->where('v.ID_Jornada', $jornada_id)
             ->where('fp.tipo_divisa_id', 1)
             ->sum('fp.monto')), 2);
 
