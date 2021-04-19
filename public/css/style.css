@@ -12663,7 +12663,7 @@ dl {
   -moz-transition: background 0.25s ease;
   -ms-transition: background 0.25s ease; }
   .navbar .navbar-brand {
-    width: 110px; }
+    width: 130px; }
   .navbar .navbar-brand-wrapper {
     transition: width 0.25s ease, background 0.25s ease;
     -webkit-transition: width 0.25s ease, background 0.25s ease;
