@@ -14,7 +14,7 @@
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-format-list-bulleted"></i>
             </span> Divisas </h3>
-            <a href="{{ URL::route('Divisa.create')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-diamond btn-icon-prepend"></i>Sincronizar divisas con el BAC</a>
+            <a href="{{ URL::route('Divisa.create')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-diamond btn-icon-prepend"></i>Sincronizar divisas</a>
         </div>
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
@@ -27,8 +27,8 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Nombre Divisa</th>
-                                        <th>Equivalencia Nacional (En C$)</th>                                        
-                                        <th>Editar</th> 
+                                        <th>Equivalencia Nacional (En C$)</th>
+                                        <th>Editar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
