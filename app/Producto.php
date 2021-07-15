@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Producto extends Model
 {
+    use LogsActivity;
+
     protected $table = 'Producto';
     protected $primaryKey = 'ID_Producto';
     public $timestamps = false;

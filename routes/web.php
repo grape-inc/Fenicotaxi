@@ -30,6 +30,7 @@ Route::resource('Facturacion/Arqueo','ArqueoController')->middleware('peticionau
 Route::resource('Facturacion/Venta','FacturaVentaController')->middleware('peticionautenticada');
 Route::resource('Facturacion/TipoPago','TipoPagoController')->middleware('peticionautenticada');
 Route::resource('Welcome','WelcomeController')->middleware('peticionautenticada');
+Route::resource('Activities','ActivityController')->middleware('peticionautenticada');
 
 //Peticiones ajax
 Route::get('valoresCalculo','FacturaVentaController@valoresCalculo');
