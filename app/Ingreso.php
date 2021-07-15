@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Ingreso extends Model
 {
+    use LogsActivity;
+
     protected $guarded = [];
     protected $table = 'Ingreso';
     protected $primaryKey = 'ID_Ingreso';

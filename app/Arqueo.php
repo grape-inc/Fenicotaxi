@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Arqueo extends Model
 {
+
+    use LogsActivity;
+
     protected $table = 'ArqueoCaja';
     protected $primaryKey = 'ID_Jornada';
     public $timestamps = false;

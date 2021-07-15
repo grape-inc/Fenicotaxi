@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Nomina extends Model
 {
+    use LogsActivity;
+
     protected $table = 'Nomina_Empleado';
     protected $primaryKey = 'ID_Nomina';
     public $timestamps = false;
