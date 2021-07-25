@@ -60,7 +60,6 @@
       <div class="container-fluid page-body-wrapper">
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
-            @if (session('Rol') == 1 || session('Rol') == 3 )
               <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#inventario" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-title">Inventario</span>
@@ -70,31 +69,38 @@
                 <div class="collapse" id="inventario">
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Productos.index')}}">Productos</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Proveedores.index')}}">Proveedores</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Categorias.index')}}">Categorias</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('UnidadesDeMedida.index')}}">Unidades de medida</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Ingresos.index')}}">Ingresos</a></li>
+                    @if (session('Rol') == 1 || session('Rol') == 3 )
+                      <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Proveedores.index')}}">Proveedores</a></li>
+                      <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Categorias.index')}}">Categorias</a></li>
+                      <li class="nav-item"> <a class="nav-link" href="{{ URL::route('UnidadesDeMedida.index')}}">Unidades de medida</a></li>
+                      <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Ingresos.index')}}">Ingresos</a></li>
+                    @endif
                   </ul>
                 </div>
               </li>
-            @endif
-            @if (session('Rol') == 2 || session('Rol') == 1 )
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#facturacion" aria-expanded="false" aria-controls="ui-basic">
-                  <span class="menu-title">Facturacion</span>
-                  <i class="menu-arrow"></i>
-                  <i class="mdi mdi-point-of-sale menu-icon"></i>
-                </a>
-                <div class="collapse" id="facturacion">
-                  <ul class="nav flex-column sub-menu">
+
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#facturacion" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Facturacion</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-point-of-sale menu-icon"></i>
+              </a>
+              <div class="collapse" id="facturacion">
+                <ul class="nav flex-column sub-menu">
+                  @if (session('Rol') == 1 )
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Cliente.index')}}">Clientes</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::route('TipoPago.index')}}">Tipos de Pago</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Venta.index')}}">Ventas</a></li>
+                  @endif
+
+                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Venta.index')}}">Ventas</a></li>
+
+                  @if (session('Rol') == 2 || session('Rol') == 1 )
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Arqueo.index')}}">Arqueo</a></li>
-                  </ul>
-                </div>
-              </li>
-            @endif
+                  @endif
+                </ul>
+              </div>
+            </li>
+
             @if (session('Rol') == 1)
               <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#nomina" aria-expanded="false" aria-controls="ui-basic">
@@ -110,8 +116,9 @@
                   </ul>
                 </div>
               </li>
+            @endif
 
-            <li class="nav-item">
+            <li id="configuracion_menu" class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#configuracion" aria-expanded="false" aria-controls="nomina">
                 <span class="menu-title">Configuración</span>
                 <i class="menu-arrow"></i>
@@ -120,9 +127,14 @@
 
               <div class="collapse" id="configuracion">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Divisa.index')}}">Divisas</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Usuarios.index')}}">Usuarios</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Rol.index')}}">Roles</a></li>
+                  @if (session('Rol') == 2 || session('Rol') == 1 )
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Usuarios.index')}}">Usuarios</a></li>
+                  @endif
+
+                  @if (session('Rol') == 1)
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Divisa.index')}}">Divisas</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Rol.index')}}">Roles</a></li>
+                  @endif
                 </ul>
               </div>
 
@@ -130,7 +142,6 @@
 
 
              </li>
-          @endif
           </ul>
         </nav>
         <!-- Contenido -->
@@ -144,6 +155,13 @@
        </div>
       </div>
     </div>
+
+    <script>
+     if (document.querySelectorAll('#configuracion_menu div li').length == 0) {
+      document.querySelector("#configuracion_menu").style.display = 'none';
+     }
+    </script>
+
     <script src="{{{asset('vendors/js/vendor.bundle.base.js')}}}"></script>
     <script src="{{{asset('js/Plugins/jquery.dataTables.min.js')}}}"></script>
     <script src="{{{asset('js/Plugins/dataTables.bootstrap4.min.js')}}}"></script>
