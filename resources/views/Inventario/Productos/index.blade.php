@@ -20,7 +20,9 @@
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-format-list-bulleted"></i>
             </span> Productos </h3>
-            <a href="{{ URL::route('Productos.create')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend"></i>Añadir Producto</a>
+            @if (session('Rol') == 1 || session('Rol') == 3 )
+                <a href="{{ URL::route('Productos.create')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend"></i>Añadir Producto</a>
+            @endif
         </div>
         <div class="row">
             <div class="col-lg-12 grid-margin">
@@ -47,8 +49,10 @@
                                         <th>Precio de venta</th>
                                         <th>Categoria</th>
                                         <th>Proveedor</th>
-                                        <th>Editar</th>
-                                        <th>Eliminar</th>
+                                        @if (session('Rol') == 1 || session('Rol') == 3 )
+                                            <th>Editar</th>
+                                            <th>Eliminar</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -73,8 +77,10 @@
                                         <td>{{ $CF->Precio_Venta }} {{ $CF->Simbolo_Divisa }}</td>
                                         <td>{{ $CF->Nombre_Categoria }}</td>
                                         <td>{{ $CF->Nombre_Proveedor }}</td>
-                                        <td> <a href="{{ URL::route('Productos.edit', $CF->ID_Producto)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
-                                        <td> <button type="button" onclick="EliminarProducto({{ $CF->ID_Producto}},'{{ URL::route('Productos.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
+                                        @if (session('Rol') == 1 || session('Rol') == 3 )
+                                            <td> <a href="{{ URL::route('Productos.edit', $CF->ID_Producto)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
+                                            <td> <button type="button" onclick="EliminarProducto({{ $CF->ID_Producto}},'{{ URL::route('Productos.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>

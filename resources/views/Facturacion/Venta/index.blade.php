@@ -38,7 +38,9 @@
                 <i class="mdi mdi-format-list-bulleted"></i>
             </span> Facturas </h3>
             @include('flash::message')
-            <a href="{{route('Venta.create')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend"></i>Realizar Venta</a>
+            @if (session('Rol') == 1 || session('Rol') == 2 )
+                <a href="{{route('Venta.create')}}" class="btn btn-danger btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend"></i>Realizar Venta</a>
+            @endif
         </div>
         <div class="row">
             @include('partials.filter')
@@ -58,7 +60,9 @@
                                         <th>Fecha Creacion</th>
                                         <th>Fecha Actualizacion</th>
                                         <th>Ver</th>
-                                        <th>Eliminar</th>
+                                        @if (session('Rol') == 1 || session('Rol') == 2 )
+                                            <th>Eliminar</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -76,7 +80,9 @@
                                         <td>{{ $fv->Fecha_Realizacion }}</td>
                                         <td>{{ $fv->Fecha_Actualizacion }}</td>
                                         <td> <a href="{{ URL::route('Venta.edit', $fv->ID_Factura)}}" class="btn btn-success btn-fw-success btn-rounded btn-icon-text normalizarboton"><i class="mdi mdi-table-edit"></i></a></td>
-                                        <td> <button type="button" onclick="EliminarVenta({{ $fv->ID_Factura}},'{{URL::route('Venta.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
+                                        @if (session('Rol') == 1 || session('Rol') == 2 )
+                                            <td> <button type="button" onclick="EliminarVenta({{ $fv->ID_Factura}},'{{URL::route('Venta.index')}}')" class="btn btn-dark btn-fw-success btn-rounded btn-icon"><i class="mdi mdi-delete"></i></button></td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>
