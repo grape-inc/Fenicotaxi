@@ -24,4 +24,10 @@ class Cliente extends Model
         'Fecha_Realizacion',
         'Direccion'
     ];
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
+    }
 }

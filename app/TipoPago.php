@@ -15,4 +15,10 @@ class TipoPago extends Model
     protected $fillable = [
         'Tipo_Pago'
     ];
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
+    }
 }

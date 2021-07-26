@@ -38,4 +38,10 @@ class Producto extends Model
 
         return $codigo." / ".$nombre;
     }
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
+    }
 }

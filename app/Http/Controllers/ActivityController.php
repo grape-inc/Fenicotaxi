@@ -10,6 +10,6 @@ class ActivityController extends Controller
 {
     public function index() {
         $activities = Activity::all();
-        return $activities;
+        return view('Activity.index', ["records" => $activities]);
     }
 }

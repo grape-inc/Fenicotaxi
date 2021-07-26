@@ -36,4 +36,10 @@ class IngresoDetalle extends Model
         $cantidad = $this->Cantidad;
         return $cantidad * $precio;
     }
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
+    }
 }

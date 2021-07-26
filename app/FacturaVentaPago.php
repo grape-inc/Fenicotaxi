@@ -17,4 +17,10 @@ class FacturaVentaPago extends Model
         'tipo_divisa_id',
         'monto'
     ];
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
+    }
 }

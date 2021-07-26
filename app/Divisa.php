@@ -25,4 +25,10 @@ class Divisa extends Model
 
         return $nombre;
     }
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
+    }
 }

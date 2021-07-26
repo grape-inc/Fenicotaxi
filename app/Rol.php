@@ -15,4 +15,10 @@ class Rol extends Model
     protected $fillable = [
         'Nombre_Rol'
     ];
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
+    }
 }

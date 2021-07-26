@@ -27,4 +27,10 @@ class FacturaVenta extends Model
         'ID_Jornada',
         'Observacion'
     ];
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
+    }
 }

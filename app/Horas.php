@@ -16,4 +16,10 @@ class Horas extends Model
         'Fecha_Registro',
         'Horas_Laboradas'
     ];
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
+    }
 }

@@ -32,4 +32,10 @@ class Ingreso extends Model
     {
         return $this->belongsTo(Divisa::class, 'ID_Divisa', 'ID_Divisa');
     }
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
+    }
 }

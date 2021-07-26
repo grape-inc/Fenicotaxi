@@ -9,7 +9,7 @@ use App\Empleado;
 
 class LoginController extends Controller
 {
-    public function index(Request $Request){        
+    public function index(Request $Request){
         return view('Login.index');
     }
 
@@ -27,6 +27,7 @@ class LoginController extends Controller
             Session::put('Apellido', $Usuario->Apellido_Empleado);
             Session::put('Imagen', $Usuario->Imagen);
             Session::put('Rol', $Usuario->ID_Rol);
+            Session::put('Usuario', $Usuario->Usuario);
             if(Hash::check($Request->Password, $Usuario->Password))
                 return redirect()->action('WelcomeController@index');
             else{
@@ -39,9 +40,9 @@ class LoginController extends Controller
             return redirect()->back();
         }
     }
-    
+
     public function matar_sesion(Request $Request){
-        Session::flush();        
+        Session::flush();
         return redirect('Login');
     }
 }

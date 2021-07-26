@@ -18,4 +18,10 @@ class Abono extends Model
         'Descripcion_Abono',
         'Fecha_Realizacion'
     ];
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
+    }
 }
