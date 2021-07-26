@@ -134,6 +134,7 @@
                   @if (session('Rol') == 1)
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Divisa.index')}}">Divisas</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Rol.index')}}">Roles</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Activities.index')}}">Logs</a></li>
                   @endif
                 </ul>
               </div>

@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Producto extends Model
 {
+    use LogsActivity;
+
     protected $table = 'Producto';
     protected $primaryKey = 'ID_Producto';
     public $timestamps = false;
@@ -34,5 +37,11 @@ class Producto extends Model
         $nombre = $this->Nombre_Producto;
 
         return $codigo." / ".$nombre;
+    }
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
     }
 }

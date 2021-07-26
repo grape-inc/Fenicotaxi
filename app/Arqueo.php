@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Arqueo extends Model
 {
+
+    use LogsActivity;
+
     protected $table = 'ArqueoCaja';
     protected $primaryKey = 'ID_Jornada';
     public $timestamps = false;
@@ -16,4 +20,10 @@ class Arqueo extends Model
         'Fecha_Caja', 'BD1', 'BD2', 'BD5', 'BD10', 'BD20', 'BD50',
         'BD100', 'Saldo_Final_Dolar', 'Centavos_Dolar', 'Centavos_Cordobas'
     ];
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
+    }
 }

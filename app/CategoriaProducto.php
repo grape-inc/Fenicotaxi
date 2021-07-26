@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class CategoriaProducto extends Model
 {
+    use LogsActivity;
     //Se define la tabla a la que apunta este modelo
     //Se define su primary key
     protected $table = 'Categoria_Producto';
@@ -19,4 +21,10 @@ class CategoriaProducto extends Model
 
     protected $guarded = [
     ];
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
+    }
 }

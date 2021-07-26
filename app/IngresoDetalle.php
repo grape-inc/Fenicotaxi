@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class IngresoDetalle extends Model
 {
+    use LogsActivity;
+
     protected $guarded = [];
     protected $table = 'Ingreso_Detalle';
     protected $primaryKey = 'ID';
@@ -32,5 +35,11 @@ class IngresoDetalle extends Model
         $precio = $this->Precio;
         $cantidad = $this->Cantidad;
         return $cantidad * $precio;
+    }
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
     }
 }

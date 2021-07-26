@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Nomina extends Model
 {
+    use LogsActivity;
+
     protected $table = 'Nomina_Empleado';
     protected $primaryKey = 'ID_Nomina';
     public $timestamps = false;
@@ -18,4 +21,10 @@ class Nomina extends Model
         'Total_Deducciones',
         'Total_Nomina'
     ];
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        $user = session('Usuario');
+        return "This model has been {$eventName} by \"{$user}\"";
+    }
 }
