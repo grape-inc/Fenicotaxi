@@ -49,8 +49,8 @@
                                         <th>Monedas 0.25</th>
                                         <th>Monedas 0.5c</th>
                                         <th>Monedas 1</th>
-                                        <th>Modenas 5</th>
-                                        <th>Fecha Actualizacion</th>
+                                        <th>Monedas 5</th>
+                                        <th>Fecha Actualización</th>
                                         <th>Editar</th>
                                         <th>Eliminar</th>
                                     </tr>

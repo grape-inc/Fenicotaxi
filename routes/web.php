@@ -29,6 +29,7 @@ Route::resource('Nomina/Cargo','CargoController')->middleware('peticionautentica
 Route::resource('Facturacion/Arqueo','ArqueoController')->middleware('peticionautenticada');
 Route::resource('Facturacion/Venta','FacturaVentaController')->middleware('peticionautenticada');
 Route::resource('Facturacion/TipoPago','TipoPagoController')->middleware('peticionautenticada');
+Route::resource('Facturacion/InformeDeCierre','InformeDeCierreController')->middleware('peticionautenticada');
 Route::resource('Welcome','WelcomeController')->middleware('peticionautenticada');
 Route::resource('Activities','ActivityController')->middleware('peticionautenticada');
 

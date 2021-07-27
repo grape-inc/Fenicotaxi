@@ -81,7 +81,7 @@
 
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#facturacion" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Facturacion</span>
+                <span class="menu-title">Facturación</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-point-of-sale menu-icon"></i>
               </a>
@@ -96,6 +96,7 @@
 
                   @if (session('Rol') == 2 || session('Rol') == 1 )
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Arqueo.index')}}">Arqueo</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('InformeDeCierre.index')}}">Informe de Cierre</a></li>
                   @endif
                 </ul>
               </div>
@@ -104,7 +105,7 @@
             @if (session('Rol') == 1)
               <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#nomina" aria-expanded="false" aria-controls="ui-basic">
-                  <span class="menu-title">Nomina</span>
+                  <span class="menu-title">Nómina</span>
                   <i class="menu-arrow"></i>
                   <i class="mdi mdi-point-of-sale menu-icon"></i>
                 </a>
@@ -112,7 +113,7 @@
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Cargo.index')}}">Cargos</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Empleado.index')}}">Empleados</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Nomina.index')}}">Generar Nomina</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::route('Nomina.index')}}">Generar Nómina</a></li>
                   </ul>
                 </div>
               </li>
