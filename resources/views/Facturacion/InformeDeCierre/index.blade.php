@@ -1,4 +1,4 @@
-
+@extends('layouts.layout')
 @section('content')
     <div class="content-wrapper">
         <div class="page-header">
@@ -70,7 +70,6 @@
                                             <th>Tipo Factura</th>
                                             <th>Moneda Factura</th>
                                             <th>Total Factura</th>
-                                            <th>Vendedor</th>
                                             <th>Nombre Empleado</th>
                                           </tr>
                                         @endif
@@ -92,13 +91,12 @@
                                             <td><span class="badge badge-danger">Cordobas</span></td>
                                           @endif
                                           <td>{{ $arq->total_facturado }}</td>
-                                          <td>{{ $arq->Vendedor }}</td>
                                           <td>{{ $arq->Nombre_Empleado }}</td>
                                         </tr>
                                       </tr>
                                       @php $valor += 1 @endphp
                                       @php $suma_total_facturado += $arq->total_facturado @endphp
-                                      @php $diferencia = ($arq->Saldo_Inicial - $suma_total_facturado)  @endphp
+                                      @php $diferencia = (($arq->Saldo_Final - $suma_total_facturado) - $arq->Saldo_Inicial)  @endphp
                                     @endif
 
                                     @if ($arq->ID_Divisa == 1)
