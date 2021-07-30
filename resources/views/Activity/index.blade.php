@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 @push('scripts-vista')
 @section('content')
+@inject('presenter', 'App\Http\Controllers\ActivityController')
 
 <div class="content-wrapper">
     <div class="page-header">
@@ -33,7 +34,7 @@
                                       <td>{{ $activity->log_name }}</td>
                                       <td>{{ $activity->description }}</td>
                                       <td>{{ $activity->subject_type }}</td>
-                                      <td>{{ $activity->subject_id }}</td>
+                                      <td>{{ $presenter::urlPath($activity) }}</td>
                                       <td>{{ $activity->created_at }}</td>
                                     </tr>
                                 @endforeach
