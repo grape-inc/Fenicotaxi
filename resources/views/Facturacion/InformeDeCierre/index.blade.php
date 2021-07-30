@@ -99,10 +99,6 @@
                                       @php $diferencia = (($arq->Saldo_Final - $suma_total_facturado) - $arq->Saldo_Inicial)  @endphp
                                     @endif
 
-                                    @if ($arq->ID_Divisa == 1)
-                                    $divisa = "$"
-                                    @endif
-
                                     @endforeach
                                     <tr>
                                         <td colspan="2" style="text-align: right; font-weight: bold;">Total Arqueo Caja: </td>
