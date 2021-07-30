@@ -20,15 +20,17 @@
         <thead style="border: 2px solid black;border-radius: 5px;">
             <tr>
                  <td style="border-right: 2px solid black;width: 100px;height: 2%;text-align: center;">Cantidad</td>
-                 <td style="border-right: 2px solid black; width: 300px;text-align: center;">Descripción</td>
-                 <td style="border-right: 2px solid black;width: 200px;text-align: center;">Precio Unitario</td>
-                 <td style="width: 100px;text-align: center;">Total</td>
+                 <td style="border-right: 2px solid black; width: 250px;text-align: center;">Producto</td>
+                 <td style="border-right: 2px solid black; width: 150px;text-align: center;">Descripción</td>
+                 <td style="border-right: 2px solid black;width: 100px;text-align: center;">Precio Unitario</td>
+                 <td style="width: 50px;text-align: center;">Total</td>
             </tr>
         </thead>
         <tbody style="border: 2px solid black;heigth:300px;">
             @foreach($FacturaDetalle as $Dt)
                 <tr>
                     <td style="border: 2px solid black;text-align:center;">{{ $Dt->Cantidad }}</td>
+                    <td style="border: 2px solid black;">{{ $Dt->producto->displayName() }}</td>
                     <td style="border: 2px solid black;">{{ $Dt->Observacion }}</td>
                     <td style="border: 2px solid black;text-align:center;">{{ $Dt->Precio }}</td>
                     <td style="border: 2px solid black;text-align:center;">{{ $Dt->Precio * $Dt->Cantidad }}</td>

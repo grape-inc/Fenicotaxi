@@ -25,4 +25,9 @@ class FacturaVentaDetalle extends Model
         $user = session('Usuario');
         return "This model has been {$eventName} by \"{$user}\"";
     }
+
+    public function producto()
+    {
+        return $this->belongsTo(Producto::class, 'ID_Producto', 'ID_Producto');
+    }
 }
